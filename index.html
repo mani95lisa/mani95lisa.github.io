@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>HTML教程</title>
+<title>HTML初级教程</title>
 <link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
 <script type="text/javascript" src="https://stackedit.io/libs/MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
 <script>
@@ -16,9 +16,12 @@
 
 </script>
 </head>
-<body><div class="container"><p><div class="toc">
+<body><div class="container"><blockquote>
+  <p>初级教程针对第一次接触HTML或接触过HTML但想再梳理了解下的朋友</p>
+</blockquote>
+
+<p><div class="toc"><div class="toc">
 <ul>
-<li><ul>
 <li><a href="#开始">开始</a></li>
 <li><a href="#标签属性和元素">标签、属性和元素</a><ul>
 <li><a href="#标签">标签</a></li>
@@ -26,13 +29,14 @@
 <li><a href="#元素">元素</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li><a href="#页面标题">页面标题</a></li>
+<li><a href="#段落">段落</a></li>
 </ul>
 </div>
-</p><div class="se-section-delimiter"></div>
+</div>
+</p>
 
-<h2 id="开始">开始</h2>
+<h1 id="开始">开始</h1>
 
 <p>使用任何文本编辑器，创建一个新的文本，并输入以下信息：</p>
 
@@ -40,11 +44,11 @@
 
 <p>保存文本并将其命名为<code>index.html</code>，这就完成了我们第一个HTML页面的实现，用浏览器打开即可看到实际效果。</p>
 
-<h2 id="标签属性和元素">标签、属性和元素</h2>
+<h1 id="标签属性和元素">标签、属性和元素</h1>
 
-<h3 id="标签">标签</h3>
+<h2 id="标签">标签</h2>
 
-<p>不过HTML文档的基础结构里是包含很多标签的，将内容改动成：</p>
+<p>HTML文档的基础结构里包含很多标签，将之前内容改为：</p>
 
 <pre class="prettyprint prettyprinted" style=""><code><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
 </span><span class="tag">&lt;html&gt;</span><span class="pln">
@@ -53,15 +57,113 @@
 </span><span class="tag">&lt;/body&gt;</span><span class="pln">
 </span><span class="tag">&lt;/html&gt;</span></code></pre>
 
-<p>这样保存后浏览跟之前的看起来一样，因为HTML标签的作用只是赋予含义而已。<a href="http://www.w3schools.com/tags/tag_doctype.asp"><code>&lt;!DOCTYPE html&gt;</code></a>就是<code>document type declaration</code>，比如说这里的标识就是告诉浏览器这是HTML5文档便其识别处理，记住在任何html页面都加上该标识即可，IE6也是兼容的，如<a href="https://hsivonen.fi/doctype/">这篇文章</a>所言。</p>
+<p>这样保存后浏览，跟之前的看起来一样，因为html标签的作用只是赋予含义而已。<a href="http://www.w3schools.com/tags/tag_doctype.asp"><code>&lt;!DOCTYPE html&gt;</code></a>就是<code>document type declaration</code>，比如说这里的标识就是告诉浏览器这是HTML5文档便其识别处理，记住在任何html页面都加上该标识即可，IE6也是兼容的，如<a href="https://hsivonen.fi/doctype/">这篇文章</a>所言。</p>
 
-<p><code>&lt;html&gt;</code>和<code>&lt;/html&gt;</code>分别是起始标签和结束标签，它们用以告诉浏览器所有网页的内容都在它们之间了，至于<code>&lt;body&gt;</code>和<code>&lt;/body&gt;</code>之间的就是所有网页能看到的内容了。只有标签之间有其他内容的时候才必须结对出现，比如<code>&lt;br/&gt;</code>换行标签就可以单独出现。</p>
+<p><code>&lt;html&gt;</code>和<code>&lt;/html&gt;</code>分别是起始标签和结束标签，它们用以告诉浏览器所有网页的内容都在它们之间了，至于<code>&lt;body&gt;</code>和<code>&lt;/body&gt;</code>之间的就是所有网页能看到的内容了。只有标签之间有其他内容的时候才必须结对出现，比如<a href="http://www.w3schools.com/tags/tag_br.asp"><code>&lt;br&gt;</code></a>换行标签就可以单独出现。</p>
 
-<h3 id="属性">属性</h3>
+<h2 id="属性">属性</h2>
 
-<p>属性都在起始标签里，比如这样的格式：<code>&lt;tag attribute="value"&gt;Content&lt;/tag&gt;</code></p>
+<p>属性都在起始标签里，比如：<code>&lt;tag attribute="value"&gt;Content&lt;/tag&gt;</code></p>
 
-<h3 id="元素">元素</h3>
+<h2 id="元素">元素</h2>
 
-<p>一个标签对即称之为一个元素。比如body<code>标签对</code>叫做一个body<code>元素</code>，一个元素里可能还会有多个其它元素</p></div></body>
+<p>一个标签对即称之为一个元素。比如body<code>标签对</code>叫做一个body<code>元素</code>，一个元素里可能还会有多个其它元素</p>
+
+<h1 id="页面标题">页面标题</h1>
+
+<p>将之前内容改为：</p>
+
+<pre class="prettyprint prettyprinted" style=""><code><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
+</span><span class="tag">&lt;html&gt;</span><span class="pln">
+</span><span class="tag">&lt;head&gt;</span><span class="pln">
+    </span><span class="tag">&lt;title&gt;</span><span class="pln">我的第一个页面</span><span class="tag">&lt;/title&gt;</span><span class="pln">
+</span><span class="tag">&lt;/head&gt;</span><span class="pln">
+</span><span class="tag">&lt;body&gt;</span><span class="pln">
+    Hello World!
+</span><span class="tag">&lt;/body&gt;</span><span class="pln">
+</span><span class="tag">&lt;/html&gt;</span></code></pre>
+
+<p>这里新加了<code>head</code>和<code>title</code>标签，其中<code>head</code>标签包含了所有页面内不显示出来的信息，其中<code>title</code>又是这些信息中最重要的，它显示在浏览器的选项卡或窗口标题上，包括你收藏该页面的时候也会看到该信息。</p>
+
+<h1 id="段落">段落</h1>
+
+<p>将之前内容改为：</p>
+
+<pre class="prettyprint prettyprinted" style=""><code><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
+</span><span class="tag">&lt;html&gt;</span><span class="pln">
+</span><span class="tag">&lt;head&gt;</span><span class="pln">
+    </span><span class="tag">&lt;title&gt;</span><span class="pln">我的第一个页面</span><span class="tag">&lt;/title&gt;</span><span class="pln">
+</span><span class="tag">&lt;/head&gt;</span><span class="pln">
+</span><span class="tag">&lt;body&gt;</span><span class="pln">
+    Hello World!
+    你好，世界！
+</span><span class="tag">&lt;/body&gt;</span><span class="pln">
+</span><span class="tag">&lt;/html&gt;</span></code></pre>
+
+<p>打开浏览器后发现显示的结果其实是：</p>
+
+<pre class="prettyprint prettyprinted" style=""><code><span class="typ">Hello</span><span class="pln"> </span><span class="typ">World</span><span class="pun">!</span><span class="pln"> </span><span class="pun">你好，世界！</span></code></pre>
+
+<p>因为浏览器不能识别内容所在行，也不能识别多空格，会将代码里的多个空格当做一个空格处理，比如这样的代码跟上面的代码结果一样：</p>
+
+<pre class="prettyprint prettyprinted" style=""><code><span class="typ">Hello</span><span class="pln"> </span><span class="typ">World</span><span class="pun">!</span><span class="pln">    </span><span class="pun">你好，世界！</span></code></pre>
+
+<p>这时候就需要借助<code>&lt;p&gt;</code>标签来实现段落功能：</p>
+
+<pre class="prettyprint prettyprinted" style=""><code><span class="tag">&lt;p&gt;</span><span class="pln">Hello World!</span><span class="tag">&lt;/p&gt;</span><span class="pln">
+</span><span class="tag">&lt;p&gt;</span><span class="pln">你好，世界！</span><span class="tag">&lt;/p&gt;</span></code></pre>
+
+<p>与段落密切相关的还有前面提到过的换行标签<code>&lt;br&gt;</code>，一般来说换行标签这样简单使用即可，除非是在XHTML页面的时候才必须使用<code>&lt;br/&gt;</code>。但是使用<code>&lt;br/&gt;</code>也不会有错，不过根据不包含内容元素不使用闭合标签的约定，HTML中仍然建议使用<code>&lt;br&gt;</code>的格式，与之类似的还有<code>&lt;img&gt;,&lt;input&gt;</code>。</p>
+
+<p>除了换行之外，段落内还有常用的标签：</p>
+
+<pre class="prettyprint prettyprinted" style=""><code><span class="tag">&lt;p&gt;</span><span class="pln">Hello</span><span class="tag">&lt;br&gt;</span><span class="pln">World!</span><span class="tag">&lt;/p&gt;</span><span class="pln">
+</span><span class="tag">&lt;p&gt;&lt;em&gt;</span><span class="pln">表示重要的斜体</span><span class="tag">&lt;/em&gt;</span><span class="pln">和</span><span class="tag">&lt;strong&gt;</span><span class="pln">更重要的粗体</span><span class="tag">&lt;/strong&gt;&lt;/p&gt;</span></code></pre>
+
+<p>默认<code>&lt;em&gt;</code>是斜体，<code>&lt;strong&gt;</code>是粗体，从表现层面来说<code>&lt;i&gt;</code>和<code>&lt;em&gt;</code>一样，<code>&lt;b&gt;</code>和<code>&lt;strong&gt;</code>一样，但推荐使用<code>em和strong</code>，因为<code>i</code>属于<code>视觉元素</code>，<code>em</code>属于<code>表达元素</code>，后者带有语义性，对<code>搜索引擎</code>及<code>语音</code>都更友好，比如在阅读时<code>em</code>标签的内容会加强语气。具有语义的<code>phase tag</code>列表如下：</p>
+
+<table>
+<thead>
+<tr>
+  <th>标签</th>
+  <th>描述</th>
+  <th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td><code>&lt;em&gt;</code></td>
+  <td>表示强调或重要</td>
+  <td><code>你&lt;em&gt;必须&lt;/em&gt;记住</code><br>你<em>必须</em>记住</td>
+</tr>
+<tr>
+  <td><code>&lt;strong&gt;</code></td>
+  <td>表示比em更重要</td>
+  <td><code>你&lt;strong&gt;必须&lt;/strong&gt;记住</code><br>你<strong>必须</strong>记住</td>
+</tr>
+<tr>
+  <td><code>&lt;dfn&gt;</code></td>
+  <td>表示定义术语</td>
+  <td><code>&lt;dfn&gt;XHTML&lt;/dfn&gt;中的元素必须闭合</code><br><dfn>XHTML</dfn>中的元素必须闭合</td>
+</tr>
+<tr>
+  <td><code>&lt;code&gt;</code></td>
+  <td>表示一段代码，通常呈现为计算机书常用的monospaced字体</td>
+  <td><code>&lt;code&gt;I'm code/cdoe&gt;</code><br><code>I’m code</code></td>
+</tr>
+<tr>
+  <td><code>&lt;samp&gt;</code></td>
+  <td>表示计算机程序输出，通常在程序文档中使用</td>
+  <td><code>&lt;samp&gt;I'm output&lt;/samp&gt;</code><br><samp>I’m output</samp></td>
+</tr>
+<tr>
+  <td><code>&lt;kbd&gt;</code></td>
+  <td>表示键盘输入，通常呈现字体跟<code>&lt;code&gt;</code>一样，用以提示需要键盘输入的内容</td>
+  <td><code>&lt;kbd&gt;输入文本提示&lt;/kbd&gt;</code><br><kbd>输入文本提示</kbd></td>
+</tr>
+<tr>
+  <td><code>&lt;var&gt;</code></td>
+  <td>表示程序变量，通常于<code>&lt;pre&gt;</code>和<code>&lt;code&gt;</code>一起使用</td>
+  <td><code>&lt;code&gt;document.write("&lt;var&gt;name&lt;/var&gt;")&lt;/code&gt;</code><br><code>document.write("<var>name</var>")</code></td>
+</tr>
+</tbody></table></div></body>
 </html>
