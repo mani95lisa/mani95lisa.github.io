@@ -17,7 +17,7 @@
 </script>
 </head>
 <body><div class="container"><blockquote>
-  <p>初级教程针对第一次接触HTML或接触过HTML但想再梳理了解下的朋友</p>
+  <p>初级教程针对第一次接触HTML或接触过但想再系统梳理下基础知识的朋友</p>
 </blockquote>
 
 <p><div class="toc"><div class="toc">
@@ -31,6 +31,8 @@
 </li>
 <li><a href="#页面标题">页面标题</a></li>
 <li><a href="#段落">段落</a></li>
+<li><a href="#文本标题">文本标题</a></li>
+<li><a href="#列表">列表</a></li>
 </ul>
 </div>
 </div>
@@ -165,5 +167,106 @@
   <td>表示程序变量，通常于<code>&lt;pre&gt;</code>和<code>&lt;code&gt;</code>一起使用</td>
   <td><code>&lt;code&gt;document.write("&lt;var&gt;name&lt;/var&gt;")&lt;/code&gt;</code><br><code>document.write("<var>name</var>")</code></td>
 </tr>
-</tbody></table></div></body>
+</tbody></table>
+<h1 id="文本标题">文本标题</h1>
+
+<p>它们分别是<code>h1,h2,h3,h4,h5,h6</code>，其中默认h1最大，h6最小，具体字体大小也可以通过css来进行定义：</p>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
+</span><span class="tag">&lt;html&gt;</span><span class="pln">
+</span><span class="tag">&lt;head&gt;</span><span class="pln">
+    </span><span class="tag">&lt;meta</span><span class="pln"> </span><span class="atn">charset</span><span class="pun">=</span><span class="atv">"utf-8"</span><span class="tag">&gt;</span><span class="pln">
+    </span><span class="tag">&lt;title&gt;</span><span class="pln">Styled heading styles</span><span class="tag">&lt;/title&gt;</span><span class="pln">
+    </span><span class="tag">&lt;style&gt;</span><span class="pln">
+        h1 </span><span class="pun">{</span><span class="pln">
+          font</span><span class="pun">-</span><span class="pln">size</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0.67em</span><span class="pun">;</span><span class="pln">
+          margin</span><span class="pun">:</span><span class="pln"> </span><span class="lit">2.33em</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+
+        h2 </span><span class="pun">{</span><span class="pln">
+          font</span><span class="pun">-</span><span class="pln">size</span><span class="pun">:</span><span class="pln"> </span><span class="lit">0.83em</span><span class="pun">;</span><span class="pln">
+          margin</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1.67em</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+
+        h3 </span><span class="pun">{</span><span class="pln">
+          margin</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1.33em</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+
+        h4 </span><span class="pun">{</span><span class="pln">
+          font</span><span class="pun">-</span><span class="pln">size</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1.17em</span><span class="pun">;</span><span class="pln">
+          margin</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1em</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+
+        h5 </span><span class="pun">{</span><span class="pln">
+          font</span><span class="pun">-</span><span class="pln">size</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1.5em</span><span class="pun">;</span><span class="pln">
+          margin</span><span class="pun">:</span><span class="pln"> </span><span class="pun">.</span><span class="lit">83em</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+
+        h6 </span><span class="pun">{</span><span class="pln">
+          font</span><span class="pun">-</span><span class="pln">size</span><span class="pun">:</span><span class="pln"> </span><span class="lit">2em</span><span class="pun">;</span><span class="pln">
+          margin</span><span class="pun">:</span><span class="pln"> </span><span class="pun">.</span><span class="lit">67em</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="tag">&lt;/style&gt;</span><span class="pln">
+</span><span class="tag">&lt;/head&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;body&gt;</span><span class="pln">
+    </span><span class="tag">&lt;h1&gt;</span><span class="pln">Heading 1 (h1)</span><span class="tag">&lt;/h1&gt;</span><span class="pln">
+    </span><span class="tag">&lt;h2&gt;</span><span class="pln">Heading 2 (h2)</span><span class="tag">&lt;/h2&gt;</span><span class="pln">
+    </span><span class="tag">&lt;h3&gt;</span><span class="pln">Heading 3 (h3)</span><span class="tag">&lt;/h3&gt;</span><span class="pln">
+    </span><span class="tag">&lt;h4&gt;</span><span class="pln">Heading 4 (h4)</span><span class="tag">&lt;/h4&gt;</span><span class="pln">
+    </span><span class="tag">&lt;h5&gt;</span><span class="pln">Heading 5 (h5)</span><span class="tag">&lt;/h5&gt;</span><span class="pln">
+    </span><span class="tag">&lt;h6&gt;</span><span class="pln">Heading 6 (h6)</span><span class="tag">&lt;/h6&gt;</span><span class="pln">
+</span><span class="tag">&lt;/body&gt;</span><span class="pln">
+</span><span class="tag">&lt;/html&gt;</span></code></pre>
+
+<h1 id="列表">列表</h1>
+
+<p>列表分为三种：</p>
+
+<ul>
+<li>无序列表：<code>&lt;ul&gt;</code>也就是<code>u</code>nordered <code>l</code>ists的缩写</li>
+<li>有序列表：<code>&lt;ol&gt;</code>也就是<code>o</code>rdered <code>l</code>ists的缩写</li>
+<li>定义列表：<code>&lt;dl&gt;</code>也就是<code>d</code>efinition lists的缩写</li>
+</ul>
+
+<p>前两类列表差不多，一般前者列表项标识表现为圆点，后者表现为序列数字，<code>&lt;li&gt;</code>(<code>l</code>ist <code>i</code>tem)标签用以定义列项：</p><div class="se-section-delimiter"></div>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
+</span><span class="tag">&lt;html&gt;</span><span class="pln">
+    </span><span class="tag">&lt;body&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;ul&gt;</span><span class="pln">
+        </span><span class="tag">&lt;li&gt;</span><span class="pln">1</span><span class="tag">&lt;/li&gt;</span><span class="pln">    
+        </span><span class="tag">&lt;ul&gt;</span><span class="pln">
+            </span><span class="tag">&lt;li&gt;</span><span class="pln">3</span><span class="tag">&lt;/li&gt;</span><span class="pln">
+        </span><span class="tag">&lt;/ul&gt;</span><span class="pln">
+        </span><span class="tag">&lt;li&gt;</span><span class="pln">2</span><span class="tag">&lt;/li&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/ul&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;ol&gt;</span><span class="pln">
+        </span><span class="tag">&lt;li&gt;</span><span class="pln">1</span><span class="tag">&lt;/li&gt;</span><span class="pln">    
+        </span><span class="tag">&lt;li&gt;</span><span class="pln">2</span><span class="tag">&lt;/li&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/ol&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;/body&gt;</span><span class="pln">
+</span><span class="tag">&lt;/html&gt;</span></code></pre>
+
+<p>定义列表很少见，也很少用，主要在术语描述的时候使用，其中<code>&lt;dt&gt;</code>表示（ <strong>d</strong> efinition <strong>t</strong> erm）<code>定义术语</code>，<code>&lt;dd&gt;</code>表示（ <strong>d</strong> efinition <strong>d</strong> escriptions ）<code>定义描述</code></p><div class="se-section-delimiter"></div>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
+</span><span class="tag">&lt;html&gt;</span><span class="pln">
+    </span><span class="tag">&lt;body&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;h1&gt;</span><span class="pln">一些术语定义</span><span class="tag">&lt;/h1&gt;</span><span class="pln">
+</span><span class="tag">&lt;dl&gt;</span><span class="pln">
+    </span><span class="tag">&lt;dt&gt;</span><span class="pln">HTML</span><span class="tag">&lt;/dt&gt;</span><span class="pln">
+    </span><span class="tag">&lt;dd&gt;</span><span class="pln">Abbreviation for HyperText Markup Language - a language used to make web pages.</span><span class="tag">&lt;/dd&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;dt&gt;</span><span class="pln">HTML定义</span><span class="tag">&lt;/dt&gt;</span><span class="pln">
+    </span><span class="tag">&lt;dd&gt;</span><span class="pln">描述1</span><span class="tag">&lt;/dd&gt;</span><span class="pln">
+    </span><span class="tag">&lt;dd&gt;</span><span class="pln">描述2</span><span class="tag">&lt;/dd&gt;</span><span class="pln">
+</span><span class="tag">&lt;/dl&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;/body&gt;</span><span class="pln">
+</span><span class="tag">&lt;/html&gt;</span></code></pre></div></body>
 </html>
