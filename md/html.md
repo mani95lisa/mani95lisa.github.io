@@ -1,5 +1,7 @@
 > 初级教程针对第一次接触HTML或接触过但想再系统梳理下基础知识的朋友
 
+<p id="start"></p>
+
 [TOC]
 # 开始 
 使用任何文本编辑器，创建一个新的文本，并输入以下信息：
@@ -149,7 +151,7 @@ Hello World!    你好，世界！
 
 - 无序列表：`<ul>`也就是`u`nordered `l`ists的缩写
 - 有序列表：`<ol>`也就是`o`rdered `l`ists的缩写
-- 定义列表：`<dl>`也就是`d`efinition lists的缩写
+- 定义列表：`<dl>`也就是`d`efinition `l`ists的缩写
 
 前两类列表差不多，一般前者列表项标识表现为圆点，后者表现为序列数字，`<li>`(`l`ist `i`tem)标签用以定义列项：
 
@@ -175,7 +177,7 @@ Hello World!    你好，世界！
 </html>
 ```
 
-定义列表很少见，也很少用，主要在术语描述的时候使用，其中`<dt>`表示（ **d** efinition **t** erm）`定义术语`，`<dd>`表示（ **d** efinition **d** escriptions ）`定义描述`
+定义列表很少见，也很少用，主要在术语描述的时候使用，其中`<dt>`表示（`d`efinition `t`erm）`定义术语`，`<dd>`表示（`d`efinition `d`escriptions ）`定义描述`
 
 ```javascript
 <!DOCTYPE html>
@@ -195,6 +197,31 @@ Hello World!    你好，世界！
     </body>
 </html>
 ```
+
+# 链接
+
+**HTML**中的`H`和`T`表示`hypertext`，其基本含义就是一个链接文本的系统。锚点标签**a**(anchor)就是用来定义链接的，该标签需要结合链接信息一起使用：
+
+```javascript```
+<!DOCTYPE html>
+<html>
+    <body>
+    
+    <h1 id="h1">测试链接</h1>
+    
+    <p><a href="http://www.iiiui.com">iiiui</a></p>
+    <p><a href="index.html">iiiui</a></p>
+    <p><a href="#h1">回到标题</a></p>
+        
+    </body>
+</html>
+```
+
+其中的`href`是(`h`ypertext `ref`erence)链接的目标，可以是：
+
+- 绝对路径，任意网址
+- 相对路径，相对该网页的路径
+- 锚点，该页面内id为锚点值的元素，如上面的h1，点击<a href="#start">这里</a>就可以回到当前页面开始位置
 
   [1]: http://www.w3schools.com/tags/tag_doctype.asp
   [2]: https://hsivonen.fi/doctype/
