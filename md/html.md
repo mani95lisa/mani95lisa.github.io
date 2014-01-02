@@ -1,4 +1,4 @@
-> 初级教程针对第一次接触HTML或接触过HTML但想再梳理了解下的朋友
+> 初级教程针对第一次接触HTML或接触过但想再系统梳理下基础知识的朋友
 
 [TOC]
 # 开始 
@@ -92,7 +92,109 @@ Hello World!    你好，世界！
 `<kbd>` | 表示键盘输入，通常呈现字体跟`<code>`一样，用以提示需要键盘输入的内容 | `<kbd>输入文本提示</kbd>`<br><kbd>输入文本提示</kbd>
 `<var>` | 表示程序变量，通常于`<pre>`和`<code>`一起使用 | `<code>document.write("<var>name</var>")</code>`<br><code>document.write("<var>name</var>")</code>
 
+# 文本标题
 
+它们分别是`h1,h2,h3,h4,h5,h6`，其中默认h1最大，h6最小，具体字体大小也可以通过css来进行定义：
+```javascript
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Styled heading styles</title>
+	<style>
+		h1 {
+		  font-size: 0.67em;
+		  margin: 2.33em 0;
+		}
+
+		h2 {
+		  font-size: 0.83em;
+		  margin: 1.67em 0;
+		}
+
+		h3 {
+		  margin: 1.33em 0;
+		}
+
+		h4 {
+		  font-size: 1.17em;
+		  margin: 1em 0;
+		}
+		
+		h5 {
+		  font-size: 1.5em;
+		  margin: .83em 0;
+		}
+		
+		h6 {
+		  font-size: 2em;
+		  margin: .67em 0;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Heading 1 (h1)</h1>
+	<h2>Heading 2 (h2)</h2>
+	<h3>Heading 3 (h3)</h3>
+	<h4>Heading 4 (h4)</h4>
+	<h5>Heading 5 (h5)</h5>
+	<h6>Heading 6 (h6)</h6>
+</body>
+</html>
+```
+# 列表
+
+列表分为三种：
+
+- 无序列表：`<ul>`也就是`u`nordered `l`ists的缩写
+- 有序列表：`<ol>`也就是`o`rdered `l`ists的缩写
+- 定义列表：`<dl>`也就是`d`efinition lists的缩写
+
+前两类列表差不多，一般前者列表项标识表现为圆点，后者表现为序列数字，`<li>`(`l`ist `i`tem)标签用以定义列项：
+
+```javascript
+<!DOCTYPE html>
+<html>
+    <body>
+     
+    <ul>
+        <li>1</li>    
+        <ul>
+            <li>3</li>
+        </ul>
+        <li>2</li>
+    </ul>
+        
+    <ol>
+        <li>1</li>    
+        <li>2</li>
+    </ol>
+        
+    </body>
+</html>
+```
+
+定义列表很少见，也很少用，主要在术语描述的时候使用，其中`<dt>`表示（ **d** efinition **t** erm）`定义术语`，`<dd>`表示（ **d** efinition **d** escriptions ）`定义描述`
+
+```javascript
+<!DOCTYPE html>
+<html>
+    <body>
+     
+    <h1>一些术语定义</h1>
+<dl>
+    <dt>HTML</dt>
+    <dd>Abbreviation for HyperText Markup Language - a language used to make web pages.</dd>
+
+    <dt>HTML定义</dt>
+    <dd>描述1</dd>
+    <dd>描述2</dd>
+</dl>
+        
+    </body>
+</html>
+```
 
   [1]: http://www.w3schools.com/tags/tag_doctype.asp
   [2]: https://hsivonen.fi/doctype/
