@@ -20,6 +20,8 @@
   <p>初级教程针对第一次接触HTML或接触过但想再系统梳理下基础知识的朋友</p>
 </blockquote>
 
+<p id="start"></p>
+
 <p><div class="toc"><div class="toc">
 <ul>
 <li><a href="#开始">开始</a></li>
@@ -33,10 +35,11 @@
 <li><a href="#段落">段落</a></li>
 <li><a href="#文本标题">文本标题</a></li>
 <li><a href="#列表">列表</a></li>
+<li><a href="#链接">链接</a></li>
 </ul>
 </div>
 </div>
-</p>
+</p><div class="se-section-delimiter"></div>
 
 <h1 id="开始">开始</h1>
 
@@ -226,7 +229,7 @@
 <ul>
 <li>无序列表：<code>&lt;ul&gt;</code>也就是<code>u</code>nordered <code>l</code>ists的缩写</li>
 <li>有序列表：<code>&lt;ol&gt;</code>也就是<code>o</code>rdered <code>l</code>ists的缩写</li>
-<li>定义列表：<code>&lt;dl&gt;</code>也就是<code>d</code>efinition lists的缩写</li>
+<li>定义列表：<code>&lt;dl&gt;</code>也就是<code>d</code>efinition <code>l</code>ists的缩写</li>
 </ul>
 
 <p>前两类列表差不多，一般前者列表项标识表现为圆点，后者表现为序列数字，<code>&lt;li&gt;</code>(<code>l</code>ist <code>i</code>tem)标签用以定义列项：</p><div class="se-section-delimiter"></div>
@@ -251,7 +254,7 @@
     </span><span class="tag">&lt;/body&gt;</span><span class="pln">
 </span><span class="tag">&lt;/html&gt;</span></code></pre>
 
-<p>定义列表很少见，也很少用，主要在术语描述的时候使用，其中<code>&lt;dt&gt;</code>表示（ <strong>d</strong> efinition <strong>t</strong> erm）<code>定义术语</code>，<code>&lt;dd&gt;</code>表示（ <strong>d</strong> efinition <strong>d</strong> escriptions ）<code>定义描述</code></p><div class="se-section-delimiter"></div>
+<p>定义列表很少见，也很少用，主要在术语描述的时候使用，其中<code>&lt;dt&gt;</code>表示（<code>d</code>efinition <code>t</code>erm）<code>定义术语</code>，<code>&lt;dd&gt;</code>表示（<code>d</code>efinition <code>d</code>escriptions ）<code>定义描述</code></p><div class="se-section-delimiter"></div>
 
 <pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
 </span><span class="tag">&lt;html&gt;</span><span class="pln">
@@ -268,5 +271,30 @@
 </span><span class="tag">&lt;/dl&gt;</span><span class="pln">
 
     </span><span class="tag">&lt;/body&gt;</span><span class="pln">
-</span><span class="tag">&lt;/html&gt;</span></code></pre></div></body>
+</span><span class="tag">&lt;/html&gt;</span></code></pre><div class="se-section-delimiter"></div>
+
+<h1 id="链接">链接</h1>
+
+<p><strong>HTML</strong>中的<code>H</code>和<code>T</code>表示<code>hypertext</code>，其基本含义就是一个链接文本的系统。锚点标签<strong>a</strong>(anchor)就是用来定义链接的，该标签需要结合链接信息一起使用：</p>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript```"><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
+</span><span class="tag">&lt;html&gt;</span><span class="pln">
+    </span><span class="tag">&lt;body&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;h1</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"h1"</span><span class="tag">&gt;</span><span class="pln">测试链接</span><span class="tag">&lt;/h1&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;p&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"http://www.iiiui.com"</span><span class="tag">&gt;</span><span class="pln">iiiui</span><span class="tag">&lt;/a&gt;&lt;/p&gt;</span><span class="pln">
+    </span><span class="tag">&lt;p&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"index.html"</span><span class="tag">&gt;</span><span class="pln">iiiui</span><span class="tag">&lt;/a&gt;&lt;/p&gt;</span><span class="pln">
+    </span><span class="tag">&lt;p&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#h1"</span><span class="tag">&gt;</span><span class="pln">回到标题</span><span class="tag">&lt;/a&gt;&lt;/p&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;/body&gt;</span><span class="pln">
+</span><span class="tag">&lt;/html&gt;</span></code></pre>
+
+<p>其中的<code>href</code>是(<code>h</code>ypertext <code>ref</code>erence)链接的目标，可以是：</p>
+
+<ul>
+<li>绝对路径，任意网址</li>
+<li>相对路径，相对该网页的路径</li>
+<li>锚点，该页面内id为锚点值的元素，如上面的h1，点击<a href="#start">这里</a>就可以回到当前页面开始位置</li>
+</ul></div></body>
 </html>
