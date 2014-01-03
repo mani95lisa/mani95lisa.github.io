@@ -36,10 +36,19 @@
 <li><a href="#文本标题">文本标题</a></li>
 <li><a href="#列表">列表</a></li>
 <li><a href="#链接">链接</a></li>
+<li><a href="#图片">图片</a></li>
+<li><a href="#表格">表格</a></li>
+<li><a href="#表单">表单</a><ul>
+<li><a href="#form">form</a></li>
+<li><a href="#input">input</a></li>
+<li><a href="#textarea">textarea</a></li>
+<li><a href="#select">select</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
-</p><div class="se-section-delimiter"></div>
+</p>
 
 <h1 id="开始">开始</h1>
 
@@ -171,6 +180,8 @@
   <td><code>&lt;code&gt;document.write("&lt;var&gt;name&lt;/var&gt;")&lt;/code&gt;</code><br><code>document.write("<var>name</var>")</code></td>
 </tr>
 </tbody></table>
+
+
 <h1 id="文本标题">文本标题</h1>
 
 <p>它们分别是<code>h1,h2,h3,h4,h5,h6</code>，其中默认h1最大，h6最小，具体字体大小也可以通过css来进行定义：</p>
@@ -232,7 +243,7 @@
 <li>定义列表：<code>&lt;dl&gt;</code>也就是<code>d</code>efinition <code>l</code>ists的缩写</li>
 </ul>
 
-<p>前两类列表差不多，一般前者列表项标识表现为圆点，后者表现为序列数字，<code>&lt;li&gt;</code>(<code>l</code>ist <code>i</code>tem)标签用以定义列项：</p><div class="se-section-delimiter"></div>
+<p>前两类列表差不多，一般前者列表项标识表现为圆点，后者表现为序列数字，<code>&lt;li&gt;</code>(<code>l</code>ist <code>i</code>tem)标签用以定义列项：</p>
 
 <pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
 </span><span class="tag">&lt;html&gt;</span><span class="pln">
@@ -254,7 +265,7 @@
     </span><span class="tag">&lt;/body&gt;</span><span class="pln">
 </span><span class="tag">&lt;/html&gt;</span></code></pre>
 
-<p>定义列表很少见，也很少用，主要在术语描述的时候使用，其中<code>&lt;dt&gt;</code>表示（<code>d</code>efinition <code>t</code>erm）<code>定义术语</code>，<code>&lt;dd&gt;</code>表示（<code>d</code>efinition <code>d</code>escriptions ）<code>定义描述</code></p><div class="se-section-delimiter"></div>
+<p>定义列表很少见，也很少用，主要在术语描述的时候使用，其中<code>&lt;dt&gt;</code>表示（<code>d</code>efinition <code>t</code>erm）<code>定义术语</code>，<code>&lt;dd&gt;</code>表示（<code>d</code>efinition <code>d</code>escriptions ）<code>定义描述</code></p>
 
 <pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
 </span><span class="tag">&lt;html&gt;</span><span class="pln">
@@ -271,7 +282,7 @@
 </span><span class="tag">&lt;/dl&gt;</span><span class="pln">
 
     </span><span class="tag">&lt;/body&gt;</span><span class="pln">
-</span><span class="tag">&lt;/html&gt;</span></code></pre><div class="se-section-delimiter"></div>
+</span><span class="tag">&lt;/html&gt;</span></code></pre>
 
 <h1 id="链接">链接</h1>
 
@@ -283,7 +294,7 @@
 
     </span><span class="tag">&lt;h1</span><span class="pln"> </span><span class="atn">id</span><span class="pun">=</span><span class="atv">"h1"</span><span class="tag">&gt;</span><span class="pln">测试链接</span><span class="tag">&lt;/h1&gt;</span><span class="pln">
 
-    </span><span class="tag">&lt;p&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"http://www.iiiui.com"</span><span class="tag">&gt;</span><span class="pln">iiiui</span><span class="tag">&lt;/a&gt;&lt;/p&gt;</span><span class="pln">
+    </span><span class="tag">&lt;p&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"http://www.iiiui.com"</span><span class="tag">&gt;</span><span class="pln">我的博客</span><span class="tag">&lt;/a&gt;&lt;/p&gt;</span><span class="pln">
     </span><span class="tag">&lt;p&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"index.html"</span><span class="tag">&gt;</span><span class="pln">iiiui</span><span class="tag">&lt;/a&gt;&lt;/p&gt;</span><span class="pln">
     </span><span class="tag">&lt;p&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"#h1"</span><span class="tag">&gt;</span><span class="pln">回到标题</span><span class="tag">&lt;/a&gt;&lt;/p&gt;</span><span class="pln">
 
@@ -296,5 +307,161 @@
 <li>绝对路径，任意网址</li>
 <li>相对路径，相对该网页的路径</li>
 <li>锚点，该页面内id为锚点值的元素，如上面的h1，点击<a href="#start">这里</a>就可以回到当前页面开始位置</li>
-</ul></div></body>
+</ul>
+
+<h1 id="图片">图片</h1>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="tag">&lt;img</span><span class="pln"> </span><span class="atn">src</span><span class="pun">=</span><span class="atv">"https://1.gravatar.com/avatar/9b3c7e83caa581e968624a3cd5af11f8?d=https%3A%2F%2Fidenticons.github.com%2F64d01d0c72ab6d7577ed190b45acfaef.png&amp;r=x&amp;s=140"</span><span class="pln"> </span><span class="atn">width</span><span class="pun">=</span><span class="atv">"20"</span><span class="pln"> </span><span class="atn">height</span><span class="pun">=</span><span class="atv">"20"</span><span class="pln"> </span><span class="atn">alt</span><span class="pun">=</span><span class="atv">"我的GitHub头像"</span><span class="tag">&gt;</span></code></pre>
+
+<p>如上所示，<code>&lt;img&gt;</code>标签就表示图片了，其中<code>src</code>表示图片地址，可以是任意图片的绝对地址，也可以是相对于当前页面的相对地址，比如<code>assets/1.jpg</code>，跟<code>&lt;a&gt;</code>很像。 <br>
+<code>width</code>和<code>height</code>的属性是很必要的，建议一开始就赋值好，这样页面渲染时就会为图片预留好空间，否则图片加载完成后页面布局会发生变化，影响用户体验。 <br>
+<code>alt</code>属性表示（<code>alt</code>ernative description）另一种图片的描述，在图片加载不成功的时候，如果你设置了宽高属性，就会显示出来。</p>
+
+<h1 id="表格">表格</h1>
+
+<p>直接上代码：</p>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
+</span><span class="tag">&lt;html&gt;</span><span class="pln">
+    </span><span class="tag">&lt;body&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;table&gt;</span><span class="pln">
+        </span><span class="tag">&lt;tr&gt;</span><span class="pln">
+            </span><span class="tag">&lt;td&gt;</span><span class="pln">Row 1, cell 1</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+            </span><span class="tag">&lt;td&gt;</span><span class="pln">Row 1, cell 2</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+            </span><span class="tag">&lt;td&gt;</span><span class="pln">Row 1, cell 3</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+        </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+        </span><span class="tag">&lt;tr&gt;</span><span class="pln">
+            </span><span class="tag">&lt;td&gt;</span><span class="pln">Row 2, cell 1</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+            </span><span class="tag">&lt;td&gt;</span><span class="pln">Row 2, cell 2</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+        </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+        </span><span class="tag">&lt;tr&gt;</span><span class="pln">
+            </span><span class="tag">&lt;td&gt;</span><span class="pln">Row 3, cell 1</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+        </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+        </span><span class="tag">&lt;tr&gt;</span><span class="pln">
+            </span><span class="tag">&lt;td&gt;</span><span class="pln">Row 4, cell 1</span><span class="tag">&lt;/td&gt;</span><span class="pln">        
+            </span><span class="tag">&lt;td&gt;</span><span class="pln">Row 4, cell 2</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+            </span><span class="tag">&lt;td&gt;</span><span class="pln">Row 4, cell 3</span><span class="tag">&lt;/td&gt;</span><span class="pln">
+        </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/table&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;/body&gt;</span><span class="pln">
+</span><span class="tag">&lt;/html&gt;</span></code></pre>
+
+<p>效果如下：</p>
+
+<table>
+    <tbody><tr>
+        <td>Row 1, cell 1</td>
+        <td>Row 1, cell 2</td>
+        <td>Row 1, cell 3</td>
+    </tr>
+    <tr>
+        <td>Row 2, cell 1</td>
+        <td>Row 2, cell 2</td>
+    </tr>
+    <tr>
+        <td>Row 3, cell 1</td>
+    </tr>
+    <tr>
+        <td>Row 4, cell 1</td>
+        <td>Row 4, cell 2</td>
+        <td>Row 4, cell 3</td>
+    </tr>
+</tbody></table>
+
+<p>其中<code>table</code>元素定义了表格，<code>tr</code>（<code>t</code>able <code>r</code>ow）元素定义了表格行，<code>td</code>（<code>t</code>able <code>d</code>ata cell）元素定义了表格单元，它必须在<code>tr</code>标签内。</p>
+
+<h1 id="表单">表单</h1>
+
+<p>表单是用来收集用户输入数据的，一般在收集后会将数据通过网页发送到服务器进行处理，主要涉及这几个标签：<code>form</code>,<code>input</code>,<code>textarea</code>,<code>select</code>和<code>option</code>。</p>
+
+<h2 id="form">form</h2>
+
+<p><code>&lt;form&gt;</code>标签表示的就是表单，如果表单是给用户提交数据的，那<code>action</code>属性也必须填写上数据提交的地址，与之相关的还有<code>method</code>这个方法，默认是<code>get</code>，如果你提交的数据比较大而且希望安全一些的话，可以改为<code>post</code>，大概就是这样：</p>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="tag">&lt;form</span><span class="pln"> </span><span class="atn">action</span><span class="pun">=</span><span class="atv">"send.php"</span><span class="pln"> </span><span class="atn">method</span><span class="pun">=</span><span class="atv">"post"</span><span class="tag">&gt;</span><span class="pln">
+</span><span class="tag">&lt;/form&gt;</span></code></pre>
+
+<p>其中<code>action</code>的地址由后台决定，可以是相对地址或绝对地址。</p>
+
+<h2 id="input">input</h2>
+
+<p><code>input</code>元素这样使用<code>&lt;input type=""&gt;</code>，其中<code>type</code>有很多种，最常用的有：</p>
+
+<ul>
+<li><code>text</code>，这也是不指定<code>type</code>时的默认类型</li>
+<li><code>password</code>，这是专用于输入密码的，跟<code>text</code>类似，只是会隐藏输入内容</li>
+<li><code>checkbox</code>是复选，其中<code>checked</code>属性描述其是否选中</li>
+<li><code>radio</code>是单选，在一组<code>radio</code>里只能选择一个，也有<code>checked</code>属性</li>
+<li><code>submit</code>是提交按钮，可以通过<code>value</code>控制按钮上的文本</li>
+<li><code>image</code>是将图片作为提交按钮</li>
+</ul>
+
+<p>还有一些常用的属性：</p>
+
+<ul>
+<li><code>name</code> 当作为数据传递的时候，name就是数据的属性，用户输入的信息就是数据的值。</li>
+<li><code>value</code> 作为用户输入的值</li>
+<li><code>checked</code> 是否核对，用以单选和复选框</li>
+<li><code>maxlength</code> 限制文本输入长度</li>
+<li><code>src</code> 图片地址</li>
+<li><code>readonly="readonly"</code> 不能更改 <code>disabled="disabled"</code> 不能使用</li>
+<li><code>tabindex</code> 按<code>Tab</code>键时焦点的顺序索引，默认是按渲染的从先到后的顺序</li>
+</ul>
+
+<p>比如写一个注册的表单就是：</p><div class="se-section-delimiter"></div>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="tag">&lt;form</span><span class="pln"> </span><span class="atn">action</span><span class="pun">=</span><span class="atv">"send"</span><span class="pln"> </span><span class="atn">method</span><span class="pun">=</span><span class="atv">"post"</span><span class="tag">/&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div&gt;</span><span class="pln">账户： </span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"text"</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"account"</span><span class="tag">&gt;</span><span class="pln"> </span><span class="tag">&lt;/div&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div&gt;</span><span class="pln">密码： </span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"password"</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"password"</span><span class="tag">&gt;</span><span class="pln"> </span><span class="tag">&lt;/div&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div&gt;</span><span class="pln">性别：男 </span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"radio"</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"sex"</span><span class="pln"> </span><span class="atn">value</span><span class="pun">=</span><span class="atv">"1"</span><span class="pln"> </span><span class="atn">checked</span><span class="pun">=</span><span class="atv">"checked"</span><span class="tag">&gt;</span><span class="pln"> 女 </span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"radio"</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"sex"</span><span class="pln"> </span><span class="atn">value</span><span class="pun">=</span><span class="atv">"0"</span><span class="pln"> </span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div&gt;</span><span class="pln">同意注册协议 </span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"checkbox"</span><span class="tag">&gt;</span><span class="pln">   </span><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"index.html"</span><span class="tag">&gt;</span><span class="pln">注册协议</span><span class="tag">&lt;/a&gt;&lt;/div&gt;</span><span class="pln">
+        </span><span class="tag">&lt;div&gt;&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"image"</span><span class="pln"> </span><span class="atn">src</span><span class="pun">=</span><span class="atv">"http://i202.photobucket.com/albums/aa252/wayneg_03/Website%20Images/submit.png"</span><span class="pln"> </span><span class="tag">/&gt;&lt;/div&gt;</span><span class="pln">
+        </span><span class="tag">&lt;button</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"submit"</span><span class="tag">&gt;</span><span class="pln">注册</span><span class="tag">&lt;/button&gt;</span><span class="pln">
+        </span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"submit"</span><span class="pln"> </span><span class="atn">value</span><span class="pun">=</span><span class="atv">"注册"</span><span class="tag">&gt;</span><span class="pln">
+</span><span class="tag">&lt;/form&gt;</span></code></pre>
+
+<hr>
+
+<form action="send" method="post">
+        <div>账户： <input type="text" name="account"> </div>
+        <div>密码： <input type="password" name="password"> </div>
+        <div>性别：男 <input type="radio" name="sex" value="1" checked="checked"> 女 <input type="radio" name="sex" value="0"></div>
+        <div>同意注册协议 <input type="checkbox">   <a href="index.html">注册协议</a></div>
+        <div><input type="image" value="Login" src="http://i202.photobucket.com/albums/aa252/wayneg_03/Website%20Images/submit.png"></div>
+        <button type="submit">注册</button>
+        <input type="submit" value="注册">
+</form>
+
+<hr>
+
+<p>其中写了三种提交触发的实现，分别是<code>image</code>类型和<code>submit</code>类型的<code>input</code>及<code>button</code>，三种实现的作用是一样的，但使用<code>image</code>的时候传递的数据中会携带<code>x,y</code>这样的点击坐标信息。 <br>
+HTML5 新增了一些类型: color, date, datetime, datetime-local, month, week, time, email, number, range, search, tel, 及 url，详情<a href="http://www.w3schools.com/tags/att_input_type.asp">见此</a></p>
+
+<h2 id="textarea">textarea</h2>
+
+<p><code>textarea</code>是多行文本输入框，可以通过<code>rows</code>和<code>cols</code>来定义行列大小，一般来说都是用CSS来控制其大小：</p>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="tag">&lt;textarea</span><span class="pln"> </span><span class="atn">rows</span><span class="pun">=</span><span class="atv">"4"</span><span class="pln"> </span><span class="atn">cols</span><span class="pun">=</span><span class="atv">"7"</span><span class="tag">&gt;</span><span class="pln">测试下文本框</span><span class="tag">&lt;/textarea&gt;</span></code></pre>
+
+<hr>
+
+<p><textarea rows="4" cols="7">测试下文本框</textarea></p>
+
+<hr><div class="se-section-delimiter"></div>
+
+<h2 id="select">select</h2>
+
+<p>该标签同<code>option</code>标签一起生成下拉选择框，表单发送数据的时候会将其选中的值一起发送，发送的值默认是<code>option</code>标签内的文本，如果有为其指定<code>value</code>则<code>value</code>为发送的值。<code>option</code>可以通过<code>selected</code>属性来实现预选择功能，比如 <select> 
+    <option selected="">默认选项</option> 
+    <option>选项2</option> 
+    <option value="3">选项3</option> 
+</select></p><div class="se-section-delimiter"></div>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="tag">&lt;select&gt;</span><span class="pln">
+    </span><span class="tag">&lt;option</span><span class="pln"> </span><span class="atn">selected</span><span class="tag">&gt;</span><span class="pln">默认选项</span><span class="tag">&lt;/option&gt;</span><span class="pln">
+    </span><span class="tag">&lt;option&gt;</span><span class="pln">选项2</span><span class="tag">&lt;/option&gt;</span><span class="pln">
+    </span><span class="tag">&lt;option</span><span class="pln"> </span><span class="atn">value</span><span class="pun">=</span><span class="atv">"3"</span><span class="tag">&gt;</span><span class="pln">选项3</span><span class="tag">&lt;/option&gt;</span><span class="pln">
+</span><span class="tag">&lt;/select&gt;</span></code></pre></div></body>
 </html>
