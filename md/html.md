@@ -209,7 +209,7 @@ Hello World!    你好，世界！
     
     <h1 id="h1">测试链接</h1>
     
-    <p><a href="http://www.iiiui.com">iiiui</a></p>
+    <p><a href="http://www.iiiui.com">我的博客</a></p>
     <p><a href="index.html">iiiui</a></p>
     <p><a href="#h1">回到标题</a></p>
         
@@ -223,6 +223,173 @@ Hello World!    你好，世界！
 - 相对路径，相对该网页的路径
 - 锚点，该页面内id为锚点值的元素，如上面的h1，点击<a href="#start">这里</a>就可以回到当前页面开始位置
 
+# 图片
+
+```javascript
+<img src="https://1.gravatar.com/avatar/9b3c7e83caa581e968624a3cd5af11f8?d=https%3A%2F%2Fidenticons.github.com%2F64d01d0c72ab6d7577ed190b45acfaef.png&r=x&s=140" width="20" height="20" alt="我的GitHub头像">
+```
+
+如上所示，`<img>`标签就表示图片了，其中`src`表示图片地址，可以是任意图片的绝对地址，也可以是相对于当前页面的相对地址，比如`assets/1.jpg`，跟`<a>`很像。
+`width`和`height`的属性是很必要的，建议一开始就赋值好，这样页面渲染时就会为图片预留好空间，否则图片加载完成后页面布局会发生变化，影响用户体验。
+`alt`属性表示（`alt`ernative description）另一种图片的描述，在图片加载不成功的时候，如果你设置了宽高属性，就会显示出来。
+
+# 表格
+
+直接上代码：
+
+```javascript
+<!DOCTYPE html>
+<html>
+    <body>
+    
+    <table>
+        <tr>
+            <td>Row 1, cell 1</td>
+            <td>Row 1, cell 2</td>
+            <td>Row 1, cell 3</td>
+        </tr>
+        <tr>
+            <td>Row 2, cell 1</td>
+            <td>Row 2, cell 2</td>
+        </tr>
+        <tr>
+            <td>Row 3, cell 1</td>
+        </tr>
+        <tr>
+            <td>Row 4, cell 1</td>        
+            <td>Row 4, cell 2</td>
+            <td>Row 4, cell 3</td>
+        </tr>
+    </table>
+        
+    </body>
+</html>
+```
+
+效果如下：
+
+<table>
+    <tr>
+        <td>Row 1, cell 1</td>
+        <td>Row 1, cell 2</td>
+        <td>Row 1, cell 3</td>
+    </tr>
+    <tr>
+        <td>Row 2, cell 1</td>
+        <td>Row 2, cell 2</td>
+    </tr>
+    <tr>
+        <td>Row 3, cell 1</td>
+    </tr>
+    <tr>
+        <td>Row 4, cell 1</td>
+        <td>Row 4, cell 2</td>
+        <td>Row 4, cell 3</td>
+    </tr>
+</table>
+
+其中`table`元素定义了表格，`tr`（`t`able `r`ow）元素定义了表格行，`td`（`t`able `d`ata cell）元素定义了表格单元，它必须在`tr`标签内。
+
+# 表单
+
+表单是用来收集用户输入数据的，一般在收集后会将数据通过网页发送到服务器进行处理，主要涉及这几个标签：`form`,`input`,`textarea`,`select`和`option`。
+
+## form
+
+`<form>`标签表示的就是表单，如果表单是给用户提交数据的，那`action`属性也必须填写上数据提交的地址，与之相关的还有`method`这个方法，默认是`get`，如果你提交的数据比较大而且希望安全一些的话，可以改为`post`，大概就是这样：
+
+```javascript
+<form action="send.php" method="post">
+</form>
+```
+
+其中`action`的地址由后台决定，可以是相对地址或绝对地址。
+
+## input
+
+`input`元素这样使用`<input type="">`，其中`type`有很多种，最常用的有：
+
+- `text`，这也是不指定`type`时的默认类型
+- `password`，这是专用于输入密码的，跟`text`类似，只是会隐藏输入内容
+- `checkbox`是复选，其中`checked`属性描述其是否选中
+- `radio`是单选，在一组`radio`里只能选择一个，也有`checked`属性
+- `submit`是提交按钮，可以通过`value`控制按钮上的文本
+- `image`是将图片作为提交按钮
+
+还有一些常用的属性：
+
+- `name` 当作为数据传递的时候，name就是数据的属性，用户输入的信息就是数据的值。
+- `value` 作为用户输入的值
+- `checked` 是否核对，用以单选和复选框
+- `maxlength` 限制文本输入长度
+- `src` 图片地址
+- `readonly="readonly"` 不能更改 `disabled="disabled"` 不能使用
+- `tabindex` 按`Tab`键时焦点的顺序索引，默认是按渲染的从先到后的顺序
+
+比如写一个注册的表单就是：
+
+```javascript
+<form action="send" method="post"/>
+        <div>账户： <input type="text" name="account"> </div>
+        <div>密码： <input type="password" name="password"> </div>
+        <div>性别：男 <input type="radio" name="sex" value="1" checked="checked"> 女 <input type="radio" name="sex" value="0" ></div>
+        <div>同意注册协议 <input type="checkbox">   <a href="index.html">注册协议</a></div>
+        <div><input type="image" src="http://i202.photobucket.com/albums/aa252/wayneg_03/Website%20Images/submit.png" /></div>
+        <button type="submit">注册</button>
+        <input type="submit" value="注册">
+</form>
+```
+
+---
+
+<form action="send" method="post"/>
+        <div>账户： <input type="text" name="account"> </div>
+        <div>密码： <input type="password" name="password"> </div>
+        <div>性别：男 <input type="radio" name="sex" value="1" checked="checked"> 女 <input type="radio" name="sex" value="0" ></div>
+        <div>同意注册协议 <input type="checkbox">   <a href="index.html">注册协议</a></div>
+        <div><input type="image" value="Login" src="http://i202.photobucket.com/albums/aa252/wayneg_03/Website%20Images/submit.png" /></div>
+        <button type="submit">注册</button>
+        <input type="submit" value="注册">
+</form>
+
+---
+
+其中写了三种提交触发的实现，分别是`image`类型和`submit`类型的`input`及`button`，三种实现的作用是一样的，但使用`image`的时候传递的数据中会携带`x,y`这样的点击坐标信息。
+HTML5 新增了一些类型: color, date, datetime, datetime-local, month, week, time, email, number, range, search, tel, 及 url，详情[见此][4]
+
+## textarea
+
+`textarea`是多行文本输入框，可以通过`rows`和`cols`来定义行列大小，一般来说都是用CSS来控制其大小：
+
+```javascript
+<textarea rows="4" cols="7">测试下文本框</textarea>
+```
+
+---
+
+<textarea rows="4" cols="7">测试下文本框</textarea>
+
+---
+
+## select
+
+该标签同`option`标签一起生成下拉选择框，表单发送数据的时候会将其选中的值一起发送，发送的值默认是`option`标签内的文本，如果有为其指定`value`则`value`为发送的值。`option`可以通过`selected`属性来实现预选择功能，比如 <select>
+    <option selected>默认选项</option>
+    <option>选项2</option>
+    <option value="3">选项3</option>
+</select>
+
+```javascript
+<select>
+    <option selected>默认选项</option>
+    <option>选项2</option>
+    <option value="3">选项3</option>
+</select>
+```
+
+
+
   [1]: http://www.w3schools.com/tags/tag_doctype.asp
   [2]: https://hsivonen.fi/doctype/
   [3]: http://www.w3schools.com/tags/tag_br.asp
+  [4]: http://www.w3schools.com/tags/att_input_type.asp
