@@ -203,11 +203,100 @@ font-family: arial, \5b8b\4f53, sans-serif, "Times New Roman"
 
 ---
 
+# 顺时针法则
+
+任意具有方位性质的属性只要能并列赋多个值，就适用顺时针赋值法则：
+1. 赋值为`1 2 3 4`则分别赋值给上->右->下->左
+2. 赋值为`1 2 3` 则分别赋值给上->左右->下
+3. 赋值为`1 2` 则分别赋值给上下->左右
+4. 赋值为`1` 则同时赋值给上下左右
+
 # 元素间距
 
-设置元素间距主要跟两个属性有关：`margin`和`padding`，前者表示元素同其它`外部`元素之间的间距，后者表示元素同其它`内部`元素之间的间距
+设置元素间距主要跟两个属性有关：`margin`和`padding`，前者表示元素同其它`外部`元素之间的间距，后者表示元素同其它`内部`元素之间的间距，更通俗的说就是使用前者将元素和其外部元素分开，比如不要让2个按钮重叠了，使用后者将元素和其内部元素分开，比如不要让按钮靠边框太近，下面看例子：
 
+```html
+<!DOCTYPE html>
+<html>
+    <head>        
+        <style>                    
+            #d1 {
+                padding:1em;
+                background-color:gray;
+            }
+            
+            #p11 {                
+                margin:1em;
+                background-color:green;
+            }
+            
+            #p12 {
+                padding:1em;
+                background-color:green;
+            }
+            
+            #p13{
+                padding:1em 2em 3em 4em;
+                background-color:green;
+            }
+            
+            #p14{
+                margin:auto;
+                width:100px;
+                background-color:#cccccc;
+                text-align:justify;
+            }
+        </style>        
+    </head>
+    
+    <body>
+    
+    <div id="d1">
+        <p id="p11">Let's have a test about padding and margin</p>
+        <p id="p12">Let's have a test about padding and margin</p>
+        <p id="p13">Let's have a test about padding and margin</p>  
+        <p id="p14">Let's have a test about padding and margin</p>        
+    </div>    
+        
+    </body>
+</html>
+```
+
+<div id="d1" style="padding:1em;background-color:gray;">
+    <p id="p11" style="margin:1em;background-color:green;">Let's have a test about padding and margin</p>
+    <p id="p12" style="padding:1em;background-color:green;">Let's have a test about padding and margin</p>        
+    <p id="p13" style="padding:1em 2em 3em 4em;background-color:green;">Let's have a test about padding and margin</p>        
+    <p id="p14" style="margin:auto;width:100px;background-color:#cccccc;text-align:justify;">Let's have a test about padding and margin</p>        
+</div>  
+    
+---
+
+其中`margin`或`padding`的值默认为`0px`，它们都可以有以下几种复制方式，以`padding`为例：
+
+1. `padding:1em 2em 3em 4em` 就等同于`padding-top:1em;padding-right:2em;padding-bottom:3em;padding-left:4em` 也就是以顶部为起点，顺时针方向为四个不同方位的间距赋值。
+2. `padding:1em 2em 3em`就相当于上:1em,左右2em,下3em
+3. `padding:1em 2em` 就相当于上下1em,左右2em
+4. `padding:1em` 就相当于上下左右都是1em
+
+还有个特殊的东西：`auto` 这个值对padding是无效的，只能用于`margin`，比如对`p`使用`margin:auto`后，就没有原有的换行间距，并且水平居中了，关于垂直居中及更多布局的问题可以参考下面的教程。
+
+# 元素布局
+
+直接看这里有很详细的系列教材：http://learnlayout.com
+
+# 边框
+
+边框相关的属性有以下几种：
+
+1. <span style="border:1px red solid">`border:1px red solid` border是一个复合属性，可以有像素、类型、颜色三种值，该例子就是表达1像素的红色实体边框</span>
+2. <span style="border:solid;border-width: 1px 2px 3px 4px;">`border:solid;border-width: 1px 2px 3px 4px;`</span>
+3. <span style="border: 1px;border-style: solid dotted dashed solid;">`border: 1px;border-style: solid dotted dashed solid;`</span>
+4. <span style="border: 1px solid;border-color: black red blue green;">`border: 1px solid;border-color: black red blue green;`</span>
+
+其中`border-width`,`border-color`,`border-style`均符合顺时针赋值法则，关于border-style[更多见此][3]，还有更有意思的新特性，可以用[图片做边框][4]。
 
 
   [1]: blog/css_fount_unicode.html
   [2]: http://www.w3.org/TR/CSS2/fonts.html#propdef-font-weight
+  [3]: http://www.w3schools.com/css/css_border.asp
+  [4]: http://www.w3schools.com/css/tryit.asp?filename=trycss3_border-image
