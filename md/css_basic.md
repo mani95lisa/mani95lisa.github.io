@@ -278,11 +278,7 @@ font-family: arial, \5b8b\4f53, sans-serif, "Times New Roman"
 3. `padding:1em 2em` 就相当于上下1em,左右2em
 4. `padding:1em` 就相当于上下左右都是1em
 
-还有个特殊的东西：`auto` 这个值对padding是无效的，只能用于`margin`，比如对`p`使用`margin:auto`后，就没有原有的换行间距，并且水平居中了，关于垂直居中及更多布局的问题可以参考下面的教程。
-
-# 元素布局
-
-直接看这里有很详细的系列教材：http://learnlayout.com
+还有个特殊的东西：`auto` 这个值对padding是无效的，只能用于`margin`，比如对`p`使用`margin:auto`后，就没有原有的换行间距，并且水平居中了，关于垂直居中及更多布局的问题会在之后涉及。
 
 # 边框
 
@@ -294,6 +290,8 @@ font-family: arial, \5b8b\4f53, sans-serif, "Times New Roman"
 4. <span style="border: 1px solid;border-color: black red blue green;">`border: 1px solid;border-color: black red blue green;`</span>
 
 其中`border-width`,`border-color`,`border-style`均符合顺时针赋值法则，关于border-style[更多见此][3]，还有更有意思的新特性，可以用[图片做边框][4]。
+
+
 
 
   [1]: blog/css_fount_unicode.html
