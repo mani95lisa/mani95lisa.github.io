@@ -262,38 +262,40 @@ font-family: arial, \5b8b\4f53, sans-serif, "Times New Roman"
 </html>
 ```
 
----
-
-<div id="d1" style="padding:1em;background-color:gray;">
-    <p id="p11" style="margin:1em;background-color:green;">Let's have a test about padding and margin</p>
-    <p id="p12" style="padding:1em;background-color:green;">Let's have a test about padding and margin</p>        
-    <p id="p13" style="padding:1em 2em 3em 4em;background-color:green;">Let's have a test about padding and margin</p>        
-    <p id="p14" style="margin:auto;width:100px;background-color:#cccccc;text-align:justify;">Let's have a test about padding and margin</p>        
+<div style="padding:1em;background-color:gray;">
+    <p style="margin:1em;background-color:green;">Let's have a test about padding and margin</p>
+    <p style="padding:1em;background-color:green;">Let's have a test about padding and margin</p>        
+    <p style="padding:1em 2em 3em 4em;background-color:green;">Let's have a test about padding and margin</p>        
+    <p style="margin:auto;width:100px;background-color:#cccccc;text-align:justify;">Let's have a test about padding and margin</p>
 </div>
-    
+
 ---
 
-其中`margin`或`padding`的值默认为`0px`，它们都可以有以下几种复制方式，以`padding`为例：
+其中`margin`或`padding`的值默认为`0px`，它们都符合顺时针赋值法则，以`padding`为例：
 
 1. `padding:1em 2em 3em 4em` 就等同于`padding-top:1em;padding-right:2em;padding-bottom:3em;padding-left:4em` 也就是以顶部为起点，顺时针方向为四个不同方位的间距赋值。
 2. `padding:1em 2em 3em`就相当于上:1em,左右2em,下3em
 3. `padding:1em 2em` 就相当于上下1em,左右2em
 4. `padding:1em` 就相当于上下左右都是1em
 
-还有个特殊的东西：`auto` 这个值对padding是无效的，只能用于`margin`，比如对`p`使用`margin:auto`后，就没有原有的换行间距，并且水平居中了，关于垂直居中及更多布局的问题会在之后涉及。
+还有个特殊的东西：`auto` 这个值对padding是无效的，只能用于`margin`，比如对`p`使用`margin:auto`后，就没有原有的换行间距，并且水平居中了，关于垂直居中及更多布局的问题会在之后再谈。
 
 # 边框
 
 边框相关的属性有以下几种：
 
 1. <span style="border:1px red solid">`border:1px red solid` border是一个复合属性，可以有像素、类型、颜色三种值，该例子就是表达1像素的红色实体边框</span>
+
 2. <span style="border:solid;border-width: 1px 2px 3px 4px;">`border:solid;border-width: 1px 2px 3px 4px;`</span>
+
 3. <span style="border: 1px;border-style: solid dotted dashed solid;">`border: 1px;border-style: solid dotted dashed solid;`</span>
+
 4. <span style="border: 1px solid;border-color: black red blue green;">`border: 1px solid;border-color: black red blue green;`</span>
 
-其中`border-width`,`border-color`,`border-style`均符合顺时针赋值法则，关于border-style[更多见此][3]，还有更有意思的新特性，可以用[图片做边框][4]。
+其中`border-width`,`border-color`,`border-style`均符合顺时针赋值法则，关于border-style[更多见此][3] ， 还有更有意思的新特性，可以用[图片做边框][4] 。
 
-  [1]: blog/css_fount_unicode.html
-  [2]: http://www.w3.org/TR/CSS2/fonts.html#propdef-font-weight
-  [3]: http://www.w3schools.com/css/css_border.asp
-  [4]: http://www.w3schools.com/css/tryit.asp?filename=trycss3_border-image
+
+[1]: blog/css_fount_unicode.html
+[2]: http://www.w3.org/TR/CSS2/fonts.html#propdef-font-weight
+[3]: http://www.w3schools.com/css/css_border.asp
+[4]: http://www.w3schools.com/css/tryit.asp?filename=trycss3_border-image
