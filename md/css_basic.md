@@ -262,12 +262,14 @@ font-family: arial, \5b8b\4f53, sans-serif, "Times New Roman"
 </html>
 ```
 
+---
+
 <div id="d1" style="padding:1em;background-color:gray;">
     <p id="p11" style="margin:1em;background-color:green;">Let's have a test about padding and margin</p>
     <p id="p12" style="padding:1em;background-color:green;">Let's have a test about padding and margin</p>        
     <p id="p13" style="padding:1em 2em 3em 4em;background-color:green;">Let's have a test about padding and margin</p>        
     <p id="p14" style="margin:auto;width:100px;background-color:#cccccc;text-align:justify;">Let's have a test about padding and margin</p>        
-</div>  
+</div>
     
 ---
 
@@ -290,9 +292,6 @@ font-family: arial, \5b8b\4f53, sans-serif, "Times New Roman"
 4. <span style="border: 1px solid;border-color: black red blue green;">`border: 1px solid;border-color: black red blue green;`</span>
 
 其中`border-width`,`border-color`,`border-style`均符合顺时针赋值法则，关于border-style[更多见此][3]，还有更有意思的新特性，可以用[图片做边框][4]。
-
-
-
 
   [1]: blog/css_fount_unicode.html
   [2]: http://www.w3.org/TR/CSS2/fonts.html#propdef-font-weight
