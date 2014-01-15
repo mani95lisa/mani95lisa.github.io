@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JavaScript初级教程</title>
+<link rel="stylesheet" href="http://iiiui.qiniudn.com/base.css" />
+</head>
+<body><div class="container"><blockquote>
+  <p>初级教程针对第一次接触JavaScript或接触过但想再系统梳理下基础知识的朋</p>
+</blockquote>
+
+<p><div class="toc"><div class="toc">
+<ul>
+<li><a href="#使用">使用</a></li>
+<li><a href="#变量和数据">变量和数据</a></li>
+<li><a href="#操作符">操作符</a><ul>
+<li><a href="#算术操作符">算术操作符</a></li>
+<li><a href="#赋值操作符">赋值操作符</a></li>
+</ul>
+</li>
+<li><a href="#比较和逻辑判断">比较和逻辑判断</a><ul>
+<li><a href="#条件语句">条件语句</a></li>
+<li><a href="#比较操作符">比较操作符</a></li>
+<li><a href="#逻辑操作符">逻辑操作符</a></li>
+<li><a href="#条件操作符">条件操作符</a></li>
+</ul>
+</li>
+<li><a href="#循环遍历">循环遍历</a><ul>
+<li><a href="#while">while</a></li>
+<li><a href="#for">for</a></li>
+</ul>
+</li>
+<li><a href="#方法">方法</a></li>
+</ul>
+</div>
+</div>
+</p>
+
+<h1 id="使用">使用</h1>
+
+<p>JavaScript在浏览器中使用的时候，一般是同HTML和CSS一起使用的，可以通过<code>&lt;script&gt;</code>标签以内部和外部的方式进行使用：</p>
+
+<p>内部</p>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="tag">&lt;script&gt;</span><span class="pln">
+    alert</span><span class="pun">(</span><span class="str">"Hello World!"</span><span class="pun">);</span><span class="pln">
+</span><span class="tag">&lt;/script&gt;</span></code></pre>
+
+<p>外部，直接引用.js格式文件，就像外部CSS文件以.css为后缀一样</p>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">src</span><span class="pun">=</span><span class="atv">"script.js"</span><span class="tag">/&gt;</span></code></pre>
+
+<p>还有一个不推荐用的使用方式：<code>标签属性内</code></p>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="tag">&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"test.html"</span><span class="pln"> </span><span class="atn">onclick</span><span class="pun">=</span><span class="atv">"</span><span class="pln">alert</span><span class="pun">(</span><span class="str">'不推荐使用这种调用方式'</span><span class="pun">)</span><span class="atv">"</span><span class="tag">&gt;</span><span class="pln">链接</span><span class="tag">&lt;/a&gt;</span></code></pre>
+
+<p>除了上述方式之外，还有一种开发者常用的在开发者工具控制台进行调用，比如Chrome浏览器的JavaScript Console.</p>
+
+<h1 id="变量和数据">变量和数据</h1>
+
+<p><span style="color:red">var </span><sup>关键词</sup> <span style="color:blue">yourname</span><sup>名称</sup> = <span style="color:green">promt</span><sup>方法名</sup>(‘请输入您的姓名’);</p>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="pln">
+</span><span class="tag">&lt;script&gt;</span><span class="pln">
+    </span><span class="kwd">function</span><span class="pln"> test</span><span class="pun">(){</span><span class="pln">
+        </span><span class="kwd">var</span><span class="pln"> yourname </span><span class="pun">=</span><span class="pln"> prompt</span><span class="pun">(</span><span class="str">'请输入您的姓名'</span><span class="pun">);</span><span class="pln">
+        alert</span><span class="pun">(</span><span class="str">'您输入的姓名是：'</span><span class="pun">+</span><span class="pln">yourname</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="tag">&lt;/script&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;button</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"button"</span><span class="pln"> </span><span class="atn">onclick</span><span class="pun">=</span><span class="atv">"</span><span class="pln">test</span><span class="pun">()</span><span class="atv">"</span><span class="tag">&gt;</span><span class="pln">测试</span><span class="tag">&lt;/button&gt;</span></code></pre>
+
+<p><button type="button" onclick="yourname = prompt('请输入您的姓名'); alert('您输入的姓名是：'+yourname)">测试</button></p>
+
+<p>上面的例子声明了一个方法，点击按钮调用方法的时候创建了一个局部变量，在你输入信息后又将存储于局部变量的数据显示了出来。变量的作用可以简单的理解为供程序存取值，创建变量分为声明和初始化两个阶段，<code>var</code>是声明变量的关键词，<code>=</code>号后的赋值就是变量的初始化，完成创建后该变量即可用于存储和读取值。关于变量总的来说涉及以下三个情况：</p>
+
+<ol>
+<li>声明变量： <code>var yourname;</code>，此时该变量为<code>undefined</code>，也就是未定义。</li>
+<li>初始化变量：<br><code>var yourname="test";</code>此时变量初始化为<code>string</code>类型，值为<code>test</code><br><code>var yourage=18;</code>此时变量初始化为<code>number</code>类型，值为<code>20</code>，只有字符串类型才需要用引号包含起来</li>
+<li>赋值：<code>youname = "Test";</code> 改变已声明的变量的值</li>
+</ol>
+
+<p>JavaScript的变量属于动态类型，也就是说一个变量可以赋任意类型的值，它支持的数据类型包括：</p>
+
+<ul>
+<li><code>String</code> 字符串 <code>var s = "test"</code></li>
+<li><code>Number</code> 数字  <br>
+<ul><li>普通数字：<code>var n = 1 //整数1</code> 或 <code>var n = 1.1 //小数1.1</code></li>
+<li>超大或超小数字可以使用科学符号<code>e</code>：<br><code>var n = 123e5 //超大数字12300000</code><br><code>var n=123e-5 //超小数字0.00123</code></li></ul></li>
+<li><code>Boolean</code> 只有两个值<code>true</code>和<code>false</code> </li>
+<li><code>Array</code> 数组，有三种初始化方式 <br>
+<ul><li><code>var arr = new Array()</code><br><code>arr[0]=0;</code><br><code>arr[1]="1";</code></li>
+<li><code>var arr = new Array(0, "1")</code></li>
+<li><code>var arr = [0, "1"]</code></li></ul></li>
+<li><code>Object</code> 对象，其中的value可以为任意数据类型，方法也是一个对象 <br><code>var object = {key:"value"}</code> <br><code>object.key = object["key"] = "value"</code><br><code>object.call=function(){}</code></li>
+<li><code>Undefined</code> 声明变量时变量的默认值，也就是没有值</li>
+<li><code>null</code> 用以清空变量的值</li>
+</ul><div class="se-section-delimiter"></div>
+
+<h1 id="操作符">操作符</h1>
+
+<p>JavaScript的操作符相较其他语言会简单一些</p>
+
+<h2 id="算术操作符">算术操作符</h2>
+
+<table>
+<thead>
+<tr>
+  <th>操作符</th>
+  <th>描述</th>
+  <th>示例</th>
+  <th>x</th>
+  <th>y</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>+</td>
+  <td>加</td>
+  <td>x=y+1</td>
+  <td>2</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>-</td>
+  <td>减</td>
+  <td>x=y-1</td>
+  <td>0</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>*</td>
+  <td>乘</td>
+  <td>x=y*2</td>
+  <td>4</td>
+  <td>2</td>
+</tr>
+<tr>
+  <td>/</td>
+  <td>除</td>
+  <td>x=y/2</td>
+  <td>1</td>
+  <td>2</td>
+</tr>
+<tr>
+  <td>%</td>
+  <td>求余</td>
+  <td>x=y%2</td>
+  <td>1</td>
+  <td>3</td>
+</tr>
+<tr>
+  <td>++</td>
+  <td>递增</td>
+  <td>x=++y<br>y=1; x=y++</td>
+  <td>1<br>1</td>
+  <td>1<br>2</td>
+</tr>
+<tr>
+  <td><code>--</code></td>
+  <td>递减</td>
+  <td>x=–y<br>y=1; x=y<code>--</code></td>
+  <td>1<br>1</td>
+  <td>1<br>0</td>
+</tr>
+</tbody></table>
+
+
+<p>其中<code>x=y++</code>需要注意，该操作相当于<code>x=y; y++;</code>，所以x的值就是y的值，但y的值递增了。</p>
+
+<h2 id="赋值操作符">赋值操作符</h2>
+
+<p>默认<code>x=2,y=3</code></p>
+
+<table>
+<thead>
+<tr>
+  <th>操作符</th>
+  <th>示例</th>
+  <th>等同于</th>
+  <th>x</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>=</td>
+  <td>x=y</td>
+  <td></td>
+  <td>3</td>
+</tr>
+<tr>
+  <td>+=</td>
+  <td>x+=y</td>
+  <td>x=x+y</td>
+  <td>5</td>
+</tr>
+<tr>
+  <td>-=</td>
+  <td>x-=y</td>
+  <td>x=x-y</td>
+  <td>-1</td>
+</tr>
+<tr>
+  <td>*=</td>
+  <td>x*=y</td>
+  <td>x=x*y</td>
+  <td>6</td>
+</tr>
+<tr>
+  <td>/=</td>
+  <td>x/=y</td>
+  <td>x=x/y</td>
+  <td>2/3</td>
+</tr>
+<tr>
+  <td>%=</td>
+  <td>x%=y</td>
+  <td>x=x%y</td>
+  <td>2</td>
+</tr>
+</tbody></table>
+
+
+<p>如果是字符串相加会将字符串<code>拼接</code>起来，如果是字符串和数字相加会将数字转换为字符串，然后<code>拼接</code>起来。</p>
+
+<h1 id="比较和逻辑判断">比较和逻辑判断</h1>
+
+<p>默认<code>x=1</code></p>
+
+<h2 id="条件语句">条件语句</h2>
+
+<p>只有<code>if</code>或<code>if-else</code>，比如：</p>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="com">//如果x等于1，x递增1</span><span class="pln">
+</span><span class="kwd">if</span><span class="pun">(</span><span class="pln">x </span><span class="pun">==</span><span class="pln"> </span><span class="lit">1</span><span class="pun">){</span><span class="pln">
+    x</span><span class="pun">++;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">//如果x等于1，x递增1；否则如果x等于2，x递增2；如果上述2个条件都不满足，那x递减1</span><span class="pln">
+</span><span class="kwd">if</span><span class="pun">(</span><span class="pln">x </span><span class="pun">==</span><span class="pln"> </span><span class="lit">1</span><span class="pun">){</span><span class="pln">
+    x</span><span class="pun">++;</span><span class="pln">
+</span><span class="pun">}</span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">x </span><span class="pun">==</span><span class="pln"> </span><span class="lit">2</span><span class="pun">){</span><span class="pln">
+    x</span><span class="pun">+=</span><span class="lit">2</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="kwd">else</span><span class="pun">{</span><span class="pln">
+    x</span><span class="pun">--;</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<h2 id="比较操作符">比较操作符</h2>
+
+<table>
+<thead>
+<tr>
+  <th>操作符</th>
+  <th>描述</th>
+  <th>比较</th>
+  <th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>==</td>
+  <td>相等</td>
+  <td>x==2<br>x==1</td>
+  <td>false<br>true</td>
+</tr>
+<tr>
+  <td>===</td>
+  <td>全等(值和类型都相等)</td>
+  <td>x==”1”<br>x===”1”<br>x===1</td>
+  <td>true<br>false<br>true</td>
+</tr>
+<tr>
+  <td>!=</td>
+  <td>不等</td>
+  <td>x!=2</td>
+  <td>true</td>
+</tr>
+<tr>
+  <td>!==</td>
+  <td>不全等（值或类型不等）</td>
+  <td>x!==”1”<br>x!==1</td>
+  <td>true<br>false</td>
+</tr>
+<tr>
+  <td>&gt;</td>
+  <td>大于</td>
+  <td>x&gt;2</td>
+  <td>false</td>
+</tr>
+<tr>
+  <td>&lt;</td>
+  <td>小于</td>
+  <td>x&lt;2</td>
+  <td>true</td>
+</tr>
+<tr>
+  <td><code>&gt;=</code></td>
+  <td>大于等于</td>
+  <td>x&gt;=1</td>
+  <td>true</td>
+</tr>
+<tr>
+  <td><code>&lt;=</code></td>
+  <td>小于等于</td>
+  <td>x&lt;=1</td>
+  <td>true</td>
+</tr>
+</tbody></table>
+
+
+<p>比较操作符可用于条件语句中，比如：</p>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="kwd">if</span><span class="pun">(</span><span class="pln">x </span><span class="pun">==</span><span class="pln"> </span><span class="lit">1</span><span class="pun">)</span><span class="pln">
+    x</span><span class="pun">++;</span></code></pre>
+
+<h2 id="逻辑操作符">逻辑操作符</h2>
+
+<table>
+<thead>
+<tr>
+  <th>操作符</th>
+  <th>描述</th>
+  <th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>&amp;&amp;</td>
+  <td>而且</td>
+  <td><code>(x&lt;0 &amp;&amp; x&gt;0)</code>等于false</td>
+</tr>
+<tr>
+  <td>||</td>
+  <td>或者</td>
+  <td><code>(x&lt;0 || x&gt;0)</code>等于true</td>
+</tr>
+<tr>
+  <td>!</td>
+  <td>非</td>
+  <td><code>!(x==1)</code>等于false</td>
+</tr>
+</tbody></table>
+
+
+<h2 id="条件操作符">条件操作符</h2>
+
+<p>语法:<code>var result=(condition)?value1:value2</code>，比如</p>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="kwd">var</span><span class="pln"> result</span><span class="pun">=(</span><span class="pln">x </span><span class="pun">!=</span><span class="pln"> </span><span class="lit">1</span><span class="pun">)</span><span class="pln"> </span><span class="pun">?</span><span class="pln"> </span><span class="str">'x不等于1'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'x等于1'</span><span class="pun">;</span></code></pre>
+
+<h1 id="循环遍历">循环遍历</h1>
+
+<p>用以连续执行一些代码</p>
+
+<h2 id="while">while</h2>
+
+<p>语法：</p>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="kwd">while</span><span class="pun">(条件)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="pun">执行语句</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">do</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="pun">执行语句</span><span class="pln">
+</span><span class="pun">}</span><span class="kwd">while</span><span class="pun">(条件);</span></code></pre>
+
+<p>示例：</p>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="kwd">var</span><span class="pln"> x</span><span class="pun">=</span><span class="lit">1</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">while</span><span class="pun">(</span><span class="pln">x</span><span class="pun">&lt;</span><span class="lit">5</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    x</span><span class="pun">++;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="com">//这里while相当于if，当x&lt;5的条件成立，就执行x递增，执行完成后x的值为5</span><span class="pln">
+
+</span><span class="kwd">do</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    x</span><span class="pun">--;</span><span class="pln">
+</span><span class="pun">}</span><span class="kwd">while</span><span class="pun">(</span><span class="pln">x</span><span class="pun">&gt;</span><span class="lit">0</span><span class="pun">);</span><span class="pln">
+</span><span class="com">//于while唯一不同的是，先执行代码再进行条件判断</span></code></pre>
+
+<h2 id="for">for</h2>
+
+<p>语法:</p>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="kwd">for</span><span class="pun">(声明</span><span class="lit">1</span><span class="pun">;声明</span><span class="lit">2</span><span class="pun">;声明</span><span class="lit">3</span><span class="pun">){</span><span class="pln">
+    </span><span class="pun">执行语句</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">//遍历对象的属性</span><span class="pln">
+</span><span class="kwd">for</span><span class="pun">(</span><span class="kwd">var</span><span class="pln"> p </span><span class="kwd">in</span><span class="pln"> </span><span class="kwd">object</span><span class="pun">){</span><span class="pln">
+    </span><span class="kwd">var</span><span class="pln"> value </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">object</span><span class="pun">[</span><span class="pln">p</span><span class="pun">];</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<p><code>声明1</code>在语句执行前就执行 <br>
+<code>声明2</code>是一个是否执行内部代码的条件语句 <br>
+<code>声明3</code>在每次内部代码执行完毕后执行</p>
+
+<p>其中声明1和声明3都可以去掉</p>
+
+<p>示例：</p><div class="se-section-delimiter"></div>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="kwd">var</span><span class="pln"> arr </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[];</span><span class="pln">
+</span><span class="kwd">for</span><span class="pun">(</span><span class="kwd">var</span><span class="pln"> i</span><span class="pun">=</span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i</span><span class="pun">&lt;</span><span class="lit">5</span><span class="pun">;</span><span class="pln"> i</span><span class="pun">++){</span><span class="pln">
+    arr</span><span class="pun">.</span><span class="pln">push</span><span class="pun">(</span><span class="pln">i</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">//去掉声明1和3</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> arr </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="lit">1</span><span class="pun">,</span><span class="lit">2</span><span class="pun">];</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> arr</span><span class="pun">.</span><span class="pln">length</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">for</span><span class="pun">(;</span><span class="pln"> i</span><span class="pun">&lt;</span><span class="lit">5</span><span class="pun">;){</span><span class="pln">
+    arr</span><span class="pun">.</span><span class="pln">push</span><span class="pun">(</span><span class="pln">i</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">//遍历数组属性获取值</span><span class="pln">
+</span><span class="kwd">for</span><span class="pun">(</span><span class="kwd">var</span><span class="pln"> index </span><span class="kwd">in</span><span class="pln"> arr</span><span class="pun">){</span><span class="pln">
+    </span><span class="kwd">var</span><span class="pln"> value </span><span class="pun">=</span><span class="pln"> arr</span><span class="pun">[</span><span class="pln">index</span><span class="pun">];</span><span class="pln">
+</span><span class="pun">}</span></code></pre><div class="se-section-delimiter"></div>
+
+<h1 id="方法">方法</h1>
+
+<p>一个方法就是为实现某个功能的一堆代码的集合。可以直接调用，也可以将其赋值给变量，方法还可以返回值给任意调用它的对象。</p>
+
+<p>语法：</p>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="pln">
+</span><span class="com">//参数数量可以为任意个，但不建议太多</span><span class="pln">
+</span><span class="kwd">function</span><span class="pln"> </span><span class="pun">方法名(参数</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="pun">参数</span><span class="lit">2</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="pun">执行语句</span><span class="pln">
+
+    </span><span class="com">//返回的结果可以赋值给任意调用的对象</span><span class="pln">
+    </span><span class="com">//return还可以用来结束方法的执行</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="pun">结果;</span><span class="pln"> 
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">//参数无法直接像其它语言那样赋默认值</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> </span><span class="pun">方法名</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(参数</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="pun">参数</span><span class="lit">2</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="pun">执行语句</span><span class="pln">
+
+    </span><span class="com">//如果想为参数设置默认值，可以这样处理</span><span class="pln">
+    </span><span class="pun">参数</span><span class="lit">1</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">typeof</span><span class="pln"> </span><span class="pun">参数</span><span class="lit">1</span><span class="pln"> </span><span class="pun">!==</span><span class="pln"> </span><span class="str">'undefined'</span><span class="pln"> </span><span class="pun">?</span><span class="pln"> </span><span class="pun">参数</span><span class="lit">1</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">默认值;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">//方法调用时参数个数不匹配也可以调用成功，调用时传入的参数于方法声明的参数一一对应</span><span class="pln">
+</span><span class="pun">方法名();</span></code></pre>
+
+<p>例子：</p><div class="se-section-delimiter"></div>
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-javascript"><span class="kwd">var</span><span class="pln"> add </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">x</span><span class="pun">,</span><span class="pln">y</span><span class="pun">){</span><span class="pln">
+    </span><span class="kwd">if</span><span class="pun">((!</span><span class="pln">x </span><span class="pun">&amp;&amp;</span><span class="pln"> x</span><span class="pun">!=</span><span class="lit">0</span><span class="pun">)</span><span class="pln"> </span><span class="pun">||</span><span class="pln"> </span><span class="pun">(!</span><span class="pln">y </span><span class="pun">&amp;&amp;</span><span class="pln"> y</span><span class="pun">!=</span><span class="lit">0</span><span class="pun">))</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="str">"x或y不能为空"</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> x</span><span class="pun">+</span><span class="pln">y</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+add</span><span class="pun">(</span><span class="lit">1</span><span class="pun">,</span><span class="lit">2</span><span class="pun">);</span><span class="pln"> </span><span class="com">//3</span><span class="pln">
+add</span><span class="pun">(</span><span class="lit">1</span><span class="pun">);</span><span class="pln">   </span><span class="com">//"x或y不能为空"</span></code></pre></div></body>
+</html>
