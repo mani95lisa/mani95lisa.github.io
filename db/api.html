@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>DrawingBoard API</title>
+<link rel="stylesheet" href="http://iiiui.qiniudn.com/base.css" />
+</head>
+<body><div class="container"><blockquote>
+  <p><strong>*</strong> is required <br>
+  <strong>m</strong> is max length <br>
+  <strong>n</strong> is min length <br>
+  <strong>ResultVO</strong> {status:true|false, results:content}</p>
+</blockquote>
+
+<p><strong>host: <a href="http://db.pamakids.com">http://db.pamakids.com</a></strong></p>
+
+<table>
+<thead>
+<tr>
+  <th>URI</th>
+  <th>Request</th>
+  <th>ResultVO</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>/user/signup</td>
+  <td><strong>*username</strong> : m10<br><strong>*password</strong> : m20 n6<br><strong>*email</strong></td>
+  <td>false : reason<br>true : UserVO</td>
+</tr>
+<tr>
+  <td>/user/login</td>
+  <td><strong>*username | email</strong><br><strong>*password</strong></td>
+  <td>false:reason<br>true:UserVO</td>
+</tr>
+</tbody></table></div></body>
+</html>
