@@ -9,24 +9,24 @@
   <p><strong>*</strong> is required <br>
   <strong>m</strong> is max length <br>
   <strong>n</strong> is min length <br>
-  <strong>ResultVO</strong> {status:true|false, results:content}</p>
+  <strong>ResultVO</strong> {status:true|false, results:content} <br>
+  <strong>host: <a href="http://db.pamakids.com">http://db.pamakids.com</a></strong></p>
 </blockquote>
 
-<p>Usage:</p><div class="se-section-delimiter"></div>
+<p><div class="toc"><div class="toc">
+<ul>
+<li><a href="#api">API</a></li>
+<li><a href="#model">Model</a><ul>
+<li><a href="#uservo">UserVO</a></li>
+</ul>
+</li>
+<li><a href="#usage">Usage</a></li>
+</ul>
+</div>
+</div>
+</p><div class="se-section-delimiter"></div>
 
-<pre class="prettyprint prettyprinted"><code><span class="typ">ServiceBase</span><span class="pun">.</span><span class="pln">HOST </span><span class="pun">=</span><span class="pln"> </span><span class="str">'http://db.pamakids.com'</span><span class="pun">;</span><span class="pln">
-
-getSB</span><span class="pun">(</span><span class="str">'/user/signup'</span><span class="pun">).</span><span class="pln">call</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">result</span><span class="pun">:</span><span class="typ">ResultVO</span><span class="pun">):</span><span class="kwd">void</span><span class="pun">{</span><span class="pln">
-                trace</span><span class="pun">(</span><span class="pln">result</span><span class="pun">.</span><span class="pln">status</span><span class="pun">,</span><span class="pln"> result</span><span class="pun">);</span><span class="pln">
-            </span><span class="pun">},{</span><span class="pln">username</span><span class="pun">:</span><span class="str">'admin2'</span><span class="pun">,</span><span class="pln"> password</span><span class="pun">:</span><span class="str">'ads'</span><span class="pun">,</span><span class="pln"> come_from</span><span class="pun">:</span><span class="str">'DrawingBoard'</span><span class="pun">,</span><span class="pln"> email</span><span class="pun">:</span><span class="str">'test'</span><span class="pun">});</span><span class="pln">
-
-</span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> getSB</span><span class="pun">(</span><span class="pln">uri</span><span class="pun">:</span><span class="typ">String</span><span class="pun">):</span><span class="typ">ServiceBase</span><span class="pln">
-</span><span class="pun">{</span><span class="pln">
-    </span><span class="kwd">var</span><span class="pln"> sb</span><span class="pun">:</span><span class="typ">ServiceBase</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ServiceBase</span><span class="pun">(</span><span class="pln">uri</span><span class="pun">,</span><span class="pln"> </span><span class="str">'POST'</span><span class="pun">);</span><span class="pln">
-    </span><span class="kwd">return</span><span class="pln"> sb</span><span class="pun">;</span><span class="pln">
-</span><span class="pun">}</span><span class="pln">           </span></code></pre>
-
-<p><strong>host: <a href="http://db.pamakids.com">http://db.pamakids.com</a></strong></p>
+<h1 id="api">API</h1>
 
 <table>
 <thead>
@@ -38,7 +38,7 @@ getSB</span><span class="pun">(</span><span class="str">'/user/signup'</span><sp
 </thead>
 <tbody><tr>
   <td>/user/signup</td>
-  <td><strong>*username</strong> : m10<br><strong>*password</strong> : m20 n6<br><strong>*email</strong></td>
+  <td><strong>*username</strong> : m10<br><strong>*password</strong> : m20 n6<br><strong>*email</strong><br><strong>*come_from:DrawingBoard</strong> 画板用户固定值</td>
   <td>false : reason<br>true : UserVO</td>
 </tr>
 <tr>
@@ -46,5 +46,46 @@ getSB</span><span class="pun">(</span><span class="str">'/user/signup'</span><sp
   <td><strong>*username | email</strong><br><strong>*password</strong></td>
   <td>false:reason<br>true:UserVO</td>
 </tr>
-</tbody></table></div></body>
+</tbody></table>
+<h1 id="model">Model</h1>
+
+<h2 id="uservo">UserVO</h2>
+
+<table>
+<thead>
+<tr>
+  <th>property</th>
+  <th>type</th>
+  <th>description</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>username</td>
+  <td>String</td>
+  <td>用户名</td>
+</tr>
+<tr>
+  <td>password</td>
+  <td>String</td>
+  <td>密码</td>
+</tr>
+<tr>
+  <td>email</td>
+  <td>String</td>
+  <td>邮箱</td>
+</tr>
+</tbody></table>
+<h1 id="usage">Usage</h1><div class="se-section-delimiter"></div>
+
+<pre class="prettyprint prettyprinted"><code><span class="typ">ServiceBase</span><span class="pun">.</span><span class="pln">HOST </span><span class="pun">=</span><span class="pln"> </span><span class="str">'http://db.pamakids.com'</span><span class="pun">;</span><span class="pln">
+
+getSB</span><span class="pun">(</span><span class="str">'/user/signup'</span><span class="pun">).</span><span class="pln">call</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">result</span><span class="pun">:</span><span class="typ">ResultVO</span><span class="pun">):</span><span class="kwd">void</span><span class="pun">{</span><span class="pln">
+                trace</span><span class="pun">(</span><span class="pln">result</span><span class="pun">.</span><span class="pln">status</span><span class="pun">,</span><span class="pln"> result</span><span class="pun">);</span><span class="pln">
+            </span><span class="pun">},{</span><span class="pln">username</span><span class="pun">:</span><span class="str">'admin2'</span><span class="pun">,</span><span class="pln"> password</span><span class="pun">:</span><span class="str">'ads'</span><span class="pun">,</span><span class="pln"> come_from</span><span class="pun">:</span><span class="str">'DrawingBoard'</span><span class="pun">,</span><span class="pln"> email</span><span class="pun">:</span><span class="str">'test'</span><span class="pun">});</span><span class="pln">
+
+</span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> getSB</span><span class="pun">(</span><span class="pln">uri</span><span class="pun">:</span><span class="typ">String</span><span class="pun">):</span><span class="typ">ServiceBase</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">var</span><span class="pln"> sb</span><span class="pun">:</span><span class="typ">ServiceBase</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ServiceBase</span><span class="pun">(</span><span class="pln">uri</span><span class="pun">,</span><span class="pln"> </span><span class="str">'POST'</span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> sb</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">           </span></code></pre></div></body>
 </html>
