@@ -12,6 +12,20 @@
   <strong>ResultVO</strong> {status:true|false, results:content}</p>
 </blockquote>
 
+<p>Usage:</p><div class="se-section-delimiter"></div>
+
+<pre class="prettyprint prettyprinted"><code><span class="typ">ServiceBase</span><span class="pun">.</span><span class="pln">HOST </span><span class="pun">=</span><span class="pln"> </span><span class="str">'http://db.pamakids.com'</span><span class="pun">;</span><span class="pln">
+
+getSB</span><span class="pun">(</span><span class="str">'/user/signup'</span><span class="pun">).</span><span class="pln">call</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">result</span><span class="pun">:</span><span class="typ">ResultVO</span><span class="pun">):</span><span class="kwd">void</span><span class="pun">{</span><span class="pln">
+                trace</span><span class="pun">(</span><span class="pln">result</span><span class="pun">.</span><span class="pln">status</span><span class="pun">,</span><span class="pln"> result</span><span class="pun">);</span><span class="pln">
+            </span><span class="pun">},{</span><span class="pln">username</span><span class="pun">:</span><span class="str">'admin2'</span><span class="pun">,</span><span class="pln"> password</span><span class="pun">:</span><span class="str">'ads'</span><span class="pun">,</span><span class="pln"> come_from</span><span class="pun">:</span><span class="str">'DrawingBoard'</span><span class="pun">,</span><span class="pln"> email</span><span class="pun">:</span><span class="str">'test'</span><span class="pun">});</span><span class="pln">
+
+</span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> getSB</span><span class="pun">(</span><span class="pln">uri</span><span class="pun">:</span><span class="typ">String</span><span class="pun">):</span><span class="typ">ServiceBase</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">var</span><span class="pln"> sb</span><span class="pun">:</span><span class="typ">ServiceBase</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ServiceBase</span><span class="pun">(</span><span class="pln">uri</span><span class="pun">,</span><span class="pln"> </span><span class="str">'POST'</span><span class="pun">);</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> sb</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">           </span></code></pre>
+
 <p><strong>host: <a href="http://db.pamakids.com">http://db.pamakids.com</a></strong></p>
 
 <table>
