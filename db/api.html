@@ -6,17 +6,15 @@
 <link rel="stylesheet" href="http://iiiui.qiniudn.com/base.css" />
 </head>
 <body><div class="container"><blockquote>
-  <p><strong>*</strong> is required <br>
-  <strong>m</strong> is max length <br>
-  <strong>n</strong> is min length <br>
-  <strong>ResultVO</strong> {status:true|false, results:content} <br>
-  <strong>host: <a href="http://db.pamakids.com">http://db.pamakids.com</a></strong></p>
+  <p><strong>host: <a href="http://db.pamakids.com">http://db.pamakids.com</a></strong></p>
 </blockquote>
 
 <p><div class="toc"><div class="toc">
 <ul>
+<li><a href="#说明">说明</a></li>
 <li><a href="#api">API</a></li>
 <li><a href="#model">Model</a><ul>
+<li><a href="#resultvo">ResultVO</a></li>
 <li><a href="#uservo">UserVO</a></li>
 </ul>
 </li>
@@ -24,8 +22,67 @@
 </ul>
 </div>
 </div>
-</p><div class="se-section-delimiter"></div>
+</p>
 
+<h1 id="说明">说明</h1>
+
+<p>请求参数限制格式说明</p><div class="se-section-delimiter"></div>
+
+<pre class="prettyprint prettyprinted"><code><span class="pln">username</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">string</span><span class="pun">().</span><span class="pln">min</span><span class="pun">(</span><span class="lit">1</span><span class="pun">).</span><span class="pln">max</span><span class="pun">(</span><span class="lit">10</span><span class="pun">).</span><span class="pln">without</span><span class="pun">(</span><span class="str">'access_token'</span><span class="pun">).</span><span class="pln">required</span><span class="pun">(),</span><span class="pln">
+password</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">string</span><span class="pun">().</span><span class="pln">min</span><span class="pun">(</span><span class="lit">6</span><span class="pun">).</span><span class="pln">max</span><span class="pun">(</span><span class="lit">20</span><span class="pun">).</span><span class="pln">without</span><span class="pun">(</span><span class="str">'access_token'</span><span class="pun">).</span><span class="pln">required</span><span class="pun">(),</span><span class="pln">
+email</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">string</span><span class="pun">().</span><span class="pln">email</span><span class="pun">().</span><span class="pln">without</span><span class="pun">(</span><span class="str">'access_token'</span><span class="pun">).</span><span class="pln">required</span><span class="pun">(),</span><span class="pln">
+access_token</span><span class="pun">:</span><span class="kwd">string</span><span class="pun">().</span><span class="pln">without</span><span class="pun">(</span><span class="str">'username'</span><span class="pun">).</span><span class="pln">required</span><span class="pun">(),</span><span class="pln">
+birthyear</span><span class="pun">:</span><span class="pln"> number</span><span class="pun">().</span><span class="pln">integer</span><span class="pun">().</span><span class="pln">min</span><span class="pun">(</span><span class="lit">1900</span><span class="pun">).</span><span class="pln">max</span><span class="pun">(</span><span class="lit">2014</span><span class="pun">)</span><span class="pln">
+birthday</span><span class="pun">:</span><span class="pln"> date</span><span class="pun">().</span><span class="pln">min</span><span class="pun">(</span><span class="str">'1-1-1974'</span><span class="pun">).</span><span class="pln">max</span><span class="pun">(</span><span class="str">'1-1-2014'</span><span class="pun">)</span></code></pre>
+
+<table>
+<thead>
+<tr>
+  <th>关键词</th>
+  <th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>string</td>
+  <td>字符串</td>
+</tr>
+<tr>
+  <td>min</td>
+  <td>字符串是最短长度，数字为最小值，日期为最小天</td>
+</tr>
+<tr>
+  <td>max</td>
+  <td>字符串是最长长度，数字为最大值，日期为最大天</td>
+</tr>
+<tr>
+  <td>without</td>
+  <td>不能与什么参数同时存在</td>
+</tr>
+<tr>
+  <td>with</td>
+  <td>必须同什么参数一起出现</td>
+</tr>
+<tr>
+  <td>required</td>
+  <td>必须参数</td>
+</tr>
+<tr>
+  <td>email</td>
+  <td>必须符合邮件格式</td>
+</tr>
+<tr>
+  <td>number</td>
+  <td>数字</td>
+</tr>
+<tr>
+  <td>integer</td>
+  <td>整数</td>
+</tr>
+<tr>
+  <td>date</td>
+  <td>日期</td>
+</tr>
+</tbody></table>
 <h1 id="api">API</h1>
 
 <table>
@@ -33,21 +90,63 @@
 <tr>
   <th>URI</th>
   <th>Request</th>
-  <th>ResultVO</th>
+  <th><a href="#resultvo">ResultVO</a></th>
 </tr>
 </thead>
 <tbody><tr>
-  <td>/user/signup</td>
-  <td><strong>*username</strong> : m10<br><strong>*password</strong> : m20 n6<br><strong>*email</strong><br><strong>*come_from:DrawingBoard</strong> 画板用户固定值</td>
-  <td>false : reason<br>true : UserVO</td>
+  <td>/user/signup<br><strong>POST</strong></td>
+  <td><strong>username</strong>:string().min(1).max(10).without(‘access_token’).required(),<br><strong>password</strong>: string().min(6).max(20).without(‘access_token’).required(),<br><strong>email</strong>: string().email().without(‘access_token’).required(),<br><strong>come_from</strong>:string().required(),<br><strong>access_token</strong>:string().without(‘username’).required(),<br><strong>platform</strong>:string().without(‘username’).required(),<br><strong>usid</strong>:string().without(‘username’).required(),<br><strong>portrait</strong>:string(),<br><strong>nickname</strong>:string().with(‘access_token’).required()</td>
+  <td>results : <a href="#uservo">UserVO</a></td>
 </tr>
 <tr>
-  <td>/user/login</td>
+  <td>/user/login<br><strong>POST</strong></td>
   <td><strong>*username | email</strong><br><strong>*password</strong></td>
-  <td>false:reason<br>true:UserVO</td>
+  <td>results : <a href="#uservo">UserVO</a></td>
+</tr>
+<tr>
+  <td>/user/exist<br><strong>GET</strong></td>
+  <td><strong>username | email | usid</strong></td>
+  <td>results:true 用户存在<br>results:false 用户不存在</td>
+</tr>
+<tr>
+  <td>/user/update<br><strong>POST</strong></td>
+  <td><strong>portrait</strong>:Joi.string().max(50),<br><strong>mobile</strong>:number().min(13).max(13)<br><strong>address</strong>:string().min(5).max(200)<br><strong>birthday</strong>:date().min(‘1-1-1974’).max(‘1-1-2014’)</td>
+  <td>status:true 更新成功<br>status:false 更新失败</td>
 </tr>
 </tbody></table>
 <h1 id="model">Model</h1>
+
+<h2 id="resultvo">ResultVO</h2>
+
+<table>
+<thead>
+<tr>
+  <th>property</th>
+  <th>type</th>
+  <th>description</th>
+  <th>remark</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>status</td>
+  <td>Boolean</td>
+  <td>true:接口请求成功<br>false:接口请求失败</td>
+  <td></td>
+</tr>
+<tr>
+  <td>results</td>
+  <td>Object</td>
+  <td>任意数据对象，出错后返回错误原因</td>
+  <td></td>
+</tr>
+<tr>
+  <td>errorResult</td>
+  <td>String</td>
+  <td>出错时将结果对象转换为字符串</td>
+  <td></td>
+</tr>
+</tbody></table>
+
 
 <h2 id="uservo">UserVO</h2>
 
@@ -57,25 +156,41 @@
   <th>property</th>
   <th>type</th>
   <th>description</th>
+  <th>remark</th>
 </tr>
 </thead>
 <tbody><tr>
   <td>username</td>
   <td>String</td>
   <td>用户名</td>
+  <td>唯一，可做登录</td>
 </tr>
 <tr>
   <td>password</td>
   <td>String</td>
   <td>密码</td>
+  <td></td>
 </tr>
 <tr>
   <td>email</td>
   <td>String</td>
   <td>邮箱</td>
+  <td>唯一，可做登录及找回密码</td>
+</tr>
+<tr>
+  <td>portrait</td>
+  <td>String</td>
+  <td>头像</td>
+  <td></td>
+</tr>
+<tr>
+  <td>nickname</td>
+  <td>String</td>
+  <td>昵称</td>
+  <td>不唯一，画作作者</td>
 </tr>
 </tbody></table>
-<h1 id="usage">Usage</h1><div class="se-section-delimiter"></div>
+<h1 id="usage">Usage</h1>
 
 <pre class="prettyprint prettyprinted"><code><span class="typ">ServiceBase</span><span class="pun">.</span><span class="pln">HOST </span><span class="pun">=</span><span class="pln"> </span><span class="str">'http://db.pamakids.com'</span><span class="pun">;</span><span class="pln">
 
