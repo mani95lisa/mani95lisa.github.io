@@ -95,7 +95,7 @@ birthday</span><span class="pun">:</span><span class="pln"> date</span><span cla
 </thead>
 <tbody><tr>
   <td>/user/signup<br><strong>POST</strong></td>
-  <td><strong>username</strong>:string().min(1).max(10).without(‘access_token’).required(),<br><strong>password</strong>: string().min(6).max(20).without(‘access_token’).required(),<br><strong>email</strong>: string().email().without(‘access_token’).required(),<br><strong>come_from</strong>:string().required(),<br><strong>access_token</strong>:string().without(‘username’).required(),<br><strong>platform</strong>:string().without(‘username’).required(),<br><strong>usid</strong>:string().without(‘username’).required(),<br><strong>portrait</strong>:string(),<br><strong>nickname</strong>:string().with(‘access_token’).required()</td>
+  <td><strong>username</strong>:string().min(1).max(10).without(‘access_token’).required(),<br><strong>password</strong>: string().min(6).max(20).without(‘access_token’).required(),<br><strong>email</strong>: string().email().without(‘access_token’).required(),<br><strong>come_from</strong>:string().required(),<br><strong>access_token</strong>:string().without(‘username’).required(),<br><strong>platform</strong>:string().without(‘username’).required(),<br><strong>usid</strong>:string().without(‘username’).required(),<br><strong>portrait</strong>:string(),<code>头像</code><br><strong>nickname</strong>:string().with(‘access_token’).required()<code>昵称</code></td>
   <td>results : <a href="#uservo">UserVO</a></td>
 </tr>
 <tr>
