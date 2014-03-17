@@ -9,24 +9,29 @@
   <p><strong>host: <a href="http://db.pamakids.com">http://db.pamakids.com</a></strong></p>
 </blockquote>
 
-<p><div class="toc"><div class="toc">
+<p><div class="toc">
 <ul>
 <li><a href="#说明">说明</a></li>
-<li><a href="#api">API</a></li>
+<li><a href="#api">API</a><ul>
+<li><a href="#user">User</a></li>
+<li><a href="#upload">Upload</a></li>
+<li><a href="#paint">Paint</a></li>
+</ul>
+</li>
 <li><a href="#model">Model</a><ul>
 <li><a href="#resultvo">ResultVO</a></li>
 <li><a href="#uservo">UserVO</a></li>
+<li><a href="#paintvo">PaintVO</a></li>
 </ul>
 </li>
 <li><a href="#usage">Usage</a></li>
 </ul>
 </div>
-</div>
 </p>
 
 <h1 id="说明">说明</h1>
 
-<p>请求参数限制格式说明</p><div class="se-section-delimiter"></div>
+<p>请求参数限制格式说明</p>
 
 <pre class="prettyprint prettyprinted"><code><span class="pln">username</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">string</span><span class="pun">().</span><span class="pln">min</span><span class="pun">(</span><span class="lit">1</span><span class="pun">).</span><span class="pln">max</span><span class="pun">(</span><span class="lit">10</span><span class="pun">).</span><span class="pln">without</span><span class="pun">(</span><span class="str">'access_token'</span><span class="pun">).</span><span class="pln">required</span><span class="pun">(),</span><span class="pln">
 password</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">string</span><span class="pun">().</span><span class="pln">min</span><span class="pun">(</span><span class="lit">6</span><span class="pun">).</span><span class="pln">max</span><span class="pun">(</span><span class="lit">20</span><span class="pun">).</span><span class="pln">without</span><span class="pun">(</span><span class="str">'access_token'</span><span class="pun">).</span><span class="pln">required</span><span class="pun">(),</span><span class="pln">
@@ -83,7 +88,11 @@ birthday</span><span class="pun">:</span><span class="pln"> date</span><span cla
   <td>日期</td>
 </tr>
 </tbody></table>
+
+
 <h1 id="api">API</h1>
+
+<h2 id="user">User</h2>
 
 <table>
 <thead>
@@ -94,9 +103,14 @@ birthday</span><span class="pun">:</span><span class="pln"> date</span><span cla
 </tr>
 </thead>
 <tbody><tr>
-  <td>/user/signup<br><strong>POST</strong></td>
-  <td><strong>username</strong>:string().min(1).max(10).without(‘access_token’).required(),<br><strong>password</strong>: string().min(6).max(20).without(‘access_token’).required(),<br><strong>email</strong>: string().email().without(‘access_token’).required(),<br><strong>come_from</strong>:string().required(),<br><strong>access_token</strong>:string().without(‘username’).required(),<br><strong>platform</strong>:string().without(‘username’).required(),<br><strong>usid</strong>:string().without(‘username’).required(),<br><strong>portrait</strong>:string(),<code>头像</code><br><strong>nickname</strong>:string().with(‘access_token’).required()<code>昵称</code></td>
+  <td>/user/signup/app<br><strong>POST</strong></td>
+  <td><strong>username</strong>:string().min(1).max(10).without(‘access_token’).required(),<br><strong>password</strong>: string().min(6).max(20).without(‘access_token’).required(),<br><strong>email</strong>: string().email().without(‘access_token’).required(),<br><strong>come_from</strong>:string().required()</td>
   <td>results : <a href="#uservo">UserVO</a></td>
+</tr>
+<tr>
+  <td>/user/login/platform<br><strong>POST</strong></td>
+  <td><strong>come_from</strong>:string().required(),<br><strong>access_token</strong>:string().without(‘username’).required(),<br><strong>platform</strong>:string().without(‘username’).required(),<br><strong>usid</strong>:string().without(‘username’).required(),<br><strong>portrait</strong>:string(),<code>头像</code><br><strong>nickname</strong>:string().with(‘access_token’).required()<code>昵称</code></td>
+  <td></td>
 </tr>
 <tr>
   <td>/user/login<br><strong>POST</strong></td>
@@ -114,6 +128,44 @@ birthday</span><span class="pun">:</span><span class="pln"> date</span><span cla
   <td>status:true 更新成功<br>status:false 更新失败</td>
 </tr>
 </tbody></table>
+
+
+<h2 id="upload">Upload</h2>
+
+<table>
+<thead>
+<tr>
+  <th>URI</th>
+  <th>Request</th>
+  <th><a href="#resultvo">ResultVO</a></th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>/upload/token<br><strong>GET</strong></td>
+  <td></td>
+  <td>results:用户上传秘钥凭证</td>
+</tr>
+</tbody></table>
+
+
+<h2 id="paint">Paint</h2>
+
+<table>
+<thead>
+<tr>
+  <th>URI</th>
+  <th>Request</th>
+  <th><a href="#resultvo">ResultVO</a></th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>/paint/add</td>
+  <td></td>
+  <td></td>
+</tr>
+</tbody></table>
+
+
 <h1 id="model">Model</h1>
 
 <h2 id="resultvo">ResultVO</h2>
@@ -181,7 +233,7 @@ birthday</span><span class="pun">:</span><span class="pln"> date</span><span cla
   <td>portrait</td>
   <td>String</td>
   <td>头像</td>
-  <td></td>
+  <td>157*157：个人中心<br>100*100：关注列表<br>50*50：画作详情作者<br></td>
 </tr>
 <tr>
   <td>nickname</td>
@@ -189,7 +241,89 @@ birthday</span><span class="pun">:</span><span class="pln"> date</span><span cla
   <td>昵称</td>
   <td>不唯一，画作作者</td>
 </tr>
+<tr>
+  <td>come_from</td>
+  <td>String</td>
+  <td>用户来源</td>
+  <td>画板默认DrawingBoard</td>
+</tr>
 </tbody></table>
+
+
+<h2 id="paintvo">PaintVO</h2>
+
+<table>
+<thead>
+<tr>
+  <th>property</th>
+  <th>type</th>
+  <th>description</th>
+  <th>remark</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>author</td>
+  <td><a href="#uservo">UserVO</a></td>
+  <td>画作者，可以获取到用户昵称和id</td>
+  <td></td>
+</tr>
+<tr>
+  <td>cover</td>
+  <td>String</td>
+  <td>封面地址</td>
+  <td>634*477：显示于作品详情页<br>441*332：显示于画廊列表大图<br>300*226：显示于用户个人中心<br>213*160：显示于画廊列表小图<br>58*43：显示于消息列表</td>
+</tr>
+<tr>
+  <td>data</td>
+  <td>String</td>
+  <td>绘图数据文件地址</td>
+  <td></td>
+</tr>
+<tr>
+  <td>audio</td>
+  <td>String</td>
+  <td>音频文件地址</td>
+  <td></td>
+</tr>
+<tr>
+  <td>views</td>
+  <td>Number</td>
+  <td>浏览数</td>
+  <td></td>
+</tr>
+<tr>
+  <td>plays</td>
+  <td>Number</td>
+  <td>播放数</td>
+  <td></td>
+</tr>
+<tr>
+  <td>comments</td>
+  <td>Number</td>
+  <td>评论数</td>
+  <td></td>
+</tr>
+<tr>
+  <td>favorites</td>
+  <td>Number</td>
+  <td>收藏数</td>
+  <td></td>
+</tr>
+<tr>
+  <td>agrees</td>
+  <td>Number</td>
+  <td>赞数</td>
+  <td></td>
+</tr>
+<tr>
+  <td>shares</td>
+  <td>Number</td>
+  <td>分享数</td>
+  <td></td>
+</tr>
+</tbody></table>
+
+
 <h1 id="usage">Usage</h1>
 
 <pre class="prettyprint prettyprinted"><code><span class="typ">ServiceBase</span><span class="pun">.</span><span class="pln">HOST </span><span class="pun">=</span><span class="pln"> </span><span class="str">'http://db.pamakids.com'</span><span class="pun">;</span><span class="pln">
