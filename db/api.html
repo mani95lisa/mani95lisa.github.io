@@ -164,7 +164,7 @@ birthday</span><span class="pun">:</span><span class="pln"> date</span><span cla
 </tr>
 <tr>
   <td>/paint/get<br><strong>GET</strong></td>
-  <td><strong>paint_id</strong> 参照画的ID，为空则请求最新<br><strong>num</strong> 请求数量，为<strong>正</strong>则表示请求比<strong>paint_id</strong>更新的，为<strong>负</strong>则表示请求更旧的</td>
+  <td><strong>paint_id</strong>:string() 参照画的ID，为空则请求最新<br><strong>num</strong>:number() 请求数量，为<strong>正</strong>则表示请求比<strong>paint_id</strong>更新的，为<strong>负</strong>则表示请求更旧的<br><strong>author</strong>:string() 作者ID，为空则请求所有用户的<br><strong>favorited</strong>:boolean() 是否只显示已收藏的<br><strong>followed</strong>:boolean() 是否只显示我关注的</td>
   <td></td>
 </tr>
 </tbody></table>
