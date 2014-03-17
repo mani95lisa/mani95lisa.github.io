@@ -9,7 +9,7 @@
   <p><strong>host: <a href="http://db.pamakids.com">http://db.pamakids.com</a></strong></p>
 </blockquote>
 
-<p><div class="toc">
+<p><div class="toc"><div class="toc">
 <ul>
 <li><a href="#说明">说明</a></li>
 <li><a href="#api">API</a><ul>
@@ -26,6 +26,7 @@
 </li>
 <li><a href="#usage">Usage</a></li>
 </ul>
+</div>
 </div>
 </p>
 
@@ -124,12 +125,10 @@ birthday</span><span class="pun">:</span><span class="pln"> date</span><span cla
 </tr>
 <tr>
   <td>/user/update<br><strong>POST</strong></td>
-  <td><strong>portrait</strong>:Joi.string().max(50),<br><strong>mobile</strong>:number().min(13).max(13)<br><strong>address</strong>:string().min(5).max(200)<br><strong>birthday</strong>:date().min(‘1-1-1974’).max(‘1-1-2014’)</td>
+  <td><strong>portrait</strong>:string().max(50),<br><strong>mobile</strong>:number().min(13).max(13)<br><strong>address</strong>:string().min(5).max(200)<br><strong>birthday</strong>:date().min(‘1-1-1974’).max(‘1-1-2014’)</td>
   <td>status:true 更新成功<br>status:false 更新失败</td>
 </tr>
 </tbody></table>
-
-
 <h2 id="upload">Upload</h2>
 
 <table>
@@ -159,13 +158,16 @@ birthday</span><span class="pun">:</span><span class="pln"> date</span><span cla
 </tr>
 </thead>
 <tbody><tr>
-  <td>/paint/add</td>
-  <td></td>
+  <td>/paint/add<br><strong>POST</strong></td>
+  <td><strong>cover</strong>:string().required()<br><strong>data</strong>:string().required<br><strong>audio</strong>:string()</td>
+  <td>results:<a href="#paintvo">PaintVO</a></td>
+</tr>
+<tr>
+  <td>/paint/get<br><strong>GET</strong></td>
+  <td><strong>paint_id</strong> 参照画的ID，为空则请求最新<br><strong>num</strong> 请求数量，为<strong>正</strong>则表示请求比<strong>paint_id</strong>更新的，为<strong>负</strong>则表示请求更旧的</td>
   <td></td>
 </tr>
 </tbody></table>
-
-
 <h1 id="model">Model</h1>
 
 <h2 id="resultvo">ResultVO</h2>
