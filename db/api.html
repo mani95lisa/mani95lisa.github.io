@@ -6,12 +6,11 @@
 <link rel="stylesheet" href="http://iiiui.qiniudn.com/base.css" />
 </head>
 <body><div class="container"><blockquote>
-  <p><strong>host: <a href="http://db.pamakids.com">http://db.pamakids.com</a></strong></p>
+  <p><strong>host</strong>: <a href="http://db.pamakids.com">http://db.pamakids.com</a><br><strong>*</strong>号的参数是必须的</p>
 </blockquote>
 
 <p><div class="toc"><div class="toc">
 <ul>
-<li><a href="#说明">说明</a></li>
 <li><a href="#api">API</a><ul>
 <li><a href="#user">User</a></li>
 <li><a href="#upload">Upload</a></li>
@@ -30,67 +29,6 @@
 </div>
 </p>
 
-<h1 id="说明">说明</h1>
-
-<p>请求参数限制格式说明</p>
-
-<pre class="prettyprint prettyprinted"><code><span class="pln">username</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">string</span><span class="pun">().</span><span class="pln">min</span><span class="pun">(</span><span class="lit">1</span><span class="pun">).</span><span class="pln">max</span><span class="pun">(</span><span class="lit">10</span><span class="pun">).</span><span class="pln">without</span><span class="pun">(</span><span class="str">'access_token'</span><span class="pun">).</span><span class="pln">required</span><span class="pun">(),</span><span class="pln">
-password</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">string</span><span class="pun">().</span><span class="pln">min</span><span class="pun">(</span><span class="lit">6</span><span class="pun">).</span><span class="pln">max</span><span class="pun">(</span><span class="lit">20</span><span class="pun">).</span><span class="pln">without</span><span class="pun">(</span><span class="str">'access_token'</span><span class="pun">).</span><span class="pln">required</span><span class="pun">(),</span><span class="pln">
-email</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">string</span><span class="pun">().</span><span class="pln">email</span><span class="pun">().</span><span class="pln">without</span><span class="pun">(</span><span class="str">'access_token'</span><span class="pun">).</span><span class="pln">required</span><span class="pun">(),</span><span class="pln">
-access_token</span><span class="pun">:</span><span class="kwd">string</span><span class="pun">().</span><span class="pln">without</span><span class="pun">(</span><span class="str">'username'</span><span class="pun">).</span><span class="pln">required</span><span class="pun">(),</span><span class="pln">
-birthyear</span><span class="pun">:</span><span class="pln"> number</span><span class="pun">().</span><span class="pln">integer</span><span class="pun">().</span><span class="pln">min</span><span class="pun">(</span><span class="lit">1900</span><span class="pun">).</span><span class="pln">max</span><span class="pun">(</span><span class="lit">2014</span><span class="pun">)</span><span class="pln">
-birthday</span><span class="pun">:</span><span class="pln"> date</span><span class="pun">().</span><span class="pln">min</span><span class="pun">(</span><span class="str">'1-1-1974'</span><span class="pun">).</span><span class="pln">max</span><span class="pun">(</span><span class="str">'1-1-2014'</span><span class="pun">)</span></code></pre>
-
-<table>
-<thead>
-<tr>
-  <th>关键词</th>
-  <th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-  <td>string</td>
-  <td>字符串</td>
-</tr>
-<tr>
-  <td>min</td>
-  <td>字符串是最短长度，数字为最小值，日期为最小天</td>
-</tr>
-<tr>
-  <td>max</td>
-  <td>字符串是最长长度，数字为最大值，日期为最大天</td>
-</tr>
-<tr>
-  <td>without</td>
-  <td>不能与什么参数同时存在</td>
-</tr>
-<tr>
-  <td>with</td>
-  <td>必须同什么参数一起出现</td>
-</tr>
-<tr>
-  <td>required</td>
-  <td>必须参数</td>
-</tr>
-<tr>
-  <td>email</td>
-  <td>必须符合邮件格式</td>
-</tr>
-<tr>
-  <td>number</td>
-  <td>数字</td>
-</tr>
-<tr>
-  <td>integer</td>
-  <td>整数</td>
-</tr>
-<tr>
-  <td>date</td>
-  <td>日期</td>
-</tr>
-</tbody></table>
-
-
 <h1 id="api">API</h1>
 
 <h2 id="user">User</h2>
@@ -100,35 +38,37 @@ birthday</span><span class="pun">:</span><span class="pln"> date</span><span cla
 <tr>
   <th>URI</th>
   <th>Request</th>
-  <th><a href="#resultvo">ResultVO</a></th>
+  <th><a href="#ResultVO">ResultVO</a></th>
 </tr>
 </thead>
 <tbody><tr>
   <td>/user/signup/app<br><strong>POST</strong></td>
-  <td><strong>username</strong>:string().min(1).max(10).without(‘access_token’).required(),<br><strong>password</strong>: string().min(6).max(20).without(‘access_token’).required(),<br><strong>email</strong>: string().email().without(‘access_token’).required(),<br><strong>come_from</strong>:string().required()</td>
-  <td>results : <a href="#uservo">UserVO</a></td>
+  <td><strong>*username</strong><br><strong>*password</strong><br><strong>*email</strong><br><strong>*come_from</strong> <code>用户来源，比如一起画画则固定为DrawingBoard</code></td>
+  <td>results:<a href="#UserVO">UserVO</a></td>
 </tr>
 <tr>
   <td>/user/login/platform<br><strong>POST</strong></td>
-  <td><strong>come_from</strong>:string().required(),<br><strong>access_token</strong>:string().without(‘username’).required(),<br><strong>platform</strong>:string().without(‘username’).required(),<br><strong>usid</strong>:string().without(‘username’).required(),<br><strong>portrait</strong>:string(),<code>头像</code><br><strong>nickname</strong>:string().with(‘access_token’).required()<code>昵称</code></td>
-  <td></td>
+  <td><strong>*come_from</strong><br><strong>*access_token</strong><br><strong>*platform</strong><br><strong>*usid</strong><br>portrait<code>头像</code><br>nickname<code>昵称</code></td>
+  <td>results:<a href="#UserVO">UserVO</a></td>
 </tr>
 <tr>
   <td>/user/login<br><strong>POST</strong></td>
-  <td><strong>*username | email</strong><br><strong>*password</strong></td>
-  <td>results : <a href="#uservo">UserVO</a></td>
+  <td><strong>*username</strong><code>该属性可以赋值用户名或者是邮箱</code><br><strong>*password</strong></td>
+  <td>results:<a href="#UserVO">UserVO</a></td>
 </tr>
 <tr>
   <td>/user/exist<br><strong>GET</strong></td>
-  <td><strong>username | email | usid</strong></td>
+  <td><strong>*username | email | usid</strong><code>三个属性中必须传一个</code></td>
   <td>results:true 用户存在<br>results:false 用户不存在</td>
 </tr>
 <tr>
   <td>/user/update<br><strong>POST</strong></td>
-  <td><strong>portrait</strong>:string().max(50),<br><strong>mobile</strong>:number().min(13).max(13)<br><strong>address</strong>:string().min(5).max(200)<br><strong>birthday</strong>:date().min(‘1-1-1974’).max(‘1-1-2014’)</td>
+  <td>portrait<br>mobile<br>address<br>birthday<code>需要使用NodeUtil转换日期格式为：2013-08-30</code></td>
   <td>status:true 更新成功<br>status:false 更新失败</td>
 </tr>
 </tbody></table>
+
+
 <h2 id="upload">Upload</h2>
 
 <table>
@@ -136,7 +76,7 @@ birthday</span><span class="pun">:</span><span class="pln"> date</span><span cla
 <tr>
   <th>URI</th>
   <th>Request</th>
-  <th><a href="#resultvo">ResultVO</a></th>
+  <th><a href="#ResultVO">ResultVO</a></th>
 </tr>
 </thead>
 <tbody><tr>
@@ -154,18 +94,18 @@ birthday</span><span class="pun">:</span><span class="pln"> date</span><span cla
 <tr>
   <th>URI</th>
   <th>Request</th>
-  <th><a href="#resultvo">ResultVO</a></th>
+  <th><a href="#ResultVO">ResultVO</a></th>
 </tr>
 </thead>
 <tbody><tr>
   <td>/paint/add<br><strong>POST</strong></td>
-  <td><strong>cover</strong>:string().required()<br><strong>data</strong>:string().required<br><strong>audio</strong>:string()</td>
-  <td>results:<a href="#paintvo">PaintVO</a></td>
+  <td><strong>*cover</strong><code>封面地址</code><br><strong>*data</strong><code>绘图数据地址</code><br><strong>*audio</strong><code>录音地址</code></td>
+  <td>results:<a href="#PaintVO">PaintVO</a></td>
 </tr>
 <tr>
   <td>/paint/get<br><strong>GET</strong></td>
-  <td><strong>paint_id</strong>:string() 参照画的ID，为空则请求最新<br><strong>num</strong>:number() 请求数量，为<strong>正</strong>则表示请求比<strong>paint_id</strong>更新的，为<strong>负</strong>则表示请求更旧的<br><strong>author</strong>:string() 作者ID，为空则请求所有用户的<br><strong>favorited</strong>:boolean() 是否只显示已收藏的<br><strong>followed</strong>:boolean() 是否只显示我关注的</td>
-  <td></td>
+  <td>paint_id<code>参照画的ID，为空则请求最新</code><br><strong>*num</strong><code>请求数量，为正则表示请求比paint_id更新的，为负则表示请求更旧的</code><br>author<code>作者ID，为空则请求所有用户的</code><br>favorited<code>是否只显示已收藏的，默认为flase</code><br>followed<code>是否只显示我关注的，默认为false</code></td>
+  <td>results:[<a href="#PaintVO">PaintVO</a>]</td>
 </tr>
 </tbody></table>
 <h1 id="model">Model</h1>
@@ -200,8 +140,6 @@ birthday</span><span class="pun">:</span><span class="pln"> date</span><span cla
   <td></td>
 </tr>
 </tbody></table>
-
-
 <h2 id="uservo">UserVO</h2>
 
 <table>
@@ -235,7 +173,7 @@ birthday</span><span class="pun">:</span><span class="pln"> date</span><span cla
   <td>portrait</td>
   <td>String</td>
   <td>头像</td>
-  <td>157*157：个人中心<br>100*100：关注列表<br>50*50：画作详情作者<br></td>
+  <td>157*157：个人中心<br>100*100：关注列表<br>50*50：画作详情作者</td>
 </tr>
 <tr>
   <td>nickname</td>
@@ -250,8 +188,6 @@ birthday</span><span class="pun">:</span><span class="pln"> date</span><span cla
   <td>画板默认DrawingBoard</td>
 </tr>
 </tbody></table>
-
-
 <h2 id="paintvo">PaintVO</h2>
 
 <table>
@@ -265,7 +201,7 @@ birthday</span><span class="pun">:</span><span class="pln"> date</span><span cla
 </thead>
 <tbody><tr>
   <td>author</td>
-  <td><a href="#uservo">UserVO</a></td>
+  <td>UserVO</td>
   <td>画作者，可以获取到用户昵称和id</td>
   <td></td>
 </tr>
@@ -324,14 +260,13 @@ birthday</span><span class="pun">:</span><span class="pln"> date</span><span cla
   <td></td>
 </tr>
 </tbody></table>
-
-
 <h1 id="usage">Usage</h1>
 
-<pre class="prettyprint prettyprinted"><code><span class="typ">ServiceBase</span><span class="pun">.</span><span class="pln">HOST </span><span class="pun">=</span><span class="pln"> </span><span class="str">'http://db.pamakids.com'</span><span class="pun">;</span><span class="pln">
+<pre class="prettyprint prettyprinted" style=""><code class="language-actionscript"><span class="typ">ServiceBase</span><span class="pun">.</span><span class="pln">HOST </span><span class="pun">=</span><span class="pln"> </span><span class="str">'http://db.pamakids.com'</span><span class="pun">;</span><span class="pln">
 
 getSB</span><span class="pun">(</span><span class="str">'/user/signup'</span><span class="pun">).</span><span class="pln">call</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">result</span><span class="pun">:</span><span class="typ">ResultVO</span><span class="pun">):</span><span class="kwd">void</span><span class="pun">{</span><span class="pln">
-                trace</span><span class="pun">(</span><span class="pln">result</span><span class="pun">.</span><span class="pln">status</span><span class="pun">,</span><span class="pln"> result</span><span class="pun">);</span><span class="pln">
+            </span><span class="kwd">var</span><span class="pln"> user</span><span class="pun">:</span><span class="typ">UserVO</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="typ">CloneUtil</span><span class="pun">.</span><span class="pln">convert</span><span class="pun">(</span><span class="pln">result</span><span class="pun">.</span><span class="pln">results</span><span class="pun">,</span><span class="pln"> </span><span class="typ">UserVO</span><span class="pun">);</span><span class="pln"> </span><span class="com">//自动转换Object对象为VO对象</span><span class="pln">
+            </span><span class="typ">ServiceBase</span><span class="pun">.</span><span class="pln">id </span><span class="pun">=</span><span class="pln"> user</span><span class="pun">.</span><span class="pln">_id</span><span class="pun">;</span><span class="pln"> </span><span class="com">//用户登录后设置用户ID，以便访问某些需要权限的接口时检测用户是否已登录</span><span class="pln">
             </span><span class="pun">},{</span><span class="pln">username</span><span class="pun">:</span><span class="str">'admin2'</span><span class="pun">,</span><span class="pln"> password</span><span class="pun">:</span><span class="str">'ads'</span><span class="pun">,</span><span class="pln"> come_from</span><span class="pun">:</span><span class="str">'DrawingBoard'</span><span class="pun">,</span><span class="pln"> email</span><span class="pun">:</span><span class="str">'test'</span><span class="pun">});</span><span class="pln">
 
 </span><span class="kwd">private</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> getSB</span><span class="pun">(</span><span class="pln">uri</span><span class="pun">:</span><span class="typ">String</span><span class="pun">):</span><span class="typ">ServiceBase</span><span class="pln">
