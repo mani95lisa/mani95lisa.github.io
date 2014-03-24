@@ -99,7 +99,7 @@
 </thead>
 <tbody><tr>
   <td>/paint/add<br><strong>POST</strong></td>
-  <td><strong>*cover</strong><code>封面地址</code><br><strong>*data</strong><code>绘图数据地址</code><br><strong>*audio</strong><code>录音地址</code></td>
+  <td><code>相关文件都上传成功后再调用该方法，地址为相对路径即可</code><br><strong>*cover</strong><code>封面地址</code><br><strong>*data</strong><code>绘图数据地址</code><br><strong>*audio</strong><code>录音地址</code></td>
   <td>results:<a href="#PaintVO">PaintVO</a></td>
 </tr>
 <tr>
@@ -140,6 +140,8 @@
   <td></td>
 </tr>
 </tbody></table>
+
+
 <h2 id="uservo">UserVO</h2>
 
 <table>
@@ -188,6 +190,8 @@
   <td>画板默认DrawingBoard</td>
 </tr>
 </tbody></table>
+
+
 <h2 id="paintvo">PaintVO</h2>
 
 <table>
@@ -260,6 +264,8 @@
   <td></td>
 </tr>
 </tbody></table>
+
+
 <h1 id="usage">Usage</h1>
 
 <pre class="prettyprint prettyprinted" style=""><code class="language-actionscript"><span class="typ">ServiceBase</span><span class="pun">.</span><span class="pln">HOST </span><span class="pun">=</span><span class="pln"> </span><span class="str">'http://db.pamakids.com'</span><span class="pun">;</span><span class="pln">
