@@ -103,8 +103,8 @@
   <td>results:<a href="#PaintVO">PaintVO</a></td>
 </tr>
 <tr>
-  <td>/paint/get<br><strong>GET</strong></td>
-  <td>paint_id<code>参照画的ID，为空则请求最新</code><br><strong>*num</strong><code>请求数量，为正则表示请求比paint_id更新的，为负则表示请求更旧的</code><br>author<code>作者ID，为空则请求所有用户的</code><br>favorited<code>是否只显示已收藏的，默认为flase</code><br>followed<code>是否只显示我关注的，默认为false</code></td>
+  <td>/paint/list<br><strong>GET</strong></td>
+  <td>paint_id<code>参照画的ID，同paint_date必须同时存在</code><br>paint_date<code>参照画的日期，为空则根据num正负请求最新或最旧的</code><br><strong>*num</strong><code>请求数量，为正则表示请求比paint_date更新的，为负则表示请求更旧的</code><br>author<code>作者ID，为空则请求所有用户的</code><br>favorited<code>是否只显示已收藏的，默认为flase</code><br>followed<code>是否只显示我关注的，默认为false</code></td>
   <td>results:[<a href="#PaintVO">PaintVO</a>]</td>
 </tr>
 </tbody></table>
@@ -261,6 +261,12 @@
   <td>shares</td>
   <td>Number</td>
   <td>分享数</td>
+  <td></td>
+</tr>
+<tr>
+  <td>created_at</td>
+  <td>Date</td>
+  <td>创建日期</td>
   <td></td>
 </tr>
 </tbody></table>
