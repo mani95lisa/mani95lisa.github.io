@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ng-grid</title>
+<link rel="stylesheet" href="http://iiiui.qiniudn.com/base.css" />
+</head>
+<body><div class="container"><h1 id="api-documentation">API Documentation</h1>
+
+<p><div class="toc"><div class="toc">
+<ul>
+<li><a href="#api-documentation">API Documentation</a><ul>
+<li><a href="#grid-options">Grid Options</a><ul>
+<li><a href="#aggregatetemplate">aggregateTemplate</a></li>
+<li><a href="#checkboxcelltemplate">checkboxCellTemplate</a></li>
+<li><a href="#checkboxheadertemplate">checkboxHeaderTemplate</a></li>
+<li><a href="#rowtemplate">rowTemplate</a></li>
+</ul>
+</li>
+<li><a href="#columndefs-options">ColumnDefs Options</a><ul>
+<li><a href="#celltemplate">cellTemplate</a></li>
+<li><a href="#headercelltemplate">headerCellTemplate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</p>
+
+<h2 id="grid-options">Grid Options</h2>
+
+<table>
+<thead>
+<tr>
+  <th>id</th>
+  <th>defaut value</th>
+  <th>definition</th>
+  <th>demo</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>aggregateTemplate</td>
+  <td><a href="#aggregatetemplate">ref</a></td>
+  <td>Define an aggregate template to customize the rows when grouped. See github wiki for more details.</td>
+  <td></td>
+</tr>
+<tr>
+  <td>afterSelectionChange</td>
+  <td>function (rowItem, event) {}</td>
+  <td>Callback for when you want to validate something after selection.</td>
+  <td></td>
+</tr>
+<tr>
+  <td>beforeSelectionChange</td>
+  <td>function (rowItem, event) { return true; }</td>
+  <td>Callback if you want to inspect something before selection, return false if you want to cancel the selection. return true otherwise. If you need to wait for an async call to proceed with selection you can use rowItem.continueSelection(event) method after returning false initially. Note: when shift+ Selecting multiple items in the grid this will only get called once and the rowItem will be an array of items that are queued to be selected.</td>
+  <td></td>
+</tr>
+<tr>
+  <td>checkboxCellTemplate</td>
+  <td><a href="#checkboxcelltemplate">ref</a></td>
+  <td>Checkbox cell template. see wiki for template details</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>checkboxHeaderTemplate</td>
+  <td><a href="#checkboxheadertemplate">ref</a></td>
+  <td>Checkbox header template. see wiki for template details</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>columnDefs</td>
+  <td>undefined</td>
+  <td>definitions of columns as an array [], if not defines columns are auto-generated. See github wiki for more details.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>data</td>
+  <td>[]</td>
+  <td>Data being displayed in the grid. Each item in the array is mapped to a row being displayed.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>enableCellEdit</td>
+  <td>false</td>
+  <td>Globally allows all cells to be editable. use the editableCellTemplate option to override the default text input</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>enableCellSelection</td>
+  <td>false</td>
+  <td>Enable or disable cell navigation and selection</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>enableColumnResize</td>
+  <td>false</td>
+  <td>Enable or disable resizing of columns</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>enableColumnReordering</td>
+  <td>false</td>
+  <td>Enable or disable reordering of columns</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>enableHighlighting</td>
+  <td>false</td>
+  <td>Enable or disable cell content selection</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>enablePaging</td>
+  <td>false</td>
+  <td>Enables the server-side paging feature</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>enableRowReordering</td>
+  <td>false</td>
+  <td>Enable drag and drop row reordering. Only works in HTML5 compliant browsers.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>enableRowSelection</td>
+  <td>true</td>
+  <td>To be able to have selectable rows in grid. (was canSelectRows prior to 2.0)</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>enableSorting</td>
+  <td>true</td>
+  <td>Enables or disables sorting in grid.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>filterOptions</td>
+  <td>{ filterText: ”, useExternalFilter: false }</td>
+  <td>filterText: The text bound to the built-in search box. useExternalFilter: Bypass internal filtering if you want to roll your own filtering mechanism but want to use builtin search box.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>footerRowHeight</td>
+  <td>55</td>
+  <td>Defining the height of the footer in pixels.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>groups</td>
+  <td>[]</td>
+  <td>Initial fields to group data by. Array of field names, not displayName.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>groupsCollapsedByDefault</td>
+  <td>true</td>
+  <td>Collapse entries when grouping is enabled</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>headerRowHeight</td>
+  <td>32</td>
+  <td>The height of the header row in pixels.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>headerRowTemplate</td>
+  <td>undefined</td>
+  <td>Define a header row template for further customization. See github wiki for more details.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>jqueryUIDraggable</td>
+  <td>false</td>
+  <td>Enables the use of jquery UI reaggable/droppable plugin. requires jqueryUI to work if enabled. Useful if you want drag + drop but your users insist on crappy browsers.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>jqueryUITheme</td>
+  <td>false</td>
+  <td>Enable the use jqueryUIThemes</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>keepLastSelected</td>
+  <td>true</td>
+  <td>prevent unselections when ini single selection mode.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>maintainColumnRatios</td>
+  <td>undefined</td>
+  <td>Maintains the column widths while resizing. Defaults to true when using *’s or undefined widths. Can be ovverriden by setting to false.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>multiSelect</td>
+  <td>true</td>
+  <td>Set this to false if you only want one item selected at a time</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>pagingOptions</td>
+  <td>{ pageSizes: [250, 500, 1000], pageSize: 250, totalServerItems: 0, currentPage: 1 }</td>
+  <td>pageSizes: list of available page sizes. pageSize: currently selected page size. totalServerItems: Total items are on the server. currentPage: the uhm… current page.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>plugins</td>
+  <td>[]</td>
+  <td>Array of plugin functions to register in ng-grid</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>rowHeight</td>
+  <td>30</td>
+  <td>Row height of rows in grid.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>rowTemplate</td>
+  <td><a href="#rowtemplate">ref</a></td>
+  <td>Define a row Template to customize output. See github wiki for more details.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>selectedItems</td>
+  <td>[]</td>
+  <td>all of the items selected in the grid. In single select mode there will only be one item in the array.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>selectWithCheckboxOnly</td>
+  <td>false</td>
+  <td>Disable row selections by clicking on the row and only when the checkbox is clicked.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>showColumnMenu</td>
+  <td>false</td>
+  <td>Enables menu to choose which columns to display and group by. If both showColumnMenu and showFilter are false the menu button will not display.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>showFilter</td>
+  <td>false</td>
+  <td>Enables display of the filterbox in the column menu. If both showColumnMenu and showFilter are false the menu button will not display.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>showFooter</td>
+  <td>false</td>
+  <td>Show or hide the footer the footer is disabled by default</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>showGroupPanel</td>
+  <td>false</td>
+  <td>Show the dropzone for drag and drop grouping</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>sortInfo</td>
+  <td>{ fields: [], directions: [] }</td>
+  <td>Define a sortInfo object to specify a default sorting state. You can also observe this variable to utilize server-side sorting (see useExternalSorting). Syntax is sortInfo: { fields: [‘fieldName1’,’ fieldName2’], directions: [‘asc’, ‘desc’]}. Directions are case-insensitive</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>showSelectionCheckbox</td>
+  <td>false</td>
+  <td>Row selection check boxes appear as the first column. (was displaySelectionCheckbox prior to 2.0)</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>tabIndex</td>
+  <td>0</td>
+  <td>Set the tab index of the Vieport.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>useExternalSorting</td>
+  <td>false</td>
+  <td>Prevents the internal sorting from executing. The sortInfo object will be updated with the sorting information so you can handle sorting (see sortInfo)</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>virtualizationThreshold</td>
+  <td>50</td>
+  <td>The threshold in rows at which to force row virtualization on.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>selectRow</td>
+  <td>function (rowIndex, state)</td>
+  <td>Function that is appended to the specifiec grid options for users to programatically select the row regardless of the related entity.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>selectItem</td>
+  <td>function (itemIndex, state)</td>
+  <td>Function that is appended to the specifiec grid options for users to programatically select the row based on the index of the enitity in the data array option.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>selectAll</td>
+  <td>function (state)</td>
+  <td>Function that is appended to the specifiec grid options for users to programatically set the selected value all of the rows to the state passed.</td>
+  <td></td>
+</tr>
+</tbody></table>
+
+
+<h3 id="aggregatetemplate">aggregateTemplate</h3>
+
+<pre class="prettyprint prettyprinted" style=""><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">ng-click</span><span class="pun">=</span><span class="atv">"row.toggleExpand()"</span><span class="pln"> </span><span class="atn">ng-style</span><span class="pun">=</span><span class="atv">"{'left': row.offsetleft}"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngAggregate"</span><span class="tag">&gt;&lt;span</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngAggregateText"</span><span class="tag">&gt;</span><span class="pln">{{row.label CUSTOM_FILTERS}} ({{row.totalChildren()}} {{AggItemsLabel}})</span><span class="tag">&lt;/span&gt;&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"{{row.aggClass()}}"</span><span class="tag">&gt;&lt;/div&gt;&lt;/div&gt;</span></code></pre>
+
+<h3 id="checkboxcelltemplate">checkboxCellTemplate</h3>
+
+<pre class="prettyprint prettyprinted" style=""><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngSelectionCell"</span><span class="tag">&gt;&lt;input</span><span class="pln"> </span><span class="atn">tabindex</span><span class="pun">=</span><span class="atv">"-1"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngSelectionCheckbox"</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"checkbox"</span><span class="pln"> </span><span class="atn">ng-checked</span><span class="pun">=</span><span class="atv">"row.selected"</span><span class="pln"> </span><span class="tag">/&gt;&lt;/div&gt;</span></code></pre>
+
+<h3 id="checkboxheadertemplate">checkboxHeaderTemplate</h3>
+
+<pre class="prettyprint prettyprinted" style=""><code><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngSelectionHeader"</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"checkbox"</span><span class="pln"> </span><span class="atn">ng-show</span><span class="pun">=</span><span class="atv">"multiSelect"</span><span class="pln"> </span><span class="atn">ng-model</span><span class="pun">=</span><span class="atv">"allSelected"</span><span class="pln"> </span><span class="atn">ng-change</span><span class="pun">=</span><span class="atv">"toggleSelectAll(allSelected)"</span><span class="tag">/&gt;</span></code></pre>
+
+<h3 id="rowtemplate">rowTemplate</h3>
+
+<pre class="prettyprint prettyprinted" style=""><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">ng-style</span><span class="pun">=</span><span class="atv">"{ 'cursor': row.cursor }"</span><span class="pln"> </span><span class="atn">ng-repeat</span><span class="pun">=</span><span class="atv">"col in renderedColumns"</span><span class="pln"> </span><span class="atn">ng-class</span><span class="pun">=</span><span class="atv">"col.colIndex()"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngCell {{col.cellClass}}"</span><span class="tag">&gt;&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngVerticalBar"</span><span class="pln"> </span><span class="atn">ng-style</span><span class="pun">=</span><span class="atv">"{height: rowHeight}"</span><span class="pln"> </span><span class="atn">ng-class</span><span class="pun">=</span><span class="atv">"{ ngVerticalBarVisible: !$last }"</span><span class="tag">&gt;</span><span class="pln">&amp;nbsp;</span><span class="tag">&lt;/div&gt;&lt;div</span><span class="pln"> </span><span class="atn">ng-cell</span><span class="tag">&gt;&lt;/div&gt;&lt;/div&gt;</span></code></pre>
+
+<h2 id="columndefs-options">ColumnDefs Options</h2>
+
+<table>
+<thead>
+<tr>
+  <th>id</th>
+  <th>defaut value</th>
+  <th>definition</th>
+  <th>demo</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>aggLabelFilter</td>
+  <td>”</td>
+  <td>string name for filter to use on the aggregate label (‘currency’, ‘date’, etc..) defaults to cellFilter if not set.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>cellClass</td>
+  <td>”</td>
+  <td>Appends a css class for the column cells</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>cellFilter</td>
+  <td>”</td>
+  <td>string name for filter to use on the cell (‘currency’, ‘date’, etc..)</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>cellTemplate</td>
+  <td><a href="#celltemplate">ref</a></td>
+  <td>Sets the cell template for the column. See github wiki for more details.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>displayName</td>
+  <td>field</td>
+  <td>Sets the pretty display name of the column. default is the field given</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>editableCellTemplate</td>
+  <td><code>&lt;input ng-class="'colt' + col.index" ng-input="COL_FIELD" /&gt;</code></td>
+  <td>Sets the editableCellTemplate for the column. Displayed when user uses enableFocusedCellEdit and cell is focused.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>enableCellEdit</td>
+  <td>false</td>
+  <td>Displays cellTemplate when user is not focused on cell. Displays editableCellTemplate when user focuses on cell.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>field</td>
+  <td>”</td>
+  <td>The string name of the property in your data model you want that column to represent. Can also be a property path on your data model. ‘foo.bar.myField’, ‘Name.First’, etc..</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>groupable</td>
+  <td>true</td>
+  <td>Whether or not the user is allowed to group the column</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>headerCellTemplate</td>
+  <td><a href="#headercelltemplate">ref</a></td>
+  <td>Sets the template for the column header cell. See github wiki for more details.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>headerClass</td>
+  <td>”</td>
+  <td>Appends a css class for the column header.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>maxWidth</td>
+  <td>9000</td>
+  <td>Sets the maximum width of the column.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>minWidth</td>
+  <td>50</td>
+  <td>Sets the minimum width of the column.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>pinnable</td>
+  <td>true</td>
+  <td>Whether or not column can be pinned to the left.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>resizable</td>
+  <td>true</td>
+  <td>Whether or not column is resizable.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>sortable</td>
+  <td>true</td>
+  <td>Whether or not column is sortable.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>sortFn</td>
+  <td>Based on the detected data type Sets the sort function for the column. Useful when you have data that is formatted in an unusal way or if you want to sort on an underlying data type. Check the MDN sort docs for examples</td>
+  <td>Link</td>
+  <td></td>
+</tr>
+<tr>
+  <td>visible</td>
+  <td>true</td>
+  <td>Whether or not the column is visible by default. Can be overridden by the user at run-time if showColumnMenu is true.</td>
+  <td>Link</td>
+</tr>
+<tr>
+  <td>width</td>
+  <td>‘*’</td>
+  <td>Sets the width of the column. Can be a fixed width in pixels as an int (42), string px(‘42px’), percentage string (‘42%’), weighted asterisks (width divided by total number of *’s is all column definition widths) See github wiki for more details.</td>
+  <td>Link</td>
+</tr>
+</tbody></table>
+<h3 id="celltemplate">cellTemplate</h3>
+
+<pre class="prettyprint prettyprinted" style=""><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngCellText"</span><span class="pln"> </span><span class="atn">ng-class</span><span class="pun">=</span><span class="atv">"col.colIndex()"</span><span class="tag">&gt;&lt;span</span><span class="pln"> </span><span class="atn">ng-cell-text</span><span class="tag">&gt;</span><span class="pln">{{COL_FIELD CUSTOM_FILTERS}}</span><span class="tag">&lt;/span&gt;&lt;/div&gt;</span></code></pre><div class="se-section-delimiter"></div>
+
+<h3 id="headercelltemplate">headerCellTemplate</h3><div class="se-section-delimiter"></div>
+
+<pre class="prettyprint prettyprinted" style=""><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngHeaderSortColumn {{col.headerClass}}"</span><span class="pln"> </span><span class="atn">ng-style</span><span class="pun">=</span><span class="atv">"{'cursor': col.cursor}"</span><span class="pln"> </span><span class="atn">ng-class</span><span class="pun">=</span><span class="atv">"{ 'ngSorted': !noSortVisible }"</span><span class="tag">&gt;&lt;div</span><span class="pln"> </span><span class="atn">ng-click</span><span class="pun">=</span><span class="atv">"col.sort($event)"</span><span class="pln"> </span><span class="atn">ng-class</span><span class="pun">=</span><span class="atv">"'colt' + col.index"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngHeaderText"</span><span class="tag">&gt;</span><span class="pln">{{col.displayName}}</span><span class="tag">&lt;/div&gt;&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngSortButtonDown"</span><span class="pln"> </span><span class="atn">ng-show</span><span class="pun">=</span><span class="atv">"col.showSortButtonDown()"</span><span class="tag">&gt;&lt;/div&gt;&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngSortButtonUp"</span><span class="pln"> </span><span class="atn">ng-show</span><span class="pun">=</span><span class="atv">"col.showSortButtonUp()"</span><span class="tag">&gt;&lt;/div&gt;&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngSortPriority"</span><span class="tag">&gt;</span><span class="pln">{{col.sortPriority}}</span><span class="tag">&lt;/div&gt;&lt;div</span><span class="pln"> </span><span class="atn">ng-class</span><span class="pun">=</span><span class="atv">"{ ngPinnedIcon: col.pinned, ngUnPinnedIcon: !col.pinned }"</span><span class="pln"> </span><span class="atn">ng-click</span><span class="pun">=</span><span class="atv">"togglePin(col)"</span><span class="pln"> </span><span class="atn">ng-show</span><span class="pun">=</span><span class="atv">"col.pinnable"</span><span class="tag">&gt;&lt;/div&gt;&lt;/div&gt;&lt;div</span><span class="pln"> </span><span class="atn">ng-show</span><span class="pun">=</span><span class="atv">"col.resizable"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngHeaderGrip"</span><span class="pln"> </span><span class="atn">ng-click</span><span class="pun">=</span><span class="atv">"col.gripClick($event)"</span><span class="pln"> </span><span class="atn">ng-mousedown</span><span class="pun">=</span><span class="atv">"col.gripOnMouseDown($event)"</span><span class="tag">&gt;&lt;/div&gt;</span></code></pre></div></body>
+</html>
