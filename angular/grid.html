@@ -7,7 +7,7 @@
 </head>
 <body><div class="container"><h1 id="api-documentation">API Documentation</h1>
 
-<p><div class="toc"><div class="toc">
+<p><div class="toc">
 <ul>
 <li><a href="#api-documentation">API Documentation</a><ul>
 <li><a href="#grid-options">Grid Options</a><ul>
@@ -25,7 +25,6 @@
 </ul>
 </li>
 </ul>
-</div>
 </div>
 </p>
 
@@ -455,11 +454,13 @@
   <td>Link</td>
 </tr>
 </tbody></table>
+
+
 <h3 id="celltemplate">cellTemplate</h3>
 
-<pre class="prettyprint prettyprinted" style=""><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngCellText"</span><span class="pln"> </span><span class="atn">ng-class</span><span class="pun">=</span><span class="atv">"col.colIndex()"</span><span class="tag">&gt;&lt;span</span><span class="pln"> </span><span class="atn">ng-cell-text</span><span class="tag">&gt;</span><span class="pln">{{COL_FIELD CUSTOM_FILTERS}}</span><span class="tag">&lt;/span&gt;&lt;/div&gt;</span></code></pre><div class="se-section-delimiter"></div>
+<pre class="prettyprint prettyprinted" style=""><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngCellText"</span><span class="pln"> </span><span class="atn">ng-class</span><span class="pun">=</span><span class="atv">"col.colIndex()"</span><span class="tag">&gt;&lt;span</span><span class="pln"> </span><span class="atn">ng-cell-text</span><span class="tag">&gt;</span><span class="pln">{{COL_FIELD CUSTOM_FILTERS}}</span><span class="tag">&lt;/span&gt;&lt;/div&gt;</span></code></pre>
 
-<h3 id="headercelltemplate">headerCellTemplate</h3><div class="se-section-delimiter"></div>
+<h3 id="headercelltemplate">headerCellTemplate</h3>
 
 <pre class="prettyprint prettyprinted" style=""><code><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngHeaderSortColumn {{col.headerClass}}"</span><span class="pln"> </span><span class="atn">ng-style</span><span class="pun">=</span><span class="atv">"{'cursor': col.cursor}"</span><span class="pln"> </span><span class="atn">ng-class</span><span class="pun">=</span><span class="atv">"{ 'ngSorted': !noSortVisible }"</span><span class="tag">&gt;&lt;div</span><span class="pln"> </span><span class="atn">ng-click</span><span class="pun">=</span><span class="atv">"col.sort($event)"</span><span class="pln"> </span><span class="atn">ng-class</span><span class="pun">=</span><span class="atv">"'colt' + col.index"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngHeaderText"</span><span class="tag">&gt;</span><span class="pln">{{col.displayName}}</span><span class="tag">&lt;/div&gt;&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngSortButtonDown"</span><span class="pln"> </span><span class="atn">ng-show</span><span class="pun">=</span><span class="atv">"col.showSortButtonDown()"</span><span class="tag">&gt;&lt;/div&gt;&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngSortButtonUp"</span><span class="pln"> </span><span class="atn">ng-show</span><span class="pun">=</span><span class="atv">"col.showSortButtonUp()"</span><span class="tag">&gt;&lt;/div&gt;&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngSortPriority"</span><span class="tag">&gt;</span><span class="pln">{{col.sortPriority}}</span><span class="tag">&lt;/div&gt;&lt;div</span><span class="pln"> </span><span class="atn">ng-class</span><span class="pun">=</span><span class="atv">"{ ngPinnedIcon: col.pinned, ngUnPinnedIcon: !col.pinned }"</span><span class="pln"> </span><span class="atn">ng-click</span><span class="pun">=</span><span class="atv">"togglePin(col)"</span><span class="pln"> </span><span class="atn">ng-show</span><span class="pun">=</span><span class="atv">"col.pinnable"</span><span class="tag">&gt;&lt;/div&gt;&lt;/div&gt;&lt;div</span><span class="pln"> </span><span class="atn">ng-show</span><span class="pun">=</span><span class="atv">"col.resizable"</span><span class="pln"> </span><span class="atn">class</span><span class="pun">=</span><span class="atv">"ngHeaderGrip"</span><span class="pln"> </span><span class="atn">ng-click</span><span class="pun">=</span><span class="atv">"col.gripClick($event)"</span><span class="pln"> </span><span class="atn">ng-mousedown</span><span class="pun">=</span><span class="atv">"col.gripOnMouseDown($event)"</span><span class="tag">&gt;&lt;/div&gt;</span></code></pre></div></body>
 </html>
