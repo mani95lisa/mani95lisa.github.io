@@ -84,9 +84,12 @@
   <td></td>
   <td>results:用户上传秘钥凭证</td>
 </tr>
+<tr>
+  <td>/upload/audio/token<br><strong>GET</strong></td>
+  <td></td>
+  <td>results:用户上传秘钥凭证，专用于音频上传</td>
+</tr>
 </tbody></table>
-
-
 <h2 id="paint">Paint</h2>
 
 <table>
@@ -104,8 +107,13 @@
 </tr>
 <tr>
   <td>/paint/list<br><strong>GET</strong></td>
-  <td>paint_id<code>参照画的ID，同paint_date必须同时存在</code><br>paint_date<code>参照画的日期，为空则根据num正负请求最新或最旧的</code><br><strong>*num</strong><code>请求数量，为正则表示请求比paint_date更新的，为负则表示请求更旧的</code><br>author<code>作者ID，为空则请求所有用户的</code><br>favorited<code>是否只显示已收藏的，默认为flase</code><br>followed<code>是否只显示我关注的，默认为false</code></td>
-  <td>results:[<a href="#PaintVO">PaintVO</a>]</td>
+  <td><strong>*page</strong><code>请求页码</code><br>result_type<code>返回结果类型，默认为 1 返回画廊结构类型，为 2 返回普通类型</code><br>author<code>作者ID，为空则请求所有用户的</code><br>favorited<code>是否只显示已收藏的，默认为flase</code><br>followed<code>是否只显示我关注的，默认为false</code></td>
+  <td><code>result_type=1</code>results:[[<a href="#PaintVO">PaintVO</a>],[<a href="#PaintVO">PaintVO</a>],<a href="#PaintVO">PaintVO</a>],<a href="#PaintVO">PaintVO</a>],<a href="#PaintVO">PaintVO</a>]]<br>返回一组数组，只有一个元素的则显示为大图，多个元素的则显示为小图<br><br><code>result_type=2</code>results:[<a href="#PaintVO">PaintVO</a>]</td>
+</tr>
+<tr>
+  <td>/paint/new<br><strong>GET</strong></td>
+  <td>paint_id<code>参照画的ID，判断是否有比它更新的画</code></td>
+  <td><code>暂未实现</code></td>
 </tr>
 </tbody></table>
 <h1 id="model">Model</h1>
