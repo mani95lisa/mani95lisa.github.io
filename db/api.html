@@ -9,7 +9,7 @@
   <p><strong>host</strong>: <a href="http://db.pamakids.com">http://db.pamakids.com</a><br><strong>*</strong>号的参数是必须的</p>
 </blockquote>
 
-<p><div class="toc"><div class="toc">
+<p><div class="toc">
 <ul>
 <li><a href="#api">API</a><ul>
 <li><a href="#user">User</a></li>
@@ -21,11 +21,11 @@
 <li><a href="#resultvo">ResultVO</a></li>
 <li><a href="#uservo">UserVO</a></li>
 <li><a href="#paintvo">PaintVO</a></li>
+<li><a href="#relationshipvo">RelationshipVO</a></li>
 </ul>
 </li>
 <li><a href="#usage">Usage</a></li>
 </ul>
-</div>
 </div>
 </p>
 
@@ -66,6 +66,21 @@
   <td>portrait<br>mobile<br>address<br>birthday<code>需要使用NodeUtil转换日期格式为：2013-08-30</code></td>
   <td>status:true 更新成功<br>status:false 更新失败</td>
 </tr>
+<tr>
+  <td>/user/update/password<br><strong>POST</strong></td>
+  <td><strong>*new</strong> 新密码<br><strong>*old</strong>旧密码</td>
+  <td>status:true 更新成功<br>status:false 更新失败</td>
+</tr>
+<tr>
+  <td>/user/relationship<br><strong>POST</strong></td>
+  <td><strong>*friend</strong> 操作对象ID<br>follow <code>true:关注对方 false:取消关注</code></td>
+  <td>staus:true 成功 <br>status:false 失败</td>
+</tr>
+<tr>
+  <td>/user/friends<br><strong>GET</strong></td>
+  <td><strong>*followed</strong> <code>true：我关注的 false:我的粉丝</code><br><strong>*perPage</strong>每页显示多少个<br><strong>*page</strong>当前显示页码</td>
+  <td>results: [RelationshipVO]</td>
+</tr>
 </tbody></table>
 
 
@@ -90,6 +105,8 @@
   <td>results:用户上传秘钥凭证，专用于音频上传</td>
 </tr>
 </tbody></table>
+
+
 <h2 id="paint">Paint</h2>
 
 <table>
@@ -115,7 +132,14 @@
   <td>paint_id<code>参照画的ID，判断是否有比它更新的画</code></td>
   <td><code>暂未实现</code></td>
 </tr>
+<tr>
+  <td>/paint/praise<br><strong>POST</strong></td>
+  <td><strong>*paint</strong> 画的ID<br><strong>*status</strong> true 赞 false 取消</td>
+  <td></td>
+</tr>
 </tbody></table>
+
+
 <h1 id="model">Model</h1>
 
 <h2 id="resultvo">ResultVO</h2>
@@ -275,6 +299,38 @@
   <td>created_at</td>
   <td>Date</td>
   <td>创建日期</td>
+  <td></td>
+</tr>
+</tbody></table>
+
+
+<h2 id="relationshipvo">RelationshipVO</h2>
+
+<table>
+<thead>
+<tr>
+  <th>property</th>
+  <th>type</th>
+  <th>description</th>
+  <th>remark</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>friend</td>
+  <td>UserVO</td>
+  <td>用户对象</td>
+  <td>{nickname:昵称,portrait:头像,_id:用户id}</td>
+</tr>
+<tr>
+  <td>followed</td>
+  <td>Boolean</td>
+  <td>是否是关注我的</td>
+  <td></td>
+</tr>
+<tr>
+  <td>following</td>
+  <td>Boolean</td>
+  <td>是否是我关注的</td>
   <td></td>
 </tr>
 </tbody></table>
