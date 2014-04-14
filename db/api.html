@@ -9,7 +9,7 @@
   <p><strong>host</strong>: <a href="http://db.pamakids.com">http://db.pamakids.com</a><br><strong>*</strong>号的参数是必须的</p>
 </blockquote>
 
-<p><div class="toc">
+<p><div class="toc"><div class="toc">
 <ul>
 <li><a href="#api">API</a><ul>
 <li><a href="#user">User</a></li>
@@ -26,6 +26,7 @@
 </li>
 <li><a href="#usage">Usage</a></li>
 </ul>
+</div>
 </div>
 </p>
 
@@ -78,12 +79,10 @@
 </tr>
 <tr>
   <td>/user/friends<br><strong>GET</strong></td>
-  <td><strong>*followed</strong> <code>true：我关注的 false:我的粉丝</code><br><strong>*perPage</strong>每页显示多少个<br><strong>*page</strong>当前显示页码</td>
+  <td>user_id <code>为空则默认获取自己的，不为空则获取别人的</code><br><strong>*followed</strong> <code>true：我关注的 false:我的粉丝</code><br><strong>*perPage</strong>每页显示多少个<br><strong>*page</strong>当前显示页码</td>
   <td>results: [RelationshipVO]</td>
 </tr>
 </tbody></table>
-
-
 <h2 id="upload">Upload</h2>
 
 <table>
