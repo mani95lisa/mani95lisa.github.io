@@ -9,7 +9,7 @@
   <p><strong>host</strong>: <a href="http://db.pamakids.com">http://db.pamakids.com</a><br><strong>*</strong>号的参数是必须的</p>
 </blockquote>
 
-<p><div class="toc"><div class="toc">
+<p><div class="toc">
 <ul>
 <li><a href="#api">API</a><ul>
 <li><a href="#user">User</a></li>
@@ -22,11 +22,11 @@
 <li><a href="#uservo">UserVO</a></li>
 <li><a href="#paintvo">PaintVO</a></li>
 <li><a href="#relationshipvo">RelationshipVO</a></li>
+<li><a href="#praisevo">PraiseVO</a></li>
 </ul>
 </li>
 <li><a href="#usage">Usage</a></li>
 </ul>
-</div>
 </div>
 </p>
 
@@ -39,23 +39,23 @@
 <tr>
   <th>URI</th>
   <th>Request</th>
-  <th><a href="#ResultVO">ResultVO</a></th>
+  <th><a href="#resultvo">ResultVO</a></th>
 </tr>
 </thead>
 <tbody><tr>
   <td>/user/signup/app<br><strong>POST</strong></td>
   <td><strong>*username</strong><br><strong>*password</strong><br><strong>*email</strong><br><strong>*come_from</strong> <code>用户来源，比如一起画画则固定为DrawingBoard</code></td>
-  <td>results:<a href="#UserVO">UserVO</a></td>
+  <td>results:<a href="#uservo">UserVO</a></td>
 </tr>
 <tr>
   <td>/user/login/platform<br><strong>POST</strong></td>
   <td><strong>*come_from</strong><br><strong>*access_token</strong><br><strong>*platform</strong><br><strong>*usid</strong><br>portrait<code>头像</code><br>nickname<code>昵称</code></td>
-  <td>results:<a href="#UserVO">UserVO</a></td>
+  <td>results:<a href="#uservo">UserVO</a></td>
 </tr>
 <tr>
   <td>/user/login<br><strong>POST</strong></td>
   <td><strong>*username</strong><code>该属性可以赋值用户名或者是邮箱</code><br><strong>*password</strong></td>
-  <td>results:<a href="#UserVO">UserVO</a></td>
+  <td>results:<a href="#uservo">UserVO</a></td>
 </tr>
 <tr>
   <td>/user/exist<br><strong>GET</strong></td>
@@ -83,6 +83,8 @@
   <td>results: [RelationshipVO]</td>
 </tr>
 </tbody></table>
+
+
 <h2 id="upload">Upload</h2>
 
 <table>
@@ -90,7 +92,7 @@
 <tr>
   <th>URI</th>
   <th>Request</th>
-  <th><a href="#ResultVO">ResultVO</a></th>
+  <th><a href="#resultvo">ResultVO</a></th>
 </tr>
 </thead>
 <tbody><tr>
@@ -113,18 +115,18 @@
 <tr>
   <th>URI</th>
   <th>Request</th>
-  <th><a href="#ResultVO">ResultVO</a></th>
+  <th><a href="#resultvo">ResultVO</a></th>
 </tr>
 </thead>
 <tbody><tr>
   <td>/paint/add<br><strong>POST</strong></td>
   <td><code>相关文件都上传成功后再调用该方法，地址为相对路径即可</code><br><strong>*cover</strong><code>封面地址</code><br><strong>*data</strong><code>绘图数据地址</code><br><strong>*audio</strong><code>录音地址</code></td>
-  <td>results:<a href="#PaintVO">PaintVO</a></td>
+  <td>results:<a href="#paintvo">PaintVO</a></td>
 </tr>
 <tr>
   <td>/paint/list<br><strong>GET</strong></td>
   <td><strong>*page</strong><code>请求页码</code><br>result_type<code>返回结果类型，默认为 1 返回画廊结构类型，为 2 返回普通类型</code><br>author<code>作者ID，为空则请求所有用户的</code><br>favorited<code>是否只显示已收藏的，默认为flase</code><br>followed<code>是否只显示我关注的，默认为false</code></td>
-  <td><code>result_type=1</code>results:[[<a href="#PaintVO">PaintVO</a>],[<a href="#PaintVO">PaintVO</a>],<a href="#PaintVO">PaintVO</a>],<a href="#PaintVO">PaintVO</a>],<a href="#PaintVO">PaintVO</a>]]<br>返回一组数组，只有一个元素的则显示为大图，多个元素的则显示为小图<br><br><code>result_type=2</code>results:[<a href="#PaintVO">PaintVO</a>]</td>
+  <td><code>result_type=1</code>results:[[<a href="#paintvo">PaintVO</a>],[<a href="#paintvo">PaintVO</a>],<a href="#paintvo">PaintVO</a>],<a href="#paintvo">PaintVO</a>],<a href="#paintvo">PaintVO</a>]]<br>返回一组数组，只有一个元素的则显示为大图，多个元素的则显示为小图<br><br><code>result_type=2</code>results:[<a href="#paintvo">PaintVO</a>]</td>
 </tr>
 <tr>
   <td>/paint/new<br><strong>GET</strong></td>
@@ -135,6 +137,11 @@
   <td>/paint/praise<br><strong>POST</strong></td>
   <td><strong>*paint</strong> 画的ID<br><strong>*status</strong> true 赞 false 取消</td>
   <td></td>
+</tr>
+<tr>
+  <td>/paint/praise/list<br><strong>POST</strong></td>
+  <td><strong>*paint</strong> 画的ID<br><strong>*page</strong> 请求页码</td>
+  <td>results:<a href="#praisevo">PraiseVO</a></td>
 </tr>
 </tbody></table>
 
@@ -330,6 +337,32 @@
   <td>following</td>
   <td>Boolean</td>
   <td>是否是我关注的</td>
+  <td></td>
+</tr>
+</tbody></table>
+
+
+<h2 id="praisevo">PraiseVO</h2>
+
+<table>
+<thead>
+<tr>
+  <th>property</th>
+  <th>type</th>
+  <th>description</th>
+  <th>remark</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>user</td>
+  <td>UserVO</td>
+  <td>用户对象</td>
+  <td>{nickname:昵称,portrait:头像,_id:用户id}</td>
+</tr>
+<tr>
+  <td>created_at</td>
+  <td>Date</td>
+  <td>赞的时间</td>
   <td></td>
 </tr>
 </tbody></table>
