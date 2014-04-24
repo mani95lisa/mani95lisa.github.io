@@ -128,7 +128,7 @@
 </tr>
 <tr>
   <td>/paint/list<br><strong>GET</strong></td>
-  <td><strong>*page</strong><code>请求页码</code><br>result_type<code>返回结果类型，默认为 1 返回画廊结构类型，为 2 返回普通类型</code><br>author<code>作者ID，为空则请求所有用户的</code><br>favorited<code>是否只显示已收藏的，默认为flase</code><br>followed<code>是否只显示我关注的，默认为false</code></td>
+  <td><strong>*page</strong><code>请求页码</code><br>result_type<code>返回结果类型，默认为 1 返回画廊结构类型，为 2 返回普通类型</code><br>author<code>作者ID，为空则请求所有用户的</code><br>favorited<code>是否只显示已收藏的，默认为flase</code><br>followed<code>是否只显示我关注的，默认为false</code><br>theme <code>关联的主题路径</code></td>
   <td><code>result_type=1</code>results:[[<a href="#paintvo">PaintVO</a>],[<a href="#paintvo">PaintVO</a>],<a href="#paintvo">PaintVO</a>],<a href="#paintvo">PaintVO</a>],<a href="#paintvo">PaintVO</a>]]<br>返回一组数组，只有一个元素的则显示为大图，多个元素的则显示为小图<br><br><code>result_type=2</code>results:[<a href="#paintvo">PaintVO</a>]</td>
 </tr>
 <tr>
@@ -315,6 +315,8 @@
   <td></td>
 </tr>
 </tbody></table>
+
+
 <h2 id="relationshipvo">RelationshipVO</h2>
 
 <table>
