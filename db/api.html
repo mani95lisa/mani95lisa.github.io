@@ -11,7 +11,7 @@
   <strong>*</strong>号的参数是必须的</p>
 </blockquote>
 
-<p><div class="toc">
+<p><div class="toc"><div class="toc">
 <ul>
 <li><a href="#api">API</a><ul>
 <li><a href="#user">User</a></li>
@@ -29,6 +29,7 @@
 </li>
 <li><a href="#usage">Usage</a></li>
 </ul>
+</div>
 </div>
 </p>
 
@@ -122,7 +123,7 @@
 </thead>
 <tbody><tr>
   <td>/paint/add<br><strong>POST</strong></td>
-  <td><code>相关文件都上传成功后再调用该方法，地址为相对路径即可</code><br><strong>*cover</strong><code>封面地址</code><br><strong>*data</strong><code>绘图数据地址</code><br><strong>*audio</strong><code>录音地址</code></td>
+  <td><code>相关文件都上传成功后再调用该方法，地址为相对路径即可</code><br><strong>*cover</strong><code>封面地址</code><br><strong>*data</strong><code>绘图数据地址</code><br>audio<code>录音地址</code><br>theme <code>关联的主题路径</code></td>
   <td>results:<a href="#paintvo">PaintVO</a></td>
 </tr>
 <tr>
@@ -146,8 +147,6 @@
   <td>results:<a href="#praisevo">PraiseVO</a></td>
 </tr>
 </tbody></table>
-
-
 <h1 id="model">Model</h1>
 
 <h2 id="resultvo">ResultVO</h2>
@@ -268,6 +267,12 @@
   <td></td>
 </tr>
 <tr>
+  <td>theme</td>
+  <td>String</td>
+  <td>关联主题路径</td>
+  <td></td>
+</tr>
+<tr>
   <td>views</td>
   <td>Number</td>
   <td>浏览数</td>
@@ -310,8 +315,6 @@
   <td></td>
 </tr>
 </tbody></table>
-
-
 <h2 id="relationshipvo">RelationshipVO</h2>
 
 <table>
