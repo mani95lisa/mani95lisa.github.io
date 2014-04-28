@@ -146,6 +146,11 @@
   <td><strong>*paint</strong> 画的ID<br><strong>*page</strong> 请求页码</td>
   <td>results:<a href="#praisevo">PraiseVO</a></td>
 </tr>
+<tr>
+  <td>/paint/praise/get<br><strong>GET</strong></td>
+  <td><strong>*paint</strong> 当前画的ID</td>
+  <td>results:PaintVO</td>
+</tr>
 </tbody></table>
 <h1 id="model">Model</h1>
 
@@ -377,7 +382,7 @@
 
 <h1 id="usage">Usage</h1>
 
-<pre class="prettyprint prettyprinted" style=""><code class="language-actionscript"><span class="typ">ServiceBase</span><span class="pun">.</span><span class="pln">HOST </span><span class="pun">=</span><span class="pln"> </span><span class="str">'http://db.pamakids.com'</span><span class="pun">;</span><span class="pln">
+<pre class="prettyprint prettyprinted"><code class="language-actionscript"><span class="typ">ServiceBase</span><span class="pun">.</span><span class="pln">HOST </span><span class="pun">=</span><span class="pln"> </span><span class="str">'http://db.pamakids.com'</span><span class="pun">;</span><span class="pln">
 
 getSB</span><span class="pun">(</span><span class="str">'/user/signup'</span><span class="pun">).</span><span class="pln">call</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">result</span><span class="pun">:</span><span class="typ">ResultVO</span><span class="pun">):</span><span class="kwd">void</span><span class="pun">{</span><span class="pln">
             </span><span class="kwd">var</span><span class="pln"> user</span><span class="pun">:</span><span class="typ">UserVO</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="typ">CloneUtil</span><span class="pun">.</span><span class="pln">convert</span><span class="pun">(</span><span class="pln">result</span><span class="pun">.</span><span class="pln">results</span><span class="pun">,</span><span class="pln"> </span><span class="typ">UserVO</span><span class="pun">);</span><span class="pln"> </span><span class="com">//自动转换Object对象为VO对象</span><span class="pln">
