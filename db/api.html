@@ -11,7 +11,7 @@
   <strong>*</strong>号的参数是必须的</p>
 </blockquote>
 
-<p><div class="toc">
+<p><div class="toc"><div class="toc">
 <ul>
 <li><a href="#api">API</a><ul>
 <li><a href="#user">User</a></li>
@@ -29,6 +29,7 @@
 </li>
 <li><a href="#usage">Usage</a></li>
 </ul>
+</div>
 </div>
 </p>
 
@@ -155,9 +156,12 @@
   <td><strong>*paint</strong> 查看的画的ID <br> <strong>*type</strong> 1 统计查看次数 2 统计播放次数</td>
   <td></td>
 </tr>
+<tr>
+  <td>/paint/get<br><strong>GET</strong></td>
+  <td><strong>*paint</strong> 查看的画的ID</td>
+  <td>resutls:PaintVO 所有详细数据，包括作者信息</td>
+</tr>
 </tbody></table>
-
-
 <h1 id="model">Model</h1>
 
 <h2 id="resultvo">ResultVO</h2>
