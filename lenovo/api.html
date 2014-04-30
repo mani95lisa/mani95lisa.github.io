@@ -17,6 +17,7 @@
 <p><div class="toc"><div class="toc">
 <ul>
 <li><a href="#api">API</a><ul>
+<li><a href="#token">Token</a></li>
 <li><a href="#research">Research</a></li>
 </ul>
 </li>
@@ -39,6 +40,34 @@
 
 <h1 id="api">API</h1>
 
+<h2 id="token">Token</h2>
+
+<p>上传秘钥接口，相对路径是根目录：<a href="http://le.pamakids.com">http://le.pamakids.com</a></p>
+
+<table>
+<thead>
+<tr>
+  <th>URI</th>
+  <th>Request</th>
+  <th><a href="#resultvo">ResultVO</a></th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>/upload/token</td>
+  <td>上传图片或其他文件的秘钥</td>
+  <td>{status: true, results: token}</td>
+</tr>
+<tr>
+  <td>/upload/audio/token</td>
+  <td>上传音频的秘钥</td>
+  <td>{status: true, results: token}</td>
+</tr>
+<tr>
+  <td>/upload/video/token</td>
+  <td>上传视频的秘钥</td>
+  <td>{status: true, results: token}</td>
+</tr>
+</tbody></table>
 <h2 id="research">Research</h2>
 
 <p>调查研究相关活动接口</p>
