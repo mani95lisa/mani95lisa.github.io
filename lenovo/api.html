@@ -10,7 +10,8 @@
   <strong>资源地址</strong>:<a href="http://lenovour.qiniudn.com">http://lenovour.qiniudn.com</a> <br>
   <strong>*</strong>号的参数是必须的 <br>
   所有返回的数据对象都带有<strong>_id</strong>属性，就不再赘述 <br>
-  所有GET或POST请求都需要携带上设备唯一号<code>udid</code>，如果用户登录后，需要带上用户ID<code>uid</code></p>
+  所有文本输入长度不超过200字 <br>
+  所有语音和视频输入长度不超过60秒</p>
 </blockquote>
 
 <p><div class="toc"><div class="toc">
@@ -28,18 +29,19 @@
 </li>
 </ul>
 </li>
+<li><a href="#reportvo">ReportVO</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-</p>
+</p><div class="se-section-delimiter"></div>
 
 <h1 id="api">API</h1>
 
 <h2 id="research">Research</h2>
 
-<p>活动相关接口</p>
+<p>调查研究相关活动接口</p>
 
 <table>
 <thead>
@@ -52,16 +54,19 @@
 <tbody><tr>
   <td>/research/list<br><strong>GET</strong></td>
   <td>获取活动列表<br><code>*page</code> 当前页数<br><code>uid</code> 用户id，根据用id获取针对该用户的活动列表<br><code>为空则获取面向所有人的活动列表</code></td>
-  <td><code>result</code>:<a href="#researchvo">[ResearchVO]</a></td>
+  <td>result:<a href="#researchvo">[ResearchVO]</a></td>
 </tr>
 <tr>
   <td>/research/get<br><strong>GET</strong></td>
   <td>获取活动详情<br><code>*id</code> 活动ID</td>
   <td>result:<a href="#researchvo">ResearchVO</a></td>
 </tr>
+<tr>
+  <td>/research/submit<br><strong>POST</strong></td>
+  <td>提交问卷报告<br><code>udid</code> 设备唯一号，当用户未登录时使用<br><code>uid</code> 用户登录后使用，有<code>uid</code>则不需要<code>udid</code><br><code>report</code> 报告为<a href="#reportvo">ReportVO</a>数组</td>
+  <td>status:true 提交成功 <br> status:false 提交失败</td>
+</tr>
 </tbody></table>
-
-
 <h1 id="model">Model</h1>
 
 <h2 id="resultvo">ResultVO</h2>
@@ -124,6 +129,8 @@
   <td></td>
 </tr>
 </tbody></table>
+
+
 <h3 id="questionvo">QuestionVO</h3>
 
 <p><strong>题目数据对象</strong></p>
@@ -153,7 +160,7 @@
   <td>user_key</td>
   <td>String</td>
   <td>问题涉及的用户属性</td>
-  <td>如果该属性不为空，活动参加完成提交的时候需要将该值作为key，选项的值作为value的形式post这样的对象的数组到服务器</td>
+  <td>如果该属性不为空，用户答题后需要赋值到<a href="#reportvo">ReportVO</a></td>
 </tr>
 <tr>
   <td>answers</td>
@@ -192,6 +199,46 @@
   <td>Boolean</td>
   <td>是否在选中后需要显示输入框提示用户输入理由</td>
   <td></td>
+</tr>
+</tbody></table>
+
+
+<h2 id="reportvo">ReportVO</h2>
+
+<p>针对不同类型的问题，选择答案后生成的数据对象</p>
+
+<table>
+<thead>
+<tr>
+  <th>property</th>
+  <th>type</th>
+  <th>description</th>
+  <th>remark</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>qid</td>
+  <td>String</td>
+  <td>问题ID</td>
+  <td></td>
+</tr>
+<tr>
+  <td>value</td>
+  <td>Object</td>
+  <td><code>单选</code> 选项索引<br><code>多选</code> 选项索引数组<br><code>排序</code> 最终排序数组<br><code>评分</code> 分值</td>
+  <td><code>排序</code> 比较特殊，返回最终排序的数组就，比如之前是[0,1,2]<br> 排序后是[2,1,0]表示原始数据的第一个跟第三个调换了顺序</td>
+</tr>
+<tr>
+  <td>remark</td>
+  <td>String</td>
+  <td>选中某些选项需要输入原因的值<br>如果是文本则输入文本，不超过<code>200</code>字<br>如果是语音输入则是语音的相对路径</td>
+  <td></td>
+</tr>
+<tr>
+  <td>user_info</td>
+  <td>Object</td>
+  <td>用户信息</td>
+  <td><code>{key:value}</code>这样的对象<br><code>key</code>为问题的<code>user_key</code><br><code>value</code>为答案的<code>content</code></td>
 </tr>
 </tbody></table></div></body>
 </html>
