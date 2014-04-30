@@ -6,6 +6,192 @@
 <link rel="stylesheet" href="http://iiiui.qiniudn.com/base.css" />
 </head>
 <body><div class="container"><blockquote>
-  <p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
-</blockquote></div></body>
+  <p><strong>API地址</strong>: <a href="http://le.pamakids.com/api">http://le.pamakids.com/api</a> <br>
+  <strong>资源地址</strong>:<a href="http://lenovour.qiniudn.com">http://lenovour.qiniudn.com</a> <br>
+  <strong>*</strong>号的参数是必须的 <br>
+  所有返回的数据对象都带有<strong>_id</strong>属性，就不再赘述 <br>
+  所有GET或POST请求都需要携带上设备唯一号<code>udid</code>，如果用户登录后，需要带上用户ID<code>uid</code></p>
+</blockquote>
+
+<p><div class="toc"><div class="toc">
+<ul>
+<li><a href="#api">API</a><ul>
+<li><a href="#research">Research</a></li>
+</ul>
+</li>
+<li><a href="#model">Model</a><ul>
+<li><a href="#resultvo">ResultVO</a></li>
+<li><a href="#researchvo">ResearchVO</a><ul>
+<li><a href="#questionvo">QuestionVO</a><ul>
+<li><a href="#answervo">AnswerVO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</p>
+
+<h1 id="api">API</h1>
+
+<h2 id="research">Research</h2>
+
+<p>活动相关接口</p>
+
+<table>
+<thead>
+<tr>
+  <th>URI</th>
+  <th>Request</th>
+  <th><a href="#resultvo">ResultVO</a></th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>/research/list<br><strong>GET</strong></td>
+  <td>获取活动列表<br><code>*page</code> 当前页数<br><code>uid</code> 用户id，根据用id获取针对该用户的活动列表<br><code>为空则获取面向所有人的活动列表</code></td>
+  <td><code>result</code>:<a href="#researchvo">[ResearchVO]</a></td>
+</tr>
+<tr>
+  <td>/research/get<br><strong>GET</strong></td>
+  <td>获取活动详情<br><code>*id</code> 活动ID</td>
+  <td>result:<a href="#researchvo">ResearchVO</a></td>
+</tr>
+</tbody></table>
+
+
+<h1 id="model">Model</h1>
+
+<h2 id="resultvo">ResultVO</h2>
+
+<p><strong>数据请求结果通用对象</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th>property</th>
+  <th>type</th>
+  <th>description</th>
+  <th>remark</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>status</td>
+  <td>Boolean</td>
+  <td>true:接口请求成功<br>false:接口请求失败</td>
+  <td></td>
+</tr>
+<tr>
+  <td>result</td>
+  <td>Object</td>
+  <td>任意数据对象，出错后返回错误原因字符串</td>
+  <td></td>
+</tr>
+</tbody></table>
+
+
+<h2 id="researchvo">ResearchVO</h2>
+
+<p><strong>调查研究活动数据对象</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th>property</th>
+  <th>type</th>
+  <th>description</th>
+  <th>remark</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>name</td>
+  <td>String</td>
+  <td>活动名称</td>
+  <td>获取活动列表时仅返回该属性</td>
+</tr>
+<tr>
+  <td>thanks</td>
+  <td>String</td>
+  <td>感谢语，活动开始页显示</td>
+  <td>先不需要重点显示</td>
+</tr>
+<tr>
+  <td>questions</td>
+  <td><a href="#questionvo">[QuestionVO]</a></td>
+  <td>问题数组，目前是直接返回所有问题数据</td>
+  <td></td>
+</tr>
+</tbody></table>
+<h3 id="questionvo">QuestionVO</h3>
+
+<p><strong>题目数据对象</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th>property</th>
+  <th>type</th>
+  <th>description</th>
+  <th>remark</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>title</td>
+  <td>String</td>
+  <td>问题题目</td>
+  <td></td>
+</tr>
+<tr>
+  <td>type</td>
+  <td>Number</td>
+  <td>问题类型</td>
+  <td><code>1</code> 多选 <code>2</code> 单选 <code>3</code> 排序 <code>4</code> 评分</td>
+</tr>
+<tr>
+  <td>user_key</td>
+  <td>String</td>
+  <td>问题涉及的用户属性</td>
+  <td>如果该属性不为空，活动参加完成提交的时候需要将该值作为key，选项的值作为value的形式post这样的对象的数组到服务器</td>
+</tr>
+<tr>
+  <td>answers</td>
+  <td><a href="#answervo">[AnswerVO]</a></td>
+  <td>问题的可选答案</td>
+  <td></td>
+</tr>
+</tbody></table>
+<h4 id="answervo">AnswerVO</h4>
+
+<p><strong>题目可选答案数据对象</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th>property</th>
+  <th>type</th>
+  <th>description</th>
+  <th>remark</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>content</td>
+  <td>String</td>
+  <td>答案文本内容</td>
+  <td>有可能为空</td>
+</tr>
+<tr>
+  <td>image</td>
+  <td>String</td>
+  <td>图片选项相对路径</td>
+  <td>通过imageView2来获得任意尺寸的图片</td>
+</tr>
+<tr>
+  <td>need_reason</td>
+  <td>Boolean</td>
+  <td>是否在选中后需要显示输入框提示用户输入理由</td>
+  <td></td>
+</tr>
+</tbody></table></div></body>
 </html>
