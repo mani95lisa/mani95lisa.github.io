@@ -14,7 +14,7 @@
   所有语音和视频输入长度不超过60秒</p>
 </blockquote>
 
-<p><div class="toc"><div class="toc">
+<p><div class="toc">
 <ul>
 <li><a href="#api">API</a><ul>
 <li><a href="#token">Token</a></li>
@@ -34,7 +34,6 @@
 </ul>
 </li>
 </ul>
-</div>
 </div>
 </p>
 
@@ -94,7 +93,7 @@
 </tr>
 <tr>
   <td>/research/submit<br><strong>POST</strong></td>
-  <td>提交问卷报告<br><code>udid</code> 设备唯一号，当用户未登录时使用<br><code>uid</code> 用户登录后使用，有<code>uid</code>则不需要<code>udid</code><br><code>report</code> 报告为<a href="#reportvo">ReportVO</a>数组</td>
+  <td>提交问卷报告<br><code>*id</code> 活动ID<br><code>*udid</code> 设备唯一号<br><code>uid</code> 用户登录后使用<br><code>*report</code> 报告为<a href="#reportvo">ReportVO</a>数组</td>
   <td>status:true 提交成功 <br> status:false 提交失败</td>
 </tr>
 </tbody></table>
@@ -202,6 +201,8 @@
   <td></td>
 </tr>
 </tbody></table>
+
+
 <h4 id="answervo">AnswerVO</h4>
 
 <p><strong>题目可选答案数据对象</strong></p>
@@ -259,7 +260,7 @@
   <td>value</td>
   <td>Object</td>
   <td><code>单选</code> 选项索引<br><code>多选</code> 选项索引数组<br><code>排序</code> 最终排序数组<br><code>评分</code> 分值<br><code>输入</code> 输入的值</td>
-  <td><code>排序</code> 比较特殊，返回最终排序的数组就，比如之前是[0,1,2]<br> 排序后是[2,1,0]表示原始数据的第一个跟第三个调换了顺序</td>
+  <td><code>排序</code> 比较特殊，返回最终排序的数组就行，比如之前是[0,1,2]<br> 排序后是[2,1,0]表示原始数据的第一个跟第三个调换了顺序</td>
 </tr>
 <tr>
   <td>remark</td>
@@ -268,10 +269,16 @@
   <td></td>
 </tr>
 <tr>
-  <td>user_info</td>
-  <td>Object</td>
-  <td>用户信息</td>
-  <td><code>{key:value}</code>这样的对象<br><code>key</code>为问题的<code>user_key</code><br><code>value</code>为答案的<code>content</code> <code>输入</code>类型题目则是 <code>remark</code></td>
+  <td>user_key</td>
+  <td>String</td>
+  <td>用户信息Key值</td>
+  <td><code>key</code>为问题的<code>user_key</code></td>
+</tr>
+<tr>
+  <td>user_value</td>
+  <td>String</td>
+  <td>用户信息value值</td>
+  <td><code>value</code>为答案的<code>content</code> <code>输入</code>类型题目则是 <code>remark</code></td>
 </tr>
 </tbody></table></div></body>
 </html>
