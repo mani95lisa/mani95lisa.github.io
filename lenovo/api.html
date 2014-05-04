@@ -36,7 +36,7 @@
 </ul>
 </div>
 </div>
-</p><div class="se-section-delimiter"></div>
+</p>
 
 <h1 id="api">API</h1>
 
@@ -68,6 +68,8 @@
   <td>{status: true, results: token}</td>
 </tr>
 </tbody></table>
+
+
 <h2 id="research">Research</h2>
 
 <p>调查研究相关活动接口</p>
@@ -96,6 +98,8 @@
   <td>status:true 提交成功 <br> status:false 提交失败</td>
 </tr>
 </tbody></table>
+
+
 <h1 id="model">Model</h1>
 
 <h2 id="resultvo">ResultVO</h2>
@@ -183,7 +187,7 @@
   <td>type</td>
   <td>Number</td>
   <td>问题类型</td>
-  <td><code>1</code> 多选 <code>2</code> 单选 <code>3</code> 排序 <code>4</code> 评分</td>
+  <td><code>1</code> 多选 <code>2</code> 单选 <code>3</code> 排序 <code>4</code> 评分 <code>5</code> 输入</td>
 </tr>
 <tr>
   <td>user_key</td>
@@ -254,7 +258,7 @@
 <tr>
   <td>value</td>
   <td>Object</td>
-  <td><code>单选</code> 选项索引<br><code>多选</code> 选项索引数组<br><code>排序</code> 最终排序数组<br><code>评分</code> 分值</td>
+  <td><code>单选</code> 选项索引<br><code>多选</code> 选项索引数组<br><code>排序</code> 最终排序数组<br><code>评分</code> 分值<br><code>输入</code> 输入的值</td>
   <td><code>排序</code> 比较特殊，返回最终排序的数组就，比如之前是[0,1,2]<br> 排序后是[2,1,0]表示原始数据的第一个跟第三个调换了顺序</td>
 </tr>
 <tr>
@@ -267,7 +271,7 @@
   <td>user_info</td>
   <td>Object</td>
   <td>用户信息</td>
-  <td><code>{key:value}</code>这样的对象<br><code>key</code>为问题的<code>user_key</code><br><code>value</code>为答案的<code>content</code></td>
+  <td><code>{key:value}</code>这样的对象<br><code>key</code>为问题的<code>user_key</code><br><code>value</code>为答案的<code>content</code> <code>输入</code>类型题目则是 <code>remark</code></td>
 </tr>
 </tbody></table></div></body>
 </html>
