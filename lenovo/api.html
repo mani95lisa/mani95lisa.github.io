@@ -14,15 +14,17 @@
   所有语音和视频输入长度不超过60秒</p>
 </blockquote>
 
-<p><div class="toc"><div class="toc">
+<p><div class="toc">
 <ul>
 <li><a href="#api">API</a><ul>
+<li><a href="#user">User</a></li>
 <li><a href="#token">Token</a></li>
 <li><a href="#research">Research</a></li>
 </ul>
 </li>
 <li><a href="#model">Model</a><ul>
 <li><a href="#resultvo">ResultVO</a></li>
+<li><a href="#uservo">UserVO</a></li>
 <li><a href="#researchvo">ResearchVO</a><ul>
 <li><a href="#questionvo">QuestionVO</a><ul>
 <li><a href="#answervo">AnswerVO</a></li>
@@ -35,12 +37,36 @@
 </li>
 </ul>
 </div>
-</div>
 </p>
 
 <h1 id="api">API</h1>
 
+<h2 id="user">User</h2>
+
+<table>
+<thead>
+<tr>
+  <th>URI</th>
+  <th>Request</th>
+  <th><a href="#resultvo">ResultVO</a></th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>/user/login<br><strong>POST</strong></td>
+  <td>登录<br><code>*udid</code> 设备号<br>或 <code>*mobile</code>手机号, <code>*code</code> 验证码</td>
+  <td>result:<a href="#uservo">UserVO</a></td>
+</tr>
+<tr>
+  <td>/user/code<br><strong>POST</strong></td>
+  <td>获取验证码，60秒内只能获取一次<br><code>*mobile</code> 手机号</td>
+  <td>status:true 成功 <br>status:false 失败</td>
+</tr>
+</tbody></table>
+
+
 <h2 id="token">Token</h2>
+
+<p>需要先登录后才能使用，秘钥的有效期间是一天</p>
 
 <table>
 <thead>
@@ -52,20 +78,22 @@
 </thead>
 <tbody><tr>
   <td>/token</td>
-  <td>上传图片或其他文件的秘钥</td>
-  <td>{status: true, results: token}</td>
+  <td>上传图片或其他文件的秘钥<br><code>*id</code> 用户id</td>
+  <td>{status: true, result: token}</td>
 </tr>
 <tr>
   <td>/audio/token</td>
-  <td>上传音频的秘钥</td>
-  <td>{status: true, results: token}</td>
+  <td>上传音频的秘钥<br><code>*id</code> 用户id</td>
+  <td>{status: true, result: token}</td>
 </tr>
 <tr>
   <td>/video/token</td>
-  <td>上传视频的秘钥</td>
-  <td>{status: true, results: token}</td>
+  <td>上传视频的秘钥<br><code>*id</code> 用户id</td>
+  <td>{status: true, result: token}</td>
 </tr>
 </tbody></table>
+
+
 <h2 id="research">Research</h2>
 
 <p>调查研究相关活动接口</p>
@@ -125,6 +153,84 @@
 </tr>
 </tbody></table>
 
+
+<h2 id="uservo">UserVO</h2>
+
+<p><strong>用户数据对象，有可能没有密码，直接通过设备唯一号也可以激活一个用户，只要该用户提交了任何内容，比如参与了某个活动或提交了一个反馈</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th>property</th>
+  <th>type</th>
+  <th>description</th>
+  <th>remark</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>username</td>
+  <td>String</td>
+  <td>用户姓名</td>
+  <td></td>
+</tr>
+<tr>
+  <td>email</td>
+  <td>String</td>
+  <td>用户邮箱</td>
+  <td></td>
+</tr>
+<tr>
+  <td>mobile</td>
+  <td>String</td>
+  <td>用户手机号</td>
+  <td></td>
+</tr>
+<tr>
+  <td>gender</td>
+  <td>String</td>
+  <td>性别</td>
+  <td></td>
+</tr>
+<tr>
+  <td>birthday</td>
+  <td>Date</td>
+  <td>出生日期</td>
+  <td></td>
+</tr>
+<tr>
+  <td>udid</td>
+  <td>String</td>
+  <td>唯一设备号</td>
+  <td></td>
+</tr>
+<tr>
+  <td>pros</td>
+  <td>[{key:String,value:String}]</td>
+  <td>用户的附加属性</td>
+  <td></td>
+</tr>
+<tr>
+  <td>career_style</td>
+  <td>String</td>
+  <td>职业类型</td>
+  <td></td>
+</tr>
+<tr>
+  <td>nationality</td>
+  <td>String</td>
+  <td>国籍</td>
+  <td></td>
+</tr>
+<tr>
+  <td>income</td>
+  <td>String</td>
+  <td>收入</td>
+  <td></td>
+</tr>
+</tbody></table>
+
+
+<hr>
 
 <h2 id="researchvo">ResearchVO</h2>
 
