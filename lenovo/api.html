@@ -14,7 +14,7 @@
   所有语音和视频输入长度不超过60秒</p>
 </blockquote>
 
-<p><div class="toc">
+<p><div class="toc"><div class="toc">
 <ul>
 <li><a href="#api">API</a><ul>
 <li><a href="#user">User</a></li>
@@ -37,6 +37,7 @@
 </li>
 </ul>
 </div>
+</div>
 </p>
 
 <h1 id="api">API</h1>
@@ -52,8 +53,13 @@
 </tr>
 </thead>
 <tbody><tr>
+  <td>/user/init<br><strong>POST</strong></td>
+  <td>用户初始化，第一次开启应用时调用<br><code>*udid</code> 设备号<br><code>*rom</code> ROM版本<br><code>*product_model</code> 产品型号</td>
+  <td>result:<a href="#uservo">UserVO</a></td>
+</tr>
+<tr>
   <td>/user/login<br><strong>POST</strong></td>
-  <td>登录<br><code>*udid</code> 设备号<br>或 <code>*mobile</code>手机号, <code>*code</code> 验证码</td>
+  <td>用户登录，第一次手机登录后将手机号和验证码记录下来，以后每次启动应用都登录一次<br><code>*udid</code> 设备号<br><code>*mobile</code>手机号<br> <code>*code</code> 验证码</td>
   <td>result:<a href="#uservo">UserVO</a></td>
 </tr>
 <tr>
@@ -62,8 +68,6 @@
   <td>status:true 成功 <br>status:false 失败</td>
 </tr>
 </tbody></table>
-
-
 <h2 id="token">Token</h2>
 
 <p>需要先登录后才能使用，秘钥的有效期间是一天</p>
