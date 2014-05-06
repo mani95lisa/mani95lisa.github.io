@@ -11,7 +11,7 @@
   <strong>*</strong>号的参数是必须的</p>
 </blockquote>
 
-<p><div class="toc">
+<p><div class="toc"><div class="toc">
 <ul>
 <li><a href="#api">API</a><ul>
 <li><a href="#user">User</a></li>
@@ -29,6 +29,7 @@
 </li>
 <li><a href="#usage">Usage</a></li>
 </ul>
+</div>
 </div>
 </p>
 
@@ -66,7 +67,7 @@
 </tr>
 <tr>
   <td>/user/update<br><strong>POST</strong></td>
-  <td>portrait<br>mobile<br>address<br>birthday<code>需要使用NodeUtil转换日期格式为：2013-08-30</code></td>
+  <td>nickname<br>email 如果没有email可以更新，有则不行<br>portrait<br>mobile<br>address<br>birthday<code>需要使用NodeUtil转换日期格式为：2013-08-30</code></td>
   <td>status:true 更新成功<br>status:false 更新失败</td>
 </tr>
 <tr>
@@ -85,8 +86,6 @@
   <td>results: [RelationshipVO]</td>
 </tr>
 </tbody></table>
-
-
 <h2 id="upload">Upload</h2>
 
 <table>
