@@ -14,7 +14,7 @@
   所有语音和视频输入长度不超过60秒</p>
 </blockquote>
 
-<p><div class="toc"><div class="toc">
+<p><div class="toc">
 <ul>
 <li><a href="#api">API</a><ul>
 <li><a href="#user">User</a></li>
@@ -36,7 +36,6 @@
 </ul>
 </li>
 </ul>
-</div>
 </div>
 </p>
 
@@ -64,10 +63,12 @@
 </tr>
 <tr>
   <td>/user/code<br><strong>POST</strong></td>
-  <td>获取验证码，60秒内只能获取一次<br><code>*mobile</code> 手机号</td>
+  <td>获取验证码，60秒内只能获取一次<br><code>*mobile</code> 手机号<br><code>*udid</code> 设备号</td>
   <td>status:true 成功 <br>status:false 失败</td>
 </tr>
 </tbody></table>
+
+
 <h2 id="token">Token</h2>
 
 <p>需要先登录后才能使用，秘钥的有效期间是一天</p>
