@@ -6,7 +6,15 @@
 所有语音和视频输入长度不超过60秒
 
 [TOC]
+#Flow
+```flow
+st=>start: 打开应用
+e=>end
+op=>operation: 登录
+cond=>condition: 是否成功
 
+st->op->cond
+```
 #API
 ##User
 URI|Request|[ResultVO][1]
