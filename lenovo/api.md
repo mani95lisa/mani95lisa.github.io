@@ -6,49 +6,7 @@
 所有语音和视频输入长度不超过60秒
 
 [TOC]
-#Flow
-##每次打开应用后
-```flow
-st=>start: 打开应用
-e=>end: 登录成功
-login1=>operation: 设备号自动登录
-login2=>operation: 手机号自动登录
-c_signuped=>condition: 已注册
-cond=>condition: 手机登录过
-st->cond->login1->login2
-cond(yes)->login2->e
-cond(no)->login1->e
-```
-##活动
-```flow
-research_list=>operation: 获取列表
-in_research=>operation: 参加活动
-c_need_login=>condition: 需登录
-c_logined=>condition: 已手机登录
-login=>subroutine: 手动登录
-feedback=>subroutine: 反馈
-submit=>operation: 提交反馈
-st_r=>start: 登录成功
-research=>subroutine: 活动
-feedback=>subroutine: 反馈
-info=>subroutine: 资讯
-mine=>subroutine: 我的
-begin_a=>operation: 开始
-answer=>inputoutput: 依次逐题回答
-e=>end: 活动结束
 
-st_r->research->research_list->in_research->begin_a->c_need_login
-c_need_login(yes)->login->answer
-c_need_login(no, left)->answer
-answer->research_list
-```
-##资讯
-```flow
-st_r=>start: 登录成功
-list=>operation: 获取列表
-in_list=>operation: 阅读资讯
-st_r->list->in_list->list
-```
 #API
 ##User
 URI|Request|[ResultVO][1]
@@ -136,6 +94,50 @@ value|Object|`单选` 选项索引<br>`多选` 选项索引数组<br>`排序` �
 remark|String|选中某些选项需要输入原因的值<br>如果是文本则输入文本，不超过`200`字<br>如果是语音输入则是语音的相对路径
 user_key|String|用户信息Key值|`key`为问题的`user_key`
 user_value|String|用户信息value值|`value`为答案的`content` `输入`类型题目则是 `remark`
+
+#Flow
+##每次打开应用后
+```flow
+st=>start: 打开应用
+e=>end: 登录成功
+login1=>operation: 设备号自动登录
+login2=>operation: 手机号自动登录
+c_signuped=>condition: 已注册
+cond=>condition: 手机登录过
+st->cond->login1->login2
+cond(yes)->login2->e
+cond(no)->login1->e
+```
+##活动
+```flow
+research_list=>operation: 获取列表
+in_research=>operation: 参加活动
+c_need_login=>condition: 需登录
+c_logined=>condition: 已手机登录
+login=>subroutine: 手动登录
+feedback=>subroutine: 反馈
+submit=>operation: 提交反馈
+st_r=>start: 登录成功
+research=>subroutine: 活动
+feedback=>subroutine: 反馈
+info=>subroutine: 资讯
+mine=>subroutine: 我的
+begin_a=>operation: 开始
+answer=>inputoutput: 依次逐题回答
+e=>end: 活动结束
+
+st_r->research->research_list->in_research->begin_a->c_need_login
+c_need_login(yes)->login->answer
+c_need_login(no, left)->answer
+answer->research_list
+```
+##资讯
+```flow
+st_r=>start: 登录成功
+list=>operation: 获取列表
+in_list=>operation: 阅读资讯
+st_r->list->in_list->list
+```
 
 
   [1]: #resultvo
