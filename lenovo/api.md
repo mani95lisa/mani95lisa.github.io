@@ -61,7 +61,8 @@ income|String|收入
 property|	type|	description|	remark
 ---|---|---|---
 name	|String	|活动名称|获取活动列表时仅返回该属性
-thanks |String|感谢语，活动开始页显示|先不需要重点显示
+intro |String|活动介绍，活动开始页显示
+thanks |String|感谢语，活动结束后显示，暂时还没出设计稿
 questions|[\[QuestionVO\]][8]|问题数组，目前是直接返回所有问题数据|
 must_loged_in|Boolean|要参加该活动是否必须登录<br>如果为true，点击开始直接跳转到登录页面，登录后再返回第一题
 
@@ -75,6 +76,7 @@ user_key|String|问题涉及的用户属性|如果该属性不为空，用户答
 score_min|Number|评分题最低分
 score_max|Number|评分题最高分
 score_step|Number|评分题滑动间隔值
+star|Number|星星类型的评分，多少星
 answers|[\[AnswerVO\]][10]|问题的可选答案
 
 ####AnswerVO
