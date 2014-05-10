@@ -15,7 +15,7 @@
   所有语音和视频输入长度不超过60秒</p>
 </blockquote>
 
-<p><div class="toc">
+<p><div class="toc"><div class="toc">
 <ul>
 <li><a href="#api">API</a><ul>
 <li><a href="#user">User</a></li>
@@ -43,6 +43,7 @@
 </ul>
 </li>
 </ul>
+</div>
 </div>
 </p>
 
@@ -275,10 +276,16 @@
   <td>获取活动列表时仅返回该属性</td>
 </tr>
 <tr>
+  <td>intro</td>
+  <td>String</td>
+  <td>活动介绍，活动开始页显示</td>
+  <td></td>
+</tr>
+<tr>
   <td>thanks</td>
   <td>String</td>
-  <td>感谢语，活动开始页显示</td>
-  <td>先不需要重点显示</td>
+  <td>感谢语，活动结束后显示，暂时还没出设计稿</td>
+  <td></td>
 </tr>
 <tr>
   <td>questions</td>
@@ -293,8 +300,6 @@
   <td></td>
 </tr>
 </tbody></table>
-
-
 
 
 <h3 id="questionvo">QuestionVO</h3>
@@ -347,14 +352,18 @@
   <td></td>
 </tr>
 <tr>
+  <td>star</td>
+  <td>Number</td>
+  <td>星星类型的评分，多少星</td>
+  <td></td>
+</tr>
+<tr>
   <td>answers</td>
   <td><a href="#answervo">[AnswerVO]</a></td>
   <td>问题的可选答案</td>
   <td></td>
 </tr>
 </tbody></table>
-
-
 
 
 <h4 id="answervo">AnswerVO</h4>
