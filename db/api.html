@@ -2,8 +2,9 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>DrawingBoard API</title>
+<title>DrawingBoard</title>
 <link rel="stylesheet" href="http://iiiui.qiniudn.com/base.css" />
+<link rel="stylesheet" href="http://iiiui.qiniudn.com/default.css" />
 </head>
 <body><div class="container"><blockquote>
   <p><strong>host</strong>: <a href="http://db.pamakids.com">http://db.pamakids.com</a> <br>
@@ -17,6 +18,7 @@
 <li><a href="#user">User</a></li>
 <li><a href="#upload">Upload</a></li>
 <li><a href="#paint">Paint</a></li>
+<li><a href="#message">Message</a></li>
 </ul>
 </li>
 <li><a href="#model">Model</a><ul>
@@ -25,6 +27,7 @@
 <li><a href="#paintvo">PaintVO</a></li>
 <li><a href="#relationshipvo">RelationshipVO</a></li>
 <li><a href="#praisevo">PraiseVO</a></li>
+<li><a href="#messagevo">MessageVO</a></li>
 </ul>
 </li>
 <li><a href="#usage">Usage</a></li>
@@ -33,7 +36,11 @@
 </div>
 </p>
 
+
+
 <h1 id="api">API</h1>
+
+
 
 <h2 id="user">User</h2>
 
@@ -86,6 +93,10 @@
   <td>results: [RelationshipVO]</td>
 </tr>
 </tbody></table>
+
+
+
+
 <h2 id="upload">Upload</h2>
 
 <table>
@@ -107,6 +118,8 @@
   <td>results:用户上传秘钥凭证，专用于音频上传</td>
 </tr>
 </tbody></table>
+
+
 
 
 <h2 id="paint">Paint</h2>
@@ -162,7 +175,29 @@
 </tbody></table>
 
 
+
+
+<h2 id="message">Message</h2>
+
+<table>
+<thead>
+<tr>
+  <th>URI</th>
+  <th>Request</th>
+  <th><a href="#resultvo">ResultVO</a></th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>/message/get<br><strong>POST</strong></td>
+  <td><strong>*page</strong> 页码</td>
+  <td><a href="#messagevo">[MessageVO]</a></td>
+</tr>
+</tbody></table>
+
+
 <h1 id="model">Model</h1>
+
+
 
 <h2 id="resultvo">ResultVO</h2>
 
@@ -194,6 +229,8 @@
   <td></td>
 </tr>
 </tbody></table>
+
+
 
 
 <h2 id="uservo">UserVO</h2>
@@ -244,6 +281,8 @@
   <td>画板默认DrawingBoard</td>
 </tr>
 </tbody></table>
+
+
 
 
 <h2 id="paintvo">PaintVO</h2>
@@ -332,6 +371,8 @@
 </tbody></table>
 
 
+
+
 <h2 id="relationshipvo">RelationshipVO</h2>
 
 <table>
@@ -364,6 +405,8 @@
 </tbody></table>
 
 
+
+
 <h2 id="praisevo">PraiseVO</h2>
 
 <table>
@@ -390,9 +433,59 @@
 </tbody></table>
 
 
+
+
+<h2 id="messagevo">MessageVO</h2>
+
+<table>
+<thead>
+<tr>
+  <th>property</th>
+  <th>type</th>
+  <th>description</th>
+  <th>remark</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>type</td>
+  <td>Number</td>
+  <td>消息类型</td>
+  <td>1 别人关注了我 2 别人赞了我的画</td>
+</tr>
+<tr>
+  <td>creator</td>
+  <td><a href="#uservo">UserVO</a></td>
+  <td>触发消息的人</td>
+  <td></td>
+</tr>
+<tr>
+  <td>paint</td>
+  <td><a href="#paintvo">PaintVO</a></td>
+  <td>关联的画</td>
+  <td></td>
+</tr>
+<tr>
+  <td>readed</td>
+  <td>Boolean</td>
+  <td>是否已读</td>
+  <td></td>
+</tr>
+<tr>
+  <td>created_at</td>
+  <td>Date</td>
+  <td>消息时间</td>
+  <td></td>
+</tr>
+</tbody></table>
+
+
+
+
 <h1 id="usage">Usage</h1>
 
-<pre class="prettyprint prettyprinted"><code class="language-actionscript"><span class="typ">ServiceBase</span><span class="pun">.</span><span class="pln">HOST </span><span class="pun">=</span><span class="pln"> </span><span class="str">'http://db.pamakids.com'</span><span class="pun">;</span><span class="pln">
+
+
+<pre class="prettyprint prettyprinted" style=""><code class="language-actionscript"><span class="typ">ServiceBase</span><span class="pun">.</span><span class="pln">HOST </span><span class="pun">=</span><span class="pln"> </span><span class="str">'http://db.pamakids.com'</span><span class="pun">;</span><span class="pln">
 
 getSB</span><span class="pun">(</span><span class="str">'/user/signup'</span><span class="pun">).</span><span class="pln">call</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">result</span><span class="pun">:</span><span class="typ">ResultVO</span><span class="pun">):</span><span class="kwd">void</span><span class="pun">{</span><span class="pln">
             </span><span class="kwd">var</span><span class="pln"> user</span><span class="pun">:</span><span class="typ">UserVO</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="typ">CloneUtil</span><span class="pun">.</span><span class="pln">convert</span><span class="pun">(</span><span class="pln">result</span><span class="pun">.</span><span class="pln">results</span><span class="pun">,</span><span class="pln"> </span><span class="typ">UserVO</span><span class="pun">);</span><span class="pln"> </span><span class="com">//自动转换Object对象为VO对象</span><span class="pln">
