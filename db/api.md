@@ -42,7 +42,7 @@ URI|Request|[ResultVO][6]
 ##Message
 URI|Request|[ResultVO][6]
 ---|---|---
-/message/list<br>**POST**| ***page** 页码| [[MessageVO]][9]
+/message/list<br>**GET**| ***page** 页码| [[MessageVO]][9]
 /message/count<br>**GET**| | 未读消息数
 
 #Model
