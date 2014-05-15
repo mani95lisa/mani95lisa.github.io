@@ -77,6 +77,7 @@ property|	type|	description|	remark
 ---|---|---|---
 title	|String	|问题题目
 type|Number|问题类型|`1` 多选 `2` 单选 `3` 排序 `4` 评分 `5` 输入 `6` 星星
+image|String|问题配图
 user_key|String|问题涉及的用户属性|如果该属性不为空，用户答题后需要赋值到[ReportVO][9]
 score_min|Number|评分题最低分
 score_max|Number|评分题最高分
