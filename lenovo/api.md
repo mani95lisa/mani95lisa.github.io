@@ -102,7 +102,7 @@ type|Number|问题类型
 value|Object|`单选` 选项索引<br>`多选` 选项索引数组<br>`排序` 最终排序索引数组<br>`评分` 分值<br>`星星` 星值<br>`输入` 输入的值|`排序` 比较特殊，返回最终排序的数组就行，比如之前是[0,1,2]<br> 排序后是[2,1,0]表示原始数据的第一个跟第三个调换了顺序
 remark|String|选中某些选项需要输入原因的值<br>如果是文本则输入文本，不超过`200`字<br>如果是语音输入则是语音的相对路径
 user_key|String|用户信息Key值|`key`为问题的`user_key`
-user_value|String|用户信息value值|`value`为答案的`content` `输入`类型题目则是 `remark`
+user_value|String|用户信息value值|`value`为答案的`content` `输入`类型题目则不需要填写，会直接使用`value`
 
 #Flow
 ##每次打开应用后
