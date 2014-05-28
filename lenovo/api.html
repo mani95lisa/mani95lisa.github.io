@@ -12,7 +12,8 @@
   <strong>*</strong>号的参数是必须的 <br>
   所有返回的数据对象都带有<strong>_id</strong>属性，就不再赘述 <br>
   所有文本输入长度不超过200字 <br>
-  所有语音和视频输入长度不超过60秒</p>
+  所有语音和视频输入长度不超过60秒 <br>
+  Date类型是国际日期，需要前端进行本地化处理</p>
 </blockquote>
 
 <p><div class="toc"><div class="toc">
@@ -21,6 +22,8 @@
 <li><a href="#user">User</a></li>
 <li><a href="#token">Token</a></li>
 <li><a href="#research">Research</a></li>
+<li><a href="#message">Message</a></li>
+<li><a href="#info">Info</a></li>
 </ul>
 </li>
 <li><a href="#model">Model</a><ul>
@@ -34,6 +37,8 @@
 </ul>
 </li>
 <li><a href="#reportvo">ReportVO</a></li>
+<li><a href="#messagevo">MessageVO</a></li>
+<li><a href="#infovo">InfoVO</a></li>
 </ul>
 </li>
 <li><a href="#flow">Flow</a><ul>
@@ -46,8 +51,6 @@
 </div>
 </div>
 </p>
-
-
 
 <h1 id="api">API</h1>
 
@@ -145,6 +148,53 @@
 <pre class="prettyprint prettyprinted" style=""><code class="language-json"><span class="pun">//</span><span class="pln">report</span><span class="pun">示例，</span><span class="pln">JSON</span><span class="pun">后的数组字符串</span><span class="pln">
 </span><span class="pun">[{</span><span class="str">"qid"</span><span class="pun">:</span><span class="str">"5338e3caa3fd4d878e2a9e93"</span><span class="pun">,</span><span class="str">"type"</span><span class="pun">:</span><span class="lit">4</span><span class="pun">,</span><span class="str">"value"</span><span class="pun">:</span><span class="str">"3"</span><span class="pun">,</span><span class="str">"remark"</span><span class="pun">:</span><span class="str">"test"</span><span class="pun">,</span><span class="str">"user_key"</span><span class="pun">:</span><span class="str">"education"</span><span class="pun">,</span><span class="str">"user_value"</span><span class="pun">:</span><span class="str">"高中"</span><span class="pun">},{</span><span class="str">"qid"</span><span class="pun">:</span><span class="str">"5338e3c1a3fd4d878e2a9e91"</span><span class="pun">,</span><span class="str">"type"</span><span class="pun">:</span><span class="lit">1</span><span class="pun">,</span><span class="str">"value"</span><span class="pun">:[</span><span class="lit">0</span><span class="pun">,</span><span class="lit">1</span><span class="pun">]},{</span><span class="str">"qid"</span><span class="pun">:</span><span class="str">"5338e3c5a3fd4d878e2a9e92"</span><span class="pun">,</span><span class="str">"type"</span><span class="pun">:</span><span class="lit">2</span><span class="pun">,</span><span class="str">"value"</span><span class="pun">:</span><span class="lit">0</span><span class="pun">}]</span></code></pre>
 
+
+
+<h2 id="message">Message</h2>
+
+<p>消息通知</p>
+
+<table>
+<thead>
+<tr>
+  <th>URI</th>
+  <th>Request</th>
+  <th><a href="#resultvo">ResultVO</a></th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>/message/new<br><strong>GET</strong></td>
+  <td><code>*uid</code> 用户ID</td>
+  <td>result:新消息数，为0则无新消息</td>
+</tr>
+<tr>
+  <td>/message/list<br><strong>GET</strong></td>
+  <td><code>*uid</code> 用户ID<br><code>*page</code> 页码，默认每页10条</td>
+  <td>result:[<a href="#messagevo">MessageVO</a>]<br>打开消息列表的时候调用，调用后所有获取到的消息自动read变为true</td>
+</tr>
+</tbody></table>
+
+
+
+
+<h2 id="info">Info</h2>
+
+<p>资讯</p>
+
+<table>
+<thead>
+<tr>
+  <th>URI</th>
+  <th>Request</th>
+  <th><a href="#resultvo">ResultVO</a></th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>/info/list<br><strong>GET</strong></td>
+  <td><code>*page</code> 页码</td>
+  <td>result:[<a href="#infovo">InfoVO</a>]</td>
+</tr>
+</tbody></table>
 
 
 <h1 id="model">Model</h1>
@@ -469,6 +519,78 @@
 </tbody></table>
 
 
+
+
+<h2 id="messagevo">MessageVO</h2>
+
+<p>用户收到的消息</p>
+
+<table>
+<thead>
+<tr>
+  <th>property</th>
+  <th>type</th>
+  <th>description</th>
+  <th>remark</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>read</td>
+  <td>Boolean</td>
+  <td>是否已读</td>
+  <td></td>
+</tr>
+<tr>
+  <td>type</td>
+  <td>int</td>
+  <td>消息类型</td>
+  <td><code>1</code> 活动相关消息</td>
+</tr>
+<tr>
+  <td>content</td>
+  <td>String</td>
+  <td>消息内容</td>
+  <td>比如邀请您参与什么什么活动之类的</td>
+</tr>
+<tr>
+  <td>reference</td>
+  <td>String</td>
+  <td>关联ID</td>
+  <td>比如type是1，则是活动的ID，在用户处理消息的时候可以根据活动的ID进入到活动答题首页</td>
+</tr>
+</tbody></table>
+
+
+
+
+<h2 id="infovo">InfoVO</h2>
+
+<p>资讯</p>
+
+<table>
+<thead>
+<tr>
+  <th>property</th>
+  <th>type</th>
+  <th>description</th>
+  <th>remark</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>title</td>
+  <td>String</td>
+  <td>资讯标题</td>
+  <td></td>
+</tr>
+<tr>
+  <td>url</td>
+  <td>String</td>
+  <td>完整的资讯html地址</td>
+  <td><a href="http://lenovour.qiniudn.com/FuD6jsqG7LStzChkL5oc7ETULhbH">http://lenovour.qiniudn.com/FuD6jsqG7LStzChkL5oc7ETULhbH</a></td>
+</tr>
+</tbody></table>
+
+
 <h1 id="flow">Flow</h1>
 
 
@@ -493,5 +615,5 @@
 
 
 
-<div class="flow-chart"><svg height="240" version="1.1" width="121" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; left: -0.3046875px;"><desc>Created with Raphaël 2.1.0</desc><defs><path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block"></path><marker id="raphael-marker-endblock33" markerHeight="3" markerWidth="3" orient="auto" refX="1.5" refY="1.5"><use xlink:href="#raphael-marker-block" transform="rotate(180 1.5 1.5) scale(0.6,0.6)" stroke-width="1.6667" fill="black" stroke="none"></use></marker></defs><rect x="0" y="0" width="92" height="44" r="20" rx="20" ry="20" fill="#ffffff" stroke="#000000" stroke-width="2" style="" transform="matrix(1,0,0,1,2,2)"></rect><text x="10" y="22" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,2,2)"><tspan dy="6.5">登录成功</tspan></text><rect x="0" y="0" width="92" height="44" r="0" rx="0" ry="0" fill="#ffffff" stroke="#000000" stroke-width="2" style="" transform="matrix(1,0,0,1,2,98)"></rect><text x="10" y="22" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,2,98)"><tspan dy="6.5">获取列表</tspan></text><rect x="0" y="0" width="92" height="44" r="0" rx="0" ry="0" fill="#ffffff" stroke="#000000" stroke-width="2" style="" transform="matrix(1,0,0,1,2,194)"></rect><text x="10" y="22" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,2,194)"><tspan dy="6.5">阅读资讯</tspan></text><path fill="none" stroke="#000000" d="M48,46C48,46,48,83.92477893829346,48,94.99851810093969" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path><path fill="none" stroke="#000000" d="M48,142C48,142,48,179.92477893829346,48,190.9985181009397" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path><path fill="none" stroke="#000000" d="M94,216C94,216,119,216,119,216C119,216,119,73,119,73C119,73,48,73,48,73C48,73,48,88.37344455718994,48,95.00924777425826" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path></svg></div></div></body>
+<div class="flow-chart"><svg height="240" version="1.1" width="121" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; left: -0.5px;"><desc>Created with Raphaël 2.1.0</desc><defs><path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block"></path><marker id="raphael-marker-endblock33" markerHeight="3" markerWidth="3" orient="auto" refX="1.5" refY="1.5"><use xlink:href="#raphael-marker-block" transform="rotate(180 1.5 1.5) scale(0.6,0.6)" stroke-width="1.6667" fill="black" stroke="none"></use></marker></defs><rect x="0" y="0" width="92" height="44" r="20" rx="20" ry="20" fill="#ffffff" stroke="#000000" stroke-width="2" style="" transform="matrix(1,0,0,1,2,2)"></rect><text x="10" y="22" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,2,2)"><tspan dy="6.5">登录成功</tspan></text><rect x="0" y="0" width="92" height="44" r="0" rx="0" ry="0" fill="#ffffff" stroke="#000000" stroke-width="2" style="" transform="matrix(1,0,0,1,2,98)"></rect><text x="10" y="22" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,2,98)"><tspan dy="6.5">获取列表</tspan></text><rect x="0" y="0" width="92" height="44" r="0" rx="0" ry="0" fill="#ffffff" stroke="#000000" stroke-width="2" style="" transform="matrix(1,0,0,1,2,194)"></rect><text x="10" y="22" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,2,194)"><tspan dy="6.5">阅读资讯</tspan></text><path fill="none" stroke="#000000" d="M48,46C48,46,48,83.92477893829346,48,94.99851810093969" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path><path fill="none" stroke="#000000" d="M48,142C48,142,48,179.92477893829346,48,190.9985181009397" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path><path fill="none" stroke="#000000" d="M94,216C94,216,119,216,119,216C119,216,119,73,119,73C119,73,48,73,48,73C48,73,48,88.37344455718994,48,95.00924777425826" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path></svg></div></div></body>
 </html>
