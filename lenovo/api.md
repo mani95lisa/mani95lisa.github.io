@@ -4,6 +4,7 @@
 所有返回的数据对象都带有**_id**属性，就不再赘述
 所有文本输入长度不超过200字
 所有语音和视频输入长度不超过60秒
+Date类型是国际日期，需要前端进行本地化处理
 
 [TOC]
 
@@ -32,6 +33,19 @@ URI|Request|[ResultVO][4]
 //report示例，JSON后的数组字符串
 [{"qid":"5338e3caa3fd4d878e2a9e93","type":4,"value":"3","remark":"test","user_key":"education","user_value":"高中"},{"qid":"5338e3c1a3fd4d878e2a9e91","type":1,"value":[0,1]},{"qid":"5338e3c5a3fd4d878e2a9e92","type":2,"value":0}]
 ```
+##Message
+消息通知
+URI|Request|[ResultVO][4]
+---|---|---
+/message/new<br>**GET**|`*uid` 用户ID| result:新消息数，为0则无新消息
+/message/list<br>**GET**|`*uid` 用户ID<br>`*page` 页码，默认每页10条|result:[[MessageVO][11]]<br>打开消息列表的时候调用，调用后所有获取到的消息自动read变为true
+
+##Info
+资讯
+URI|Request|[ResultVO][4]
+---|---|---
+/info/list<br>**GET**|`*page` 页码|result:[[InfoVO][12]]
+
 
 #Model
 
@@ -104,6 +118,22 @@ remark|String|选中某些选项需要输入原因的值<br>如果是文本则�
 user_key|String|用户信息Key值|`key`为问题的`user_key`
 user_value|String|用户信息value值|`value`为答案的`content` `输入`类型题目则不需要填写，会直接使用`value`
 
+##MessageVO
+用户收到的消息
+property|	type|	description|	remark
+---|---|---|---
+read|Boolean|是否已读
+type|int|消息类型|`1` 活动相关消息
+content|String|消息内容|比如邀请您参与什么什么活动之类的
+reference|String|关联ID|比如type是1，则是活动的ID，在用户处理消息的时候可以根据活动的ID进入到活动答题首页
+
+##InfoVO
+资讯
+property|	type|	description|	remark
+---|---|---|---
+title|String|资讯标题
+url|String|完整的资讯html地址|http://lenovour.qiniudn.com/FuD6jsqG7LStzChkL5oc7ETULhbH
+
 #Flow
 ##每次打开应用后
 ```flow
@@ -159,3 +189,5 @@ st_r->list->in_list->list
   [8]: #questionvo
   [9]: #reportvo
   [10]: #answervo
+  [11]: #messagevo
+  [12]: #infovo
