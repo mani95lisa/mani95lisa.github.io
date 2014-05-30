@@ -1,7 +1,7 @@
 > **API地址**: http://le.pamakids.com/api
 **资源地址**:http://lenovour.qiniudn.com
 **\***号的参数是必须的
-所有返回的数据对象都带有**_id**属性，就不再赘述
+返回的数据对象可能带有**_id**作为唯一标识属性
 所有文本输入长度不超过200字
 所有语音和视频输入长度不超过60秒
 Date类型是国际日期，需要前端进行本地化处理
@@ -27,7 +27,7 @@ URI|Request|[ResultVO][4]
 ---|---|---
 /research/list<br>**GET**|获取活动列表<br>`*page` 当前页数<br>`uid` 用户id，根据用id获取针对该用户的活动列表<br>`为空则获取面向所有人的活动列表`|result:[\[ResearchVO\]][5]
 /research/get<br>**GET**|获取活动详情<br>`*id` 活动ID|result:[ResearchVO][6]
-/research/submit<br>**POST**|提交问卷报告<br>`*id` 活动ID<br>`*udid` 设备唯一号<br>`*uid` 用户登录后返回的`_id`<br>`*report` 报告为[ReportVO][7]数组|status:true 提交成功 <br> status:false 提交失败
+/research/submit<br>**POST**|提交问卷报告<br>`*id` 活动ID<br>`*udid` 设备唯一号<br>`*uid` 用户登录后返回的`_id`<br>`*report` [ReportVO][7]数组JSON字符串|status:true 提交成功 <br> status:false 提交失败
 
 ```json
 //report示例，JSON后的数组字符串
@@ -46,6 +46,13 @@ URI|Request|[ResultVO][4]
 ---|---|---
 /info/list<br>**GET**|`*page` 页码|result:[[InfoVO][12]]
 
+##Feedback
+反馈
+URI|Request|[ResultVO][4]
+---|---|---
+/feedback/types 获取问题类型数组<br>**GET**||result:[{key:'选项键值',list:['选项']}]
+/feedback/submit<br>**POST**|`*user` 用户`_id`<br>`*phone_model` 产品型号<br>`*rom` rom版本<br>`types:[{key:string,value:string}]`选项的key和选择的值value的数组JSON字符串<br>`contact`联系方式，可以是手机号或者邮箱，无需验证数据格式<br>`detail`反馈问题详情<br>`images`图片key值的JSON数组<br>`audio`音频<br>`video`视频<br>|status:true 提交成功
+/feedback/list<br>**GET**|`*user`用户id<br>`*page`当前页码，每页默认10条|result:[[FeedbackVO][13]]
 
 #Model
 
@@ -134,6 +141,17 @@ property|	type|	description|	remark
 title|String|资讯标题
 url|String|完整的资讯html地址|http://lenovour.qiniudn.com/FuD6jsqG7LStzChkL5oc7ETULhbH
 
+##FeedbackVO
+反馈
+property|	type|	description|	remark
+---|---|---|---
+types|Array|选择的选项数组|[{key:String,value:String}]
+contact|String|联系方式
+detail|String|问题详情
+images|Array|图片数组
+audio|String|音频
+video|String|视频
+
 #Flow
 ##每次打开应用后
 ```flow
@@ -191,3 +209,4 @@ st_r->list->in_list->list
   [10]: #answervo
   [11]: #messagevo
   [12]: #infovo
+  [13]:#feedbackvo
