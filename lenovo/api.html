@@ -10,7 +10,7 @@
   <p><strong>API地址</strong>: <a href="http://le.pamakids.com/api">http://le.pamakids.com/api</a> <br>
   <strong>资源地址</strong>:<a href="http://lenovour.qiniudn.com">http://lenovour.qiniudn.com</a> <br>
   <strong>*</strong>号的参数是必须的 <br>
-  所有返回的数据对象都带有<strong>_id</strong>属性，就不再赘述 <br>
+  返回的数据对象可能带有<strong>_id</strong>作为唯一标识属性 <br>
   所有文本输入长度不超过200字 <br>
   所有语音和视频输入长度不超过60秒 <br>
   Date类型是国际日期，需要前端进行本地化处理</p>
@@ -24,6 +24,7 @@
 <li><a href="#research">Research</a></li>
 <li><a href="#message">Message</a></li>
 <li><a href="#info">Info</a></li>
+<li><a href="#feedback">Feedback</a></li>
 </ul>
 </li>
 <li><a href="#model">Model</a><ul>
@@ -39,6 +40,7 @@
 <li><a href="#reportvo">ReportVO</a></li>
 <li><a href="#messagevo">MessageVO</a></li>
 <li><a href="#infovo">InfoVO</a></li>
+<li><a href="#feedbackvo">FeedbackVO</a></li>
 </ul>
 </li>
 <li><a href="#flow">Flow</a><ul>
@@ -51,6 +53,8 @@
 </div>
 </div>
 </p>
+
+
 
 <h1 id="api">API</h1>
 
@@ -137,7 +141,7 @@
 </tr>
 <tr>
   <td>/research/submit<br><strong>POST</strong></td>
-  <td>提交问卷报告<br><code>*id</code> 活动ID<br><code>*udid</code> 设备唯一号<br><code>*uid</code> 用户登录后返回的<code>_id</code><br><code>*report</code> 报告为<a href="#reportvo">ReportVO</a>数组</td>
+  <td>提交问卷报告<br><code>*id</code> 活动ID<br><code>*udid</code> 设备唯一号<br><code>*uid</code> 用户登录后返回的<code>_id</code><br><code>*report</code> <a href="#reportvo">ReportVO</a>数组JSON字符串</td>
   <td>status:true 提交成功 <br> status:false 提交失败</td>
 </tr>
 </tbody></table>
@@ -193,6 +197,38 @@
   <td>/info/list<br><strong>GET</strong></td>
   <td><code>*page</code> 页码</td>
   <td>result:[<a href="#infovo">InfoVO</a>]</td>
+</tr>
+</tbody></table>
+
+
+
+
+<h2 id="feedback">Feedback</h2>
+
+<p>反馈</p>
+
+<table>
+<thead>
+<tr>
+  <th>URI</th>
+  <th>Request</th>
+  <th><a href="#resultvo">ResultVO</a></th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>/feedback/types 获取问题类型数组<br><strong>GET</strong></td>
+  <td></td>
+  <td>result:[{key:’选项键值’,list:[‘选项’]}]</td>
+</tr>
+<tr>
+  <td>/feedback/submit<br><strong>POST</strong></td>
+  <td><code>*user</code> 用户<code>_id</code><br><code>*phone_model</code> 产品型号<br><code>*rom</code> rom版本<br><code>types:[{key:string,value:string}]</code>选项的key和选择的值value的数组JSON字符串<br><code>contact</code>联系方式，可以是手机号或者邮箱，无需验证数据格式<br><code>detail</code>反馈问题详情<br><code>images</code>图片key值的JSON数组<br><code>audio</code>音频<br><code>video</code>视频<br></td>
+  <td>status:true 提交成功</td>
+</tr>
+<tr>
+  <td>/feedback/list<br><strong>GET</strong></td>
+  <td><code>*user</code>用户id<br><code>*page</code>当前页码，每页默认10条</td>
+  <td>result:[<a href="#feedbackvo">FeedbackVO</a>]</td>
 </tr>
 </tbody></table>
 
@@ -591,6 +627,60 @@
 </tbody></table>
 
 
+
+
+<h2 id="feedbackvo">FeedbackVO</h2>
+
+<p>反馈</p>
+
+<table>
+<thead>
+<tr>
+  <th>property</th>
+  <th>type</th>
+  <th>description</th>
+  <th>remark</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>types</td>
+  <td>Array</td>
+  <td>选择的选项数组</td>
+  <td>[{key:String,value:String}]</td>
+</tr>
+<tr>
+  <td>contact</td>
+  <td>String</td>
+  <td>联系方式</td>
+  <td></td>
+</tr>
+<tr>
+  <td>detail</td>
+  <td>String</td>
+  <td>问题详情</td>
+  <td></td>
+</tr>
+<tr>
+  <td>images</td>
+  <td>Array</td>
+  <td>图片数组</td>
+  <td></td>
+</tr>
+<tr>
+  <td>audio</td>
+  <td>String</td>
+  <td>音频</td>
+  <td></td>
+</tr>
+<tr>
+  <td>video</td>
+  <td>String</td>
+  <td>视频</td>
+  <td></td>
+</tr>
+</tbody></table>
+
+
 <h1 id="flow">Flow</h1>
 
 
@@ -599,7 +689,7 @@
 
 
 
-<div class="flow-chart"><svg height="382" version="1.1" width="442" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; left: -0.5px;"><desc>Created with Raphaël 2.1.0</desc><defs></defs><rect x="0" y="0" width="92" height="44" r="20" rx="20" ry="20" fill="#ffffff" stroke="#000000" stroke-width="2" style="" transform="matrix(1,0,0,1,46,2)"></rect><text x="10" y="22" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,46,2)"><tspan dy="6.5">打开应用</tspan></text><path fill="#ffffff" stroke="#000000" d="M45,22.5L0,45L90,90L180,45L90,0L0,45" stroke-width="2" style="" transform="matrix(1,0,0,1,2,98)"></path><text x="50" y="45" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,2,98)"><tspan dy="6.5">手机登录过</tspan></text><rect x="0" y="0" width="146" height="44" r="0" rx="0" ry="0" fill="#ffffff" stroke="#000000" stroke-width="2" style="" transform="matrix(1,0,0,1,19,240)"></rect><text x="10" y="22" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,19,240)"><tspan dy="6.5">手机号自动登录</tspan></text><rect x="0" y="0" width="92" height="44" r="20" rx="20" ry="20" fill="#ffffff" stroke="#000000" stroke-width="2" style="" transform="matrix(1,0,0,1,46,336)"></rect><text x="10" y="22" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,46,336)"><tspan dy="6.5">登录成功</tspan></text><rect x="0" y="0" width="146" height="44" r="0" rx="0" ry="0" fill="#ffffff" stroke="#000000" stroke-width="2" style="" transform="matrix(1,0,0,1,251,121)"></rect><text x="10" y="22" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,251,121)"><tspan dy="6.5">设备号自动登录</tspan></text><path fill="none" stroke="#000000" d="M92,46C92,46,92,83.92477893829346,92,94.99851810093969" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path><path fill="none" stroke="#000000" d="M92,188C92,188,92,225.92477893829346,92,236.9985181009397" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path><text x="97" y="198" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px"><tspan dy="6.5">yes</tspan></text><path fill="none" stroke="#000000" d="M182,143C182,143,234.71027088165283,143,247.99078834988177,143" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path><text x="187" y="133" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px"><tspan dy="6.5">no</tspan></text><path fill="none" stroke="#000000" d="M92,284C92,284,92,321.92477893829346,92,332.9985181009397" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path><path fill="none" stroke="#000000" d="M324,165C324,165,324,311,324,311C324,311,92,311,92,311C92,311,92,326.37344455718994,92,333.00924777425826" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path></svg></div>
+<div class="flow-chart"><svg height="382" version="1.1" width="442" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; left: -0.5px;"><desc>Created with Raphaël 2.1.0</desc><defs><path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block"></path><marker id="raphael-marker-endblock33" markerHeight="3" markerWidth="3" orient="auto" refX="1.5" refY="1.5"><use xlink:href="#raphael-marker-block" transform="rotate(180 1.5 1.5) scale(0.6,0.6)" stroke-width="1.6667" fill="black" stroke="none"></use></marker></defs><rect x="0" y="0" width="92" height="44" r="20" rx="20" ry="20" fill="#ffffff" stroke="#000000" stroke-width="2" style="" transform="matrix(1,0,0,1,46,2)"></rect><text x="10" y="22" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,46,2)"><tspan dy="6.5">打开应用</tspan></text><path fill="#ffffff" stroke="#000000" d="M45,22.5L0,45L90,90L180,45L90,0L0,45" stroke-width="2" style="" transform="matrix(1,0,0,1,2,98)"></path><text x="50" y="45" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,2,98)"><tspan dy="6.5">手机登录过</tspan></text><rect x="0" y="0" width="146" height="44" r="0" rx="0" ry="0" fill="#ffffff" stroke="#000000" stroke-width="2" style="" transform="matrix(1,0,0,1,19,240)"></rect><text x="10" y="22" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,19,240)"><tspan dy="6.5">手机号自动登录</tspan></text><rect x="0" y="0" width="92" height="44" r="20" rx="20" ry="20" fill="#ffffff" stroke="#000000" stroke-width="2" style="" transform="matrix(1,0,0,1,46,336)"></rect><text x="10" y="22" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,46,336)"><tspan dy="6.5">登录成功</tspan></text><rect x="0" y="0" width="146" height="44" r="0" rx="0" ry="0" fill="#ffffff" stroke="#000000" stroke-width="2" style="" transform="matrix(1,0,0,1,251,121)"></rect><text x="10" y="22" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,251,121)"><tspan dy="6.5">设备号自动登录</tspan></text><path fill="none" stroke="#000000" d="M92,46C92,46,92,83.92477893829346,92,94.99851810093969" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path><path fill="none" stroke="#000000" d="M92,188C92,188,92,225.92477893829346,92,236.9985181009397" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path><text x="97" y="198" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px"><tspan dy="6.5">yes</tspan></text><path fill="none" stroke="#000000" d="M182,143C182,143,234.71027088165283,143,247.99078834988177,143" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path><text x="187" y="133" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px"><tspan dy="6.5">no</tspan></text><path fill="none" stroke="#000000" d="M92,284C92,284,92,321.92477893829346,92,332.9985181009397" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path><path fill="none" stroke="#000000" d="M324,165C324,165,324,311,324,311C324,311,92,311,92,311C92,311,92,326.37344455718994,92,333.00924777425826" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path></svg></div>
 
 
 
@@ -615,5 +705,5 @@
 
 
 
-<div class="flow-chart"><svg height="240" version="1.1" width="121" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; left: -0.5px;"><desc>Created with Raphaël 2.1.0</desc><defs><path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block"></path><marker id="raphael-marker-endblock33" markerHeight="3" markerWidth="3" orient="auto" refX="1.5" refY="1.5"><use xlink:href="#raphael-marker-block" transform="rotate(180 1.5 1.5) scale(0.6,0.6)" stroke-width="1.6667" fill="black" stroke="none"></use></marker></defs><rect x="0" y="0" width="92" height="44" r="20" rx="20" ry="20" fill="#ffffff" stroke="#000000" stroke-width="2" style="" transform="matrix(1,0,0,1,2,2)"></rect><text x="10" y="22" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,2,2)"><tspan dy="6.5">登录成功</tspan></text><rect x="0" y="0" width="92" height="44" r="0" rx="0" ry="0" fill="#ffffff" stroke="#000000" stroke-width="2" style="" transform="matrix(1,0,0,1,2,98)"></rect><text x="10" y="22" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,2,98)"><tspan dy="6.5">获取列表</tspan></text><rect x="0" y="0" width="92" height="44" r="0" rx="0" ry="0" fill="#ffffff" stroke="#000000" stroke-width="2" style="" transform="matrix(1,0,0,1,2,194)"></rect><text x="10" y="22" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,2,194)"><tspan dy="6.5">阅读资讯</tspan></text><path fill="none" stroke="#000000" d="M48,46C48,46,48,83.92477893829346,48,94.99851810093969" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path><path fill="none" stroke="#000000" d="M48,142C48,142,48,179.92477893829346,48,190.9985181009397" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path><path fill="none" stroke="#000000" d="M94,216C94,216,119,216,119,216C119,216,119,73,119,73C119,73,48,73,48,73C48,73,48,88.37344455718994,48,95.00924777425826" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path></svg></div></div></body>
+<div class="flow-chart"><svg height="240" version="1.1" width="121" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; left: -0.5px;"><desc>Created with Raphaël 2.1.0</desc><defs></defs><rect x="0" y="0" width="92" height="44" r="20" rx="20" ry="20" fill="#ffffff" stroke="#000000" stroke-width="2" style="" transform="matrix(1,0,0,1,2,2)"></rect><text x="10" y="22" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,2,2)"><tspan dy="6.5">登录成功</tspan></text><rect x="0" y="0" width="92" height="44" r="0" rx="0" ry="0" fill="#ffffff" stroke="#000000" stroke-width="2" style="" transform="matrix(1,0,0,1,2,98)"></rect><text x="10" y="22" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,2,98)"><tspan dy="6.5">获取列表</tspan></text><rect x="0" y="0" width="92" height="44" r="0" rx="0" ry="0" fill="#ffffff" stroke="#000000" stroke-width="2" style="" transform="matrix(1,0,0,1,2,194)"></rect><text x="10" y="22" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-family: Arial;" font-size="14px" transform="matrix(1,0,0,1,2,194)"><tspan dy="6.5">阅读资讯</tspan></text><path fill="none" stroke="#000000" d="M48,46C48,46,48,83.92477893829346,48,94.99851810093969" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path><path fill="none" stroke="#000000" d="M48,142C48,142,48,179.92477893829346,48,190.9985181009397" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path><path fill="none" stroke="#000000" d="M94,216C94,216,119,216,119,216C119,216,119,73,119,73C119,73,48,73,48,73C48,73,48,88.37344455718994,48,95.00924777425826" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" style=""></path></svg></div></div></body>
 </html>
