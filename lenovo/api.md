@@ -50,7 +50,7 @@ URI|Request|[ResultVO][4]
 反馈
 URI|Request|[ResultVO][4]
 ---|---|---
-/feedback/types 获取问题类型数组<br>**GET**||result:[{key:'选项键值',list:['选项']}]
+/feedback/options 获取问题类型数组<br>**GET**||result:[{key:'选项键值',list:['选项']}]
 /feedback/submit<br>**POST**|`*user` 用户`_id`<br>`*phone_model` 产品型号<br>`*rom` rom版本<br>`types:[{key:string,value:string}]`选项的key和选择的值value的数组JSON字符串<br>`contact`联系方式，可以是手机号或者邮箱，无需验证数据格式<br>`detail`反馈问题详情<br>`images`图片key值的JSON数组<br>`audio`音频<br>`video`视频<br>|status:true 提交成功
 /feedback/list<br>**GET**|`*user`用户id<br>`*page`当前页码，每页默认10条|result:[[FeedbackVO][13]]
 
