@@ -28,6 +28,7 @@ URI|Request|[ResultVO][4]
 /research/list<br>**GET**|获取活动列表<br>`*page` 当前页数<br>`uid` 用户id，根据用id获取针对该用户的活动列表<br>`为空则获取面向所有人的活动列表`|result:[\[ResearchVO\]][5]
 /research/get<br>**GET**|获取活动详情<br>`*id` 活动ID|result:[ResearchVO][6]
 /research/submit<br>**POST**|提交问卷报告<br>`*id` 活动ID<br>`*udid` 设备唯一号<br>`*uid` 用户登录后返回的`_id`<br>`*report` [ReportVO][7]数组JSON字符串|status:true 提交成功 <br> status:false 提交失败
+/reported<br>**GET**|是否已提交过报告<br>`*uid` 用户ID<br>`*rid` 活动ID|result:为空表示没提交过，不为空则返回提交过的提示
 
 ```json
 //report示例，JSON后的数组字符串
