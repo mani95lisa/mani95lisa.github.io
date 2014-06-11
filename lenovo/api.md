@@ -12,7 +12,7 @@ Date类型是国际日期，需要前端进行本地化处理
 ##User
 URI|Request|[ResultVO][1]
 ---|---|---
-/user/login<br>**POST**|用户登录，每次打开应用时调用<br>如果有手机号和验证码则必填<br>`*udid` 设备号<br>`*rom` ROM版本<br>`*product_model` 产品型号<br>`mobile`手机号<br> `code` 验证码|result:[UserVO][2]
+/user/login<br>**POST**|用户登录，每次打开应用时调用<br>如果有手机号和验证码则必填<br>`*udid` 设备号<br>`*rom` ROM版本<br>`*product_model` 产品型号<br>`*user_id` 百度通知用户ID<br>`mobile`手机号<br> `code` 验证码|result:[UserVO][2]
 /user/code<br>**POST**|获取验证码，60秒内只能获取一次<br>`*mobile` 手机号<br>`*udid` 设备号|status:true 成功 <br>status:false 失败
 ##Token
 需要先登录后才能使用，秘钥的有效期间是一天
