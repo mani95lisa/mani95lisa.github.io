@@ -72,7 +72,7 @@
 </thead>
 <tbody><tr>
   <td>/user/login<br><strong>POST</strong></td>
-  <td>用户登录，每次打开应用时调用<br>如果有手机号和验证码则必填<br><code>*udid</code> 设备号<br><code>*rom</code> ROM版本<br><code>*product_model</code> 产品型号<br><code>mobile</code>手机号<br> <code>code</code> 验证码</td>
+  <td>用户登录，每次打开应用时调用<br>如果有手机号和验证码则必填<br><code>*udid</code> 设备号<br><code>*rom</code> ROM版本<br><code>*product_model</code> 产品型号<br><code>*user_id</code> 百度通知用户ID<br><code>mobile</code>手机号<br> <code>code</code> 验证码</td>
   <td>result:<a href="#uservo">UserVO</a></td>
 </tr>
 <tr>
@@ -81,8 +81,6 @@
   <td>status:true 成功 <br>status:false 失败</td>
 </tr>
 </tbody></table>
-
-
 
 
 <h2 id="token">Token</h2>
@@ -113,8 +111,6 @@
   <td>{status: true, result: token}</td>
 </tr>
 </tbody></table>
-
-
 
 
 <h2 id="research">Research</h2>
@@ -150,6 +146,8 @@
   <td>result:为空表示没提交过，不为空则返回提交过的提示</td>
 </tr>
 </tbody></table>
+
+
 
 
 <pre class="prettyprint prettyprinted" style=""><code class="language-json"><span class="pun">//</span><span class="pln">report</span><span class="pun">示例，</span><span class="pln">JSON</span><span class="pun">后的数组字符串</span><span class="pln">
