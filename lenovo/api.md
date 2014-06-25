@@ -14,6 +14,7 @@ URI|Request|[ResultVO][1]
 ---|---|---
 /user/login<br>**POST**|用户登录，每次打开应用时调用<br>如果有手机号和验证码则必填<br>`*udid` 设备号<br>`*rom` ROM版本<br>`*product_model` 产品型号<br>`*push_id` 百度通知数据<br>`mobile`手机号<br> `code` 验证码|result:[UserVO][2]
 /user/code<br>**POST**|获取验证码，60秒内只能获取一次<br>`*mobile` 手机号<br>`*udid` 设备号|status:true 成功 <br>status:false 失败
+/user/update<br>**POST**|更新用户信息<br>*[UserVO][2] 按照UserVO的属性格式传递需要更新的对象即可|status:true 成功<br>status:false 失败
 ##Token
 需要先登录后才能使用，秘钥的有效期间是一天
 URI|Request|[ResultVO][3]
@@ -78,6 +79,8 @@ pros|[{key:String,value:String}]|用户的附加属性
 career_style|String|职业类型
 nationality|String|国籍
 income|String|收入
+location|String|地理位置
+geo|String|
 
 
 ----------
