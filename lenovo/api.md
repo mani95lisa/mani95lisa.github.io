@@ -88,6 +88,7 @@ income|String|收入
 location|String|地理位置
 credits|Number|积分
 phone_fee|Number|获奖的话费
+portrait|String|头像
 
 
 ##ResearchVO
