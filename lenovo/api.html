@@ -25,6 +25,7 @@
 <li><a href="#message">Message</a></li>
 <li><a href="#info">Info</a></li>
 <li><a href="#feedback">Feedback</a></li>
+<li><a href="#version">Version</a></li>
 </ul>
 </li>
 <li><a href="#model">Model</a><ul>
@@ -84,6 +85,11 @@
   <td>/user/update<br><strong>POST</strong></td>
   <td>更新用户信息<br>*<a href="#uservo">UserVO</a> 按照UserVO的属性格式传递需要更新的属性和值即可</td>
   <td>status:true 成功<br>status:false 失败</td>
+</tr>
+<tr>
+  <td>/user/log<br><strong>GET</strong></td>
+  <td><code>*uid</code> 用户ID<br><code>*type</code> 类型 1积分日志2话费日志<br><code>*page</code>当前页，每页10条</td>
+  <td>result:{research:研究名称,value:值,created_at:日期}</td>
 </tr>
 </tbody></table>
 
@@ -243,6 +249,26 @@
 
 
 
+<h2 id="version">Version</h2>
+
+<p>反馈</p>
+
+<table>
+<thead>
+<tr>
+  <th>URI</th>
+  <th>Request</th>
+  <th><a href="#resultvo">ResultVO</a></th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>/version<br><strong>POST</strong></td>
+  <td><code>*version</code> 当前版本号</td>
+  <td>status:false 没有新版本 <br> status:true 有新版本 result 就是下载链接</td>
+</tr>
+</tbody></table>
+
+
 <h1 id="model">Model</h1>
 
 
@@ -357,16 +383,18 @@
   <td></td>
 </tr>
 <tr>
-  <td>geo</td>
-  <td>String</td>
+  <td>credits</td>
+  <td>Number</td>
+  <td>积分</td>
   <td></td>
+</tr>
+<tr>
+  <td>phone_fee</td>
+  <td>Number</td>
+  <td>获奖的话费</td>
   <td></td>
 </tr>
 </tbody></table>
-
-
-<hr>
-
 
 
 <h2 id="researchvo">ResearchVO</h2>
