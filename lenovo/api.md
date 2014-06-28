@@ -15,6 +15,7 @@ URI|Request|[ResultVO][1]
 /user/login<br>**POST**|用户登录，每次打开应用时调用<br>如果有手机号和验证码则必填<br>`*udid` 设备号<br>`*rom` ROM版本<br>`*product_model` 产品型号<br>`*push_id` 百度通知数据<br>`mobile`手机号<br> `code` 验证码|result:[UserVO][2]
 /user/code<br>**POST**|获取验证码，60秒内只能获取一次<br>`*mobile` 手机号<br>`*udid` 设备号|status:true 成功 <br>status:false 失败
 /user/update<br>**POST**|更新用户信息<br>*[UserVO][2] 按照UserVO的属性格式传递需要更新的属性和值即可|status:true 成功<br>status:false 失败
+/user/log<br>**GET**|`*uid` 用户ID<br>`*type` 类型 1积分日志2话费日志<br>`*page`当前页，每页10条|result:{research:研究名称,value:值,created_at:日期}
 ##Token
 需要先登录后才能使用，秘钥的有效期间是一天
 URI|Request|[ResultVO][3]
@@ -55,6 +56,11 @@ URI|Request|[ResultVO][4]
 /feedback/options 获取问题类型数组<br>**GET**||result:[{key:'选项键值',list:['选项']}]
 /feedback/submit<br>**POST**|`*user` 用户`_id`<br>`*phone_model` 产品型号<br>`*rom` rom版本<br>`types:[{key:string,value:string}]`选项的key和选择的值value的数组JSON字符串<br>`contact`联系方式，可以是手机号或者邮箱，无需验证数据格式<br>`detail`反馈问题详情<br>`images`图片key值的JSON数组<br>`audio`音频<br>`video`视频<br>|status:true 提交成功
 /feedback/list<br>**GET**|`*user`用户id<br>`*page`当前页码，每页默认10条|result:[[FeedbackVO][13]]
+##Version
+反馈
+URI|Request|[ResultVO][4]
+---|---|---
+/version<br>**POST**|`*version` 当前版本号|status:false 没有新版本 <br> status:true 有新版本 result 就是下载链接
 
 #Model
 
@@ -80,10 +86,8 @@ career_style|String|职业类型
 nationality|String|国籍
 income|String|收入
 location|String|地理位置
-geo|String|
-
-
-----------
+credits|Number|积分
+phone_fee|Number|获奖的话费
 
 
 ##ResearchVO
