@@ -60,7 +60,7 @@ URI|Request|[ResultVO][4]
 反馈
 URI|Request|[ResultVO][4]
 ---|---|---
-/version<br>**POST**|`*version` 当前版本号|status:false 没有新版本 <br> status:true 有新版本 result 就是下载链接
+/version<br>**GET**|`*version` 当前版本号|status:false 没有新版本 <br> status:true 有新版本 result 就是下载链接
 
 #Model
 
@@ -89,6 +89,7 @@ location|String|地理位置
 credits|Number|积分
 phone_fee|Number|获奖的话费
 portrait|String|头像
+age|String|年龄
 
 
 ##ResearchVO
