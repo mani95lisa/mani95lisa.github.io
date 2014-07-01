@@ -98,11 +98,10 @@ property|	type|	description|	remark
 name	|String	|活动名称|获取活动列表时仅返回该属性
 intro |String|活动介绍，活动开始页显示
 thanks |String|感谢语，活动结束后显示，暂时还没出设计稿
-questions|[\[QuestionVO\]][8]|问题数组，目前是直接返回所有问题数据|
+questions|[\[QuestionVO\]][8]|问题数组，直接返回所有问题数据，如果是在列表中则返回问题总数|
 must_loged_in|Boolean|要参加该活动是否必须登录<br>如果为true，点击开始直接跳转到登录页面，登录后再返回第一题
 phone_fee|Number|话费
 credits|Number|积分
-count|Number|问题总数，获取研究列表的时候返回
 
 ###QuestionVO
 **题目数据对象**
