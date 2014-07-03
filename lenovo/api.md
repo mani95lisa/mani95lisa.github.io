@@ -31,6 +31,8 @@ URI|Request|[ResultVO][4]
 /research/get<br>**GET**|获取活动详情<br>`*id` 活动ID|result:[ResearchVO][6]
 /research/submit<br>**POST**|提交问卷报告<br>`*id` 活动ID<br>`*udid` 设备唯一号<br>`*uid` 用户登录后返回的`_id`<br>`*report` [ReportVO][7]数组JSON字符串|status:true 提交成功 <br> status:false 提交失败
 /reported<br>**GET**|是否已提交过报告<br>`*uid` 用户ID<br>`*rid` 活动ID|result:为空表示没提交过，不为空则返回提交过的提示
+/reported/list<br>**GET**|我参与过的活动<br>`*uid` |{research:研究名称,created_at:创建日期,passed:是否过期}
+/reported/detail<br>**GET**|参加过的活动详情<br>`*uid`用户ID<br>`*rid` 研究ID | {participation_num:参与人数,r_credits:本次研究获得积分,r_phone_fee:本次研究获得话费,u_credits:用户总积分,u_phone_fee:用户总话费}
 
 ```json
 //report示例，JSON后的数组字符串
@@ -60,7 +62,7 @@ URI|Request|[ResultVO][4]
 反馈
 URI|Request|[ResultVO][4]
 ---|---|---
-/version<br>**GET**|`*version` 当前版本号|status:false 没有新版本 <br> status:true 有新版本 result 就是下载链接
+/version<br>**GET**|`*version` 当前版本号|status:false 没有新版本 <br> status:true 有新版本<br> result 无论是否有新版本，结果都是返回当前版本的下载地址，以便分享的时候使用
 
 #Model
 
