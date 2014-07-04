@@ -26,6 +26,7 @@
 <li><a href="#info">Info</a></li>
 <li><a href="#feedback">Feedback</a></li>
 <li><a href="#version">Version</a></li>
+<li><a href="#clear">Clear</a></li>
 </ul>
 </li>
 <li><a href="#model">Model</a><ul>
@@ -173,6 +174,8 @@
 </tbody></table>
 
 
+
+
 <pre class="prettyprint"><code class="language-json hljs ">//report示例，JSON后的数组字符串
 [{"<span class="hljs-attribute">qid</span>":<span class="hljs-value"><span class="hljs-string">"5338e3caa3fd4d878e2a9e93"</span></span>,"<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-number">4</span></span>,"<span class="hljs-attribute">value</span>":<span class="hljs-value"><span class="hljs-string">"3"</span></span>,"<span class="hljs-attribute">remark</span>":<span class="hljs-value"><span class="hljs-string">"test"</span></span>,"<span class="hljs-attribute">user_key</span>":<span class="hljs-value"><span class="hljs-string">"education"</span></span>,"<span class="hljs-attribute">user_value</span>":<span class="hljs-value"><span class="hljs-string">"高中"</span></span>},{"<span class="hljs-attribute">qid</span>":<span class="hljs-value"><span class="hljs-string">"5338e3c1a3fd4d878e2a9e91"</span></span>,"<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-number">1</span></span>,"<span class="hljs-attribute">value</span>":<span class="hljs-value">[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>]</span>},{"<span class="hljs-attribute">qid</span>":<span class="hljs-value"><span class="hljs-string">"5338e3c5a3fd4d878e2a9e92"</span></span>,"<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-number">2</span></span>,"<span class="hljs-attribute">value</span>":<span class="hljs-value"><span class="hljs-number">0</span></span>}]</code></pre>
 
@@ -275,6 +278,28 @@
   <td>/version<br><strong>GET</strong></td>
   <td><code>*version</code> 当前版本号</td>
   <td>status:false 没有新版本 <br> status:true 有新版本<br> result 无论是否有新版本，结果都是返回当前版本的下载地址，以便分享的时候使用</td>
+</tr>
+</tbody></table>
+
+
+
+
+<h2 id="clear">Clear</h2>
+
+<p>清空</p>
+
+<table>
+<thead>
+<tr>
+  <th>URI</th>
+  <th>Request</th>
+  <th><a href="#resultvo">ResultVO</a></th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>/clear<br><strong>GET</strong></td>
+  <td><code>*uid</code> 用户ID<br><code>*type</code> 1参加的活动 2反馈的问题 3收到的消息</td>
+  <td>status:false 清空失败 <br> status:true 清空成功</td>
 </tr>
 </tbody></table>
 
