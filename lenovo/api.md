@@ -64,6 +64,12 @@ URI|Request|[ResultVO][4]
 ---|---|---
 /version<br>**GET**|`*version` 当前版本号|status:false 没有新版本 <br> status:true 有新版本<br> result 无论是否有新版本，结果都是返回当前版本的下载地址，以便分享的时候使用
 
+##Clear
+清空
+URI|Request|[ResultVO][4]
+---|---|---
+/clear<br>**GET**|`*uid` 用户ID<br>`*type` 1参加的活动 2反馈的问题 3收到的消息|status:false 清空失败 <br> status:true 清空成功
+
 #Model
 
 ##ResultVO 
