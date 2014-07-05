@@ -164,7 +164,7 @@
 <tr>
   <td>/reported/list<br><strong>GET</strong></td>
   <td>我参与过的活动<br><code>*uid</code></td>
-  <td>{research:研究名称,created_at:创建日期,passed:是否过期}</td>
+  <td>{research:研究名称,created_at:创建日期,passed:是否过期,rid:研究ID}</td>
 </tr>
 <tr>
   <td>/reported/detail<br><strong>GET</strong></td>
@@ -172,8 +172,6 @@
   <td>{participation_num:参与人数,r_credits:本次研究获得积分,r_phone_fee:本次研究获得话费,u_credits:用户总积分,u_phone_fee:用户总话费}</td>
 </tr>
 </tbody></table>
-
-
 
 
 <pre class="prettyprint"><code class="language-json hljs ">//report示例，JSON后的数组字符串
@@ -302,6 +300,8 @@
   <td>status:false 清空失败 <br> status:true 清空成功</td>
 </tr>
 </tbody></table>
+
+
 
 
 <h1 id="model">Model</h1>
