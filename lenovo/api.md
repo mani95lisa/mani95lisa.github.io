@@ -70,6 +70,12 @@ URI|Request|[ResultVO][4]
 ---|---|---
 /clear<br>**GET**|`*uid` 用户ID<br>`*type` 1参加的活动 2反馈的问题 3收到的消息|status:false 清空失败 <br> status:true 清空成功
 
+##Info
+清空
+URI|Request|[ResultVO][4]
+---|---|---
+/info<br>**GET**|`*key` 需要查询信息的值<br>积分规则的key是`credits`<br>奖励说明的key是`award`|
+
 #Model
 
 ##ResultVO 
