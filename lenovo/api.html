@@ -27,6 +27,7 @@
 <li><a href="#feedback">Feedback</a></li>
 <li><a href="#version">Version</a></li>
 <li><a href="#clear">Clear</a></li>
+<li><a href="#info-1">Info</a></li>
 </ul>
 </li>
 <li><a href="#model">Model</a><ul>
@@ -174,6 +175,8 @@
 </tbody></table>
 
 
+
+
 <pre class="prettyprint"><code class="language-json hljs ">//report示例，JSON后的数组字符串
 [{"<span class="hljs-attribute">qid</span>":<span class="hljs-value"><span class="hljs-string">"5338e3caa3fd4d878e2a9e93"</span></span>,"<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-number">4</span></span>,"<span class="hljs-attribute">value</span>":<span class="hljs-value"><span class="hljs-string">"3"</span></span>,"<span class="hljs-attribute">remark</span>":<span class="hljs-value"><span class="hljs-string">"test"</span></span>,"<span class="hljs-attribute">user_key</span>":<span class="hljs-value"><span class="hljs-string">"education"</span></span>,"<span class="hljs-attribute">user_value</span>":<span class="hljs-value"><span class="hljs-string">"高中"</span></span>},{"<span class="hljs-attribute">qid</span>":<span class="hljs-value"><span class="hljs-string">"5338e3c1a3fd4d878e2a9e91"</span></span>,"<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-number">1</span></span>,"<span class="hljs-attribute">value</span>":<span class="hljs-value">[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>]</span>},{"<span class="hljs-attribute">qid</span>":<span class="hljs-value"><span class="hljs-string">"5338e3c5a3fd4d878e2a9e92"</span></span>,"<span class="hljs-attribute">type</span>":<span class="hljs-value"><span class="hljs-number">2</span></span>,"<span class="hljs-attribute">value</span>":<span class="hljs-value"><span class="hljs-number">0</span></span>}]</code></pre>
 
@@ -302,6 +305,26 @@
 </tbody></table>
 
 
+
+
+<h2 id="info-1">Info</h2>
+
+<p>清空</p>
+
+<table>
+<thead>
+<tr>
+  <th>URI</th>
+  <th>Request</th>
+  <th><a href="#resultvo">ResultVO</a></th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>/info<br><strong>GET</strong></td>
+  <td><code>*key</code> 需要查询信息的值<br>积分规则的key是<code>credits</code><br>奖励说明的key是<code>award</code></td>
+  <td></td>
+</tr>
+</tbody></table>
 
 
 <h1 id="model">Model</h1>
