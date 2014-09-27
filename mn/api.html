@@ -7,30 +7,41 @@
 </head>
 <body><div class="container"><blockquote>
   <p><strong>API地址</strong>: <a href="http://mngame.duapp.com">http://mngame.duapp.com</a> <br>
-  <strong>*</strong>号的参数是必须的</p>
+  <strong>*</strong>号的参数是必须的 <br>
+  返回结果如果出错，返回{err:’错误说明’}，除了记录手机号那如果有异常错误的话，提示再提交试试以外，其它的地方都不需要做额外处理</p>
 </blockquote>
 
 <table>
 <thead>
 <tr>
-  <th>URI</th>
-  <th>Request</th>
-  <th>[ResultVO][1]</th>
+  <th>接口地址</th>
+  <th>接口描述</th>
+  <th>返回结果</th>
 </tr>
 </thead>
 <tbody><tr>
-  <td>/user/init<br><strong>GET</strong></td>
-  <td>用户初始化，第一次开启应用时调用<br><code>*udid</code> 设备号<br><code>*rom</code> ROM版本<br><code>*product_model</code> 产品型号</td>
-  <td>result:[UserVO][2]</td>
+  <td>/init<br><strong>GET</strong></td>
+  <td>用户初始化</td>
+  <td></td>
 </tr>
 <tr>
-  <td>/user/login<br><strong>POST</strong></td>
-  <td>用户登录，第一次手机登录后将手机号和验证码记录下来，以后每次启动应用都登录一次<br><code>*udid</code> 设备号<br><code>*mobile</code>手机号<br> <code>*code</code> 验证码</td>
-  <td>result:[UserVO][2]</td>
+  <td>/record<br><strong>POST</strong></td>
+  <td>记录得分<br><code>*score</code> 分值<code>0-10</code></td>
+  <td></td>
 </tr>
 <tr>
-  <td>/user/code<br><strong>POST</strong></td>
-  <td>获取验证码，60秒内只能获取一次<br><code>*mobile</code> 手机号<br><code>*udid</code> 设备号</td>
+  <td>/code<br><strong>GET</strong></td>
+  <td>验证码</td>
+  <td>验证码图片</td>
+</tr>
+<tr>
+  <td>/lottery<br><strong>GET</strong></td>
+  <td>抽奖<br><code>*code</code>验证码</td>
+  <td>{status:true,<code>lid</code>:中奖ID} 成功 <br>status:false 失败</td>
+</tr>
+<tr>
+  <td>/lottery<br><strong>POST</strong></td>
+  <td>记录中奖手机号码 <br><code>*mobile</code> 手机号 <br> <code>*lid</code> 中奖ID</td>
   <td>status:true 成功 <br>status:false 失败</td>
 </tr>
 </tbody></table></div></body>
