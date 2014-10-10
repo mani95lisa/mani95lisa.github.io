@@ -21,27 +21,22 @@
 </thead>
 <tbody><tr>
   <td>/init<br><strong>GET</strong></td>
-  <td>用户初始化</td>
-  <td></td>
-</tr>
-<tr>
-  <td>/record<br><strong>POST</strong></td>
-  <td>记录得分<br><code>*score</code> 分值<code>0-10</code></td>
-  <td></td>
+  <td>用户初始化<br><code>*code</code>微信认证后页面回调的code参数</td>
+  <td>{status:true,openeid:微信的ID} 初始化成功<br>status:false 今天已经抽过奖了<br>err:出错了，当做正常处理，包括抽奖也是，当没抽到奖处理</td>
 </tr>
 <tr>
   <td>/code<br><strong>GET</strong></td>
-  <td>验证码</td>
+  <td>验证码<br><code>*openid</code>微信ID</td>
   <td>验证码图片</td>
 </tr>
 <tr>
   <td>/lottery<br><strong>GET</strong></td>
-  <td>抽奖<br><code>*code</code>验证码</td>
+  <td>抽奖<br><code>*openid</code>微信ID</td>
   <td>{status:true,<code>lid</code>:中奖ID} 成功 <br>status:false 失败</td>
 </tr>
 <tr>
-  <td>/lottery<br><strong>POST</strong></td>
-  <td>记录中奖手机号码 <br><code>*mobile</code> 手机号 <br> <code>*lid</code> 中奖ID</td>
+  <td>/lottery_save<br><strong>GET</strong></td>
+  <td>记录中奖手机号码 <br><code>*mobile</code> 手机号 <br> <code>*lid</code> 中奖ID<br><code>*code</code>验证码</td>
   <td>status:true 成功 <br>status:false 失败</td>
 </tr>
 </tbody></table></div></body>
