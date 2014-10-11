@@ -37,7 +37,7 @@
 <tr>
   <td>/lottery_save<br><strong>GET</strong></td>
   <td>记录中奖手机号码 <br><code>*openid</code>微信ID<br><code>*mobile</code> 手机号 <br> <code>*lid</code> 中奖ID<br><code>*code</code>验证码</td>
-  <td>status:true 成功 <br>status:false 失败</td>
+  <td>status:true 成功 <br>{status:false,result:<code>验证码不正确或者openid用户没有初始化</code>} 这里显示后台提示的结果文字就行</td>
 </tr>
 </tbody></table></div></body>
 </html>
